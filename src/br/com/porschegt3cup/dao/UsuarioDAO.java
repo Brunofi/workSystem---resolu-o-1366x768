@@ -83,6 +83,25 @@ public class UsuarioDAO {
 
     }
     
+    public void InserirUsuario(Usuario usuario){
+        String sql = "insert into tbusuarios (nome,login,senha,perfil) values(?,?,?,?)";
+        
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1,usuario.getNome());
+            pst.setString(2,usuario.getLogin());
+            pst.setString(3,usuario.getSenha());
+            pst.setString(4,usuario.getPerfil());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Usuario cadastrado com sucesso");
+            
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,e);
+        }
+    
+    }
+    
     
     public Usuario buscarUsuarioPorId(Usuario usuario){
     

@@ -26,8 +26,19 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         initComponents();
         controller = new TelaUsuarioController(this);
     }
-    
-    
+
+    private boolean existeCamposVazios() {
+        if (txtLogin.getText().isEmpty()
+                || txtNome.getText().isEmpty()
+                || txtSenha.getText().isEmpty()
+                || cboPerfil.getSelectedItem().toString().isEmpty()) {
+            return true;
+
+        } else {
+            return false;
+        }
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -65,16 +76,16 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         jLabel1.setText("Id");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel2.setText("Nome");
+        jLabel2.setText("*Nome");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel3.setText("Login");
+        jLabel3.setText("*Login");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel4.setText("Senha");
+        jLabel4.setText("*Senha");
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel5.setText("Perfil");
+        jLabel5.setText("*Perfil");
 
         txtLogin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -92,6 +103,11 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         btnAdicionar.setToolTipText("Adicionar");
         btnAdicionar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAdicionar.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
+            }
+        });
 
         btnProcurar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/porschegt3cup/icones/iconFind.png"))); // NOI18N
         btnProcurar.setToolTipText("Procurar");
@@ -192,14 +208,23 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarActionPerformed
-        if(txtLogin.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null, "é necessario colocar um número de ID para fazer a busca");
-        }else{
+        if (txtLogin.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "é necessario colocar um login de usuario para fazer a busca");
+        } else {
             controller.buscarUsuario();
         }
-        
-     
+
+
     }//GEN-LAST:event_btnProcurarActionPerformed
+
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+
+        if (existeCamposVazios()) {
+            JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios para adicionar um usuario");
+        } else {
+            controller.inserirUsuario();
+        }
+    }//GEN-LAST:event_btnAdicionarActionPerformed
 
     public JComboBox<String> getCboPerfil() {
         return cboPerfil;
