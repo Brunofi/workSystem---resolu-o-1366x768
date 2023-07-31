@@ -76,4 +76,41 @@ public class TelaUsuarioController {
 
     }
 
+    public void alterarUsuario() {
+        conexao = ModuloConexao.conector();
+        int id = Integer.parseInt(telaUsuario.getTxtId().getText());
+        String nome = telaUsuario.getTxtNome().getText();
+        String login = telaUsuario.getTxtLogin().getText();
+        String senha = telaUsuario.getTxtSenha().getText();
+        String perfil = telaUsuario.getCboPerfil().getSelectedItem().toString();
+        Usuario usuario = new Usuario(id, nome, login, senha, perfil);
+        UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
+        try {
+            usuarioDao.alterarUsuario(usuario);
+            apagarCampos();
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Houve um problema, não foi possivel cadastrar o usuario");
+
+        }
+
+    }
+
+    public void removeUsuario() {
+        conexao = ModuloConexao.conector();
+        int id = Integer.parseInt(telaUsuario.getTxtId().getText());
+        Usuario usuario = new Usuario(id);
+        UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
+        try {
+            usuarioDao.removerUsuario(usuario);
+            apagarCampos();
+            JOptionPane.showMessageDialog(null, "Usuario removido com sucesso");
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(null, "Houve um problema, não foi possivel remover este usuario");
+
+        }
+
+    }
+
 }

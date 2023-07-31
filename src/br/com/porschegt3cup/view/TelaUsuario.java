@@ -123,11 +123,21 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
         btnAlterar.setToolTipText("Alterar");
         btnAlterar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAlterar.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAlterarActionPerformed(evt);
+            }
+        });
 
         btnDeletar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/porschegt3cup/icones/iconDelete.png"))); // NOI18N
         btnDeletar.setToolTipText("Delete");
         btnDeletar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnDeletar.setPreferredSize(new java.awt.Dimension(80, 80));
+        btnDeletar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeletarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -221,10 +231,27 @@ public class TelaUsuario extends javax.swing.JInternalFrame {
 
         if (existeCamposVazios()) {
             JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios para adicionar um usuario");
-        } else {
+        } else if(!txtId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "é necessario que o campo ID esteja em branco para adicionar um usuario");
+        }else {
             controller.inserirUsuario();
         }
     }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        if (existeCamposVazios()) {
+            JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios para alterar um usuario");
+        } else {
+            controller.alterarUsuario();
+        }
+    }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeletarActionPerformed
+        int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este usuario?", "ATENÇÃO!", JOptionPane.YES_NO_OPTION);
+        if (confirma == JOptionPane.YES_OPTION) {
+            controller.removeUsuario();
+        }
+    }//GEN-LAST:event_btnDeletarActionPerformed
 
     public JComboBox<String> getCboPerfil() {
         return cboPerfil;

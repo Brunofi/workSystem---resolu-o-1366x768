@@ -10,7 +10,7 @@ package br.com.porschegt3cup.model;
  * @author bruno
  */
 public class Usuario {
-    
+
     private int id;
     private String nome;
     private String login;
@@ -39,16 +39,18 @@ public class Usuario {
         this.senha = senha;
         this.perfil = perfil;
     }
-    
-    
 
-   
+    public Usuario(int id, String nome, String login, String senha, String perfil) {
+        this.id = id;
+        this.nome = nome;
+        this.login = login;
+        this.senha = senha;
+        this.perfil = perfil;
+    }
 
-  
-
-
-
-    
+    public Usuario(int id) {
+        this.id = id;
+    }
 
     public String getPerfil() {
         return perfil;
@@ -57,7 +59,6 @@ public class Usuario {
     public void setPerfil(String perfil) {
         this.perfil = perfil;
     }
-    
 
     public int getId() {
         return id;
@@ -95,7 +96,5 @@ public class Usuario {
     public String toString() {
         return "Usuario{" + "id=" + id + ", nome=" + nome + ", login=" + login + ", senha=" + senha + ", perfil=" + perfil + '}';
     }
-    
-    
-    
+
 }

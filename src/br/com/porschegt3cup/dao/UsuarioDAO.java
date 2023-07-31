@@ -44,12 +44,12 @@ public class UsuarioDAO {
             pst.setString(1, usuario.getLogin());
             pst.setString(2, usuario.getSenha());
             rs = pst.executeQuery();
-            
+
             //se obter resultado a variavel "rs" retorna true
             return rs.next();
-            
+
         } catch (Exception e) {
-            
+
             return false;
 
         }
@@ -63,7 +63,7 @@ public class UsuarioDAO {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, usuario.getLogin());
             rs = pst.executeQuery();
-            
+
             if (rs.next()) {
                 String perfil = rs.getString(5);
                 return perfil;
@@ -74,42 +74,67 @@ public class UsuarioDAO {
             }
 
         } catch (Exception e) {
-            
+
             e.printStackTrace();
             return "nada";
-            
-            
+
         }
 
     }
-    
-    public void InserirUsuario(Usuario usuario){
+
+    public void InserirUsuario(Usuario usuario) {
         String sql = "insert into tbusuarios (nome,login,senha,perfil) values(?,?,?,?)";
-        
+
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1,usuario.getNome());
-            pst.setString(2,usuario.getLogin());
-            pst.setString(3,usuario.getSenha());
-            pst.setString(4,usuario.getPerfil());
+            pst.setString(1, usuario.getNome());
+            pst.setString(2, usuario.getLogin());
+            pst.setString(3, usuario.getSenha());
+            pst.setString(4, usuario.getPerfil());
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null,"Usuario cadastrado com sucesso");
-            
-            
+            JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
+
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null,e);
+            JOptionPane.showMessageDialog(null, e);
         }
-    
+
     }
-    
-    public void alterarUsuario(Usuario usuario){
-    
-    
+
+    public void alterarUsuario(Usuario usuario) {
+        String sql = "update tbusuarios set nome=?,login=?,senha=?,perfil=? where id=? ";
+        try {
+            System.out.println(usuario.toString());
+
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, usuario.getNome());
+            pst.setString(2, usuario.getLogin());
+            pst.setString(3, usuario.getSenha());
+            pst.setString(4, usuario.getPerfil());
+            pst.setInt(5, usuario.getId());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Usuario alterado com sucesso");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
     }
-    
-    
-    public Usuario buscarUsuarioPorId(Usuario usuario){
-    
+
+    public void removerUsuario(Usuario usuario) {
+        String sql = "delete from tbusuarios where id=?";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, usuario.getId());
+            pst.executeUpdate();
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public Usuario buscarUsuarioPorId(Usuario usuario) {
+
         try {
             String sql = "select * from tbusuarios where id=?";
             pst = conexao.prepareStatement(sql);
@@ -122,54 +147,51 @@ public class UsuarioDAO {
                 usuario.setLogin(rs.getString(3));
                 usuario.setSenha(rs.getString(4));
                 usuario.setPerfil(rs.getString(5));
-                
+
                 return usuario;
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario Não encontrado");
                 return null;
             }
-            
-            
+
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(null, e);
-            
-        } 
+
+        }
         return null;
-        
+
     }
-    
-    public Usuario buscarUsuarioPorLogin(Usuario usuario){
-    
+
+    public Usuario buscarUsuarioPorLogin(Usuario usuario) {
+
         try {
             String sql = "select * from tbusuarios where login=?";
             pst = conexao.prepareStatement(sql);
             pst.setString(1, usuario.getLogin());
             rs = pst.executeQuery();
-            
+
             if (rs.next()) {
-                
+
                 usuario.setId(rs.getInt(1));
                 usuario.setNome(rs.getString(2));
                 usuario.setLogin(rs.getString(3));
                 usuario.setSenha(rs.getString(4));
                 usuario.setPerfil(rs.getString(5));
-                
+
                 return usuario;
             } else {
                 JOptionPane.showMessageDialog(null, "Usuario Não encontrado");
-                
+
                 return null;
             }
-            
-            
+
         } catch (Exception e) {
             JOptionPane.showConfirmDialog(null, e);
             e.printStackTrace();
-        } 
+        }
         return null;
-        
+
     }
-    
 
     public boolean verificarConexao() {
         try {
