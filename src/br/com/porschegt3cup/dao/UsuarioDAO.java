@@ -102,6 +102,11 @@ public class UsuarioDAO {
     
     }
     
+    public void alterarUsuario(Usuario usuario){
+    
+    
+    }
+    
     
     public Usuario buscarUsuarioPorId(Usuario usuario){
     
