@@ -8,6 +8,7 @@ package br.com.porschegt3cup.controller;
 import br.com.porschegt3cup.dao.ModuloConexao;
 import br.com.porschegt3cup.dao.UsuarioDAO;
 import br.com.porschegt3cup.model.Usuario;
+import br.com.porschegt3cup.view.TelaLocacao;
 import br.com.porschegt3cup.view.TelaPrincipal;
 import br.com.porschegt3cup.view.TelaUsuario;
 import java.sql.Connection;
@@ -75,6 +76,14 @@ public void apresentarUsuarioData(){
         TelaUsuario telaUsuario = new TelaUsuario();
         telaUsuario.setVisible(true);
         telaPrincipal.getDesktop().add(telaUsuario);
+                
+        
+    }
+    
+     public void abrirTelaLocacao() {
+        TelaLocacao telaLocacao = new TelaLocacao();
+        telaLocacao.setVisible(true);
+        telaPrincipal.getDesktop().add(telaLocacao);
                 
         
     }

@@ -6,7 +6,6 @@
 package br.com.porschegt3cup.dao;
 
 import br.com.porschegt3cup.model.Usuario;
-//import com.mysql.cj.protocol.Resultset;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,15 +24,6 @@ public class UsuarioDAO {
 
     public UsuarioDAO(Connection connection) {
         this.conexao = connection;
-    }
-
-    public void inserir(Usuario usuario) {
-
-        try {
-
-        } catch (Exception e) {
-        }
-
     }
 
     public boolean logar(Usuario usuario) {
