@@ -28,6 +28,12 @@ public class Locacao {
         this.locacao = locacao;
         this.sub = sub;
     }
+
+    public Locacao(String locacao) {
+        this.locacao = locacao;
+    }
+    
+    
     
     
 

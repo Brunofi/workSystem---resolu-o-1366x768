@@ -6,6 +6,7 @@
 package br.com.porschegt3cup.view;
 
 import br.com.porschegt3cup.controller.TelaLocacaoController;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -24,6 +25,24 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
         initComponents();
         controller = new TelaLocacaoController(this);
     }
+    
+    private boolean existeCamposVaziosParaCadastrar() {
+        if (txtLocacao.getText().isEmpty()
+                || txtSubLocacao.getText().isEmpty())
+                 {
+            return true;
+
+        } else {
+            return false;
+        }
+
+    }
+    
+    void deixarCamposazios(){
+    txtLocacao.setText(null);
+    txtId.setText(null);
+    txtSubLocacao.setText(null);
+     }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,10 +122,20 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblLocacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblLocacaoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblLocacao);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jButton1.setText("Cadastrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jButton2.setText("Alterar");
@@ -128,11 +157,8 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))))
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
                                 .addComponent(jLabel4))
                             .addGap(44, 44, 44)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -231,8 +257,24 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
     }
 
     private void btnProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarActionPerformed
-       
+        deixarCamposazios();
+        controller.procurarLocacao();
     }//GEN-LAST:event_btnProcurarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        if (existeCamposVaziosParaCadastrar()) {
+            JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios para adicionar uma locação");
+        } else if (!txtId.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "Não é possivel cadastrar uma locação com o campo (ID) preenchido");
+        }else{
+        controller.inserirLocacao();
+        }
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tblLocacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLocacaoMouseClicked
+        controller.preencherCampos();
+    }//GEN-LAST:event_tblLocacaoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

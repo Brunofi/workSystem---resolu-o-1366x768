@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author bruno
@@ -28,18 +29,36 @@ public class LocacaoDAO {
     }
 
     public void inserirLocacao(Locacao locacao) {
-        String sql = "insert into tbusuarios (locacao,sub) values(?,?)";
+        String sql = "insert into tblocacoes (locacao,sub) values(?,?)";
 
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, locacao.getLocacao());
             pst.setString(2, locacao.getSub());
             pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Locação cadastrada com sucesso!");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
 
         }
+
+    }
+
+    public ResultSet pesquisarLocacao(Locacao locacao) {
+        String sql = "select * from tblocacoes where locacao like ?";
+        
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, locacao.getLocacao() + "%");
+            rs=pst.executeQuery();
+            return rs;
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        
+        return null;
 
     }
 
