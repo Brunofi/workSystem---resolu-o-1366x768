@@ -139,6 +139,11 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jButton2.setText("Alterar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jButton3.setText("Remover");
@@ -275,6 +280,15 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
     private void tblLocacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLocacaoMouseClicked
         controller.preencherCampos();
     }//GEN-LAST:event_tblLocacaoMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if ((!existeCamposVaziosParaCadastrar()) && (!txtId.getText().isEmpty())) {
+            controller.alterarLocacao();
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Para alterar uma locação todos os campos devem estar preenchidos inclusive o ID");
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

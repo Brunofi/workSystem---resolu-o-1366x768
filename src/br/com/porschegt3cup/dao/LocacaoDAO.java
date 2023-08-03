@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author bruno
@@ -47,18 +46,34 @@ public class LocacaoDAO {
 
     public ResultSet pesquisarLocacao(Locacao locacao) {
         String sql = "select * from tblocacoes where locacao like ?";
-        
+
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, locacao.getLocacao() + "%");
-            rs=pst.executeQuery();
+            rs = pst.executeQuery();
             return rs;
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-        
+
         return null;
+
+    }
+
+    public void alterarLocacao(Locacao locacao) {
+        String sql = "update tblocacoes set locacao=?,sub=? where id=?";
+
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, locacao.getLocacao());
+            pst.setString(2, locacao.getSub());
+            pst.setInt(3, locacao.getId());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Locacao alterada com sucesso");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
 
     }
 
