@@ -6,6 +6,7 @@
 package br.com.porschegt3cup.view;
 
 import br.com.porschegt3cup.controller.TelaLocacaoController;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -65,9 +66,9 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblLocacao = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnCadastrar = new javax.swing.JButton();
+        btnAlterar = new javax.swing.JButton();
+        btnRemover = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -129,24 +130,24 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(tblLocacao);
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jButton1.setText("Cadastrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrar.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnCadastrar.setText("Cadastrar");
+        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnCadastrarActionPerformed(evt);
             }
         });
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jButton2.setText("Alterar");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnAlterar.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnAlterar.setText("Alterar");
+        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnAlterarActionPerformed(evt);
             }
         });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        jButton3.setText("Remover");
+        btnRemover.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnRemover.setText("Remover");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -175,9 +176,9 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(txtSubLocacao, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
                                     .addComponent(txtLocacao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnCadastrar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnAlterar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnRemover, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(705, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -208,11 +209,11 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
                     .addComponent(jLabel3)
                     .addComponent(txtSubLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(123, Short.MAX_VALUE))
         );
 
@@ -220,6 +221,30 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
 
         setBounds(0, 0, 1530, 905);
     }// </editor-fold>//GEN-END:initComponents
+
+    public JButton getBtnAlterar() {
+        return btnAlterar;
+    }
+
+    public void setBtnAlterar(JButton btnAlterar) {
+        this.btnAlterar = btnAlterar;
+    }
+
+    public JButton getBtnCadastrar() {
+        return btnCadastrar;
+    }
+
+    public void setBtnCadastrar(JButton btnCadastrar) {
+        this.btnCadastrar = btnCadastrar;
+    }
+
+    public JButton getBtnRemover() {
+        return btnRemover;
+    }
+
+    public void setBtnRemover(JButton btnRemover) {
+        this.btnRemover = btnRemover;
+    }
 
     public JTable getTblLocacao() {
         return tblLocacao;
@@ -266,7 +291,7 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
         controller.procurarLocacao();
     }//GEN-LAST:event_btnProcurarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         if (existeCamposVaziosParaCadastrar()) {
             JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios para adicionar uma locação");
         } else if (!txtId.getText().isEmpty()){
@@ -275,27 +300,27 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
         controller.inserirLocacao();
         }
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void tblLocacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLocacaoMouseClicked
         controller.preencherCampos();
     }//GEN-LAST:event_tblLocacaoMouseClicked
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         if ((!existeCamposVaziosParaCadastrar()) && (!txtId.getText().isEmpty())) {
             controller.alterarLocacao();
             
         } else {
             JOptionPane.showMessageDialog(null, "Para alterar uma locação todos os campos devem estar preenchidos inclusive o ID");
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnAlterarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAlterar;
+    private javax.swing.JButton btnCadastrar;
     private javax.swing.JButton btnProcurar;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnRemover;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

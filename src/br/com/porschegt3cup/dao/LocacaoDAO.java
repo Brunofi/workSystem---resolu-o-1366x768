@@ -77,4 +77,9 @@ public class LocacaoDAO {
 
     }
 
+    public void removerLocacao(Locacao locacao) {
+        
+        
+        }
+
 }
