@@ -26,11 +26,10 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
         initComponents();
         controller = new TelaLocacaoController(this);
     }
-    
+
     private boolean existeCamposVaziosParaCadastrar() {
         if (txtLocacao.getText().isEmpty()
-                || txtSubLocacao.getText().isEmpty())
-                 {
+                || txtSubLocacao.getText().isEmpty()) {
             return true;
 
         } else {
@@ -38,12 +37,12 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
         }
 
     }
-    
-    void deixarCamposazios(){
-    txtLocacao.setText(null);
-    txtId.setText(null);
-    txtSubLocacao.setText(null);
-     }
+
+    void deixarCamposazios() {
+        txtLocacao.setText(null);
+        txtId.setText(null);
+        txtSubLocacao.setText(null);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -112,17 +111,25 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
 
         jLabel5.setText("________________________________________________________________________________________________________________");
 
+        tblLocacao = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
         tblLocacao.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "LOCAÇÃO", "SUB LOCAÇÃO"
             }
         ));
+        tblLocacao.setFocusable(false);
+        tblLocacao.getTableHeader().setReorderingAllowed(false);
         tblLocacao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblLocacaoMouseClicked(evt);
@@ -148,6 +155,11 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
 
         btnRemover.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         btnRemover.setText("Remover");
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -294,12 +306,12 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         if (existeCamposVaziosParaCadastrar()) {
             JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios para adicionar uma locação");
-        } else if (!txtId.getText().isEmpty()){
+        } else if (!txtId.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Não é possivel cadastrar uma locação com o campo (ID) preenchido");
-        }else{
-        controller.inserirLocacao();
+        } else {
+            controller.inserirLocacao();
         }
-        
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void tblLocacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLocacaoMouseClicked
@@ -309,11 +321,24 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         if ((!existeCamposVaziosParaCadastrar()) && (!txtId.getText().isEmpty())) {
             controller.alterarLocacao();
-            
+
         } else {
             JOptionPane.showMessageDialog(null, "Para alterar uma locação todos os campos devem estar preenchidos inclusive o ID");
         }
     }//GEN-LAST:event_btnAlterarActionPerformed
+
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        if (!txtId.getText().isEmpty()) {
+            int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esta locação?", "ATENÇÃO!", JOptionPane.YES_NO_OPTION);
+            if (confirma == JOptionPane.YES_OPTION) {
+                controller.removerLocacao();
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "Para remover uma locação o campo (ID) deve estar preenchido");
+        }
+
+    }//GEN-LAST:event_btnRemoverActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

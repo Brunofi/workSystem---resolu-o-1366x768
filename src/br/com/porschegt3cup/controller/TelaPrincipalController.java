@@ -23,44 +23,39 @@ import javax.swing.JOptionPane;
  */
 public class TelaPrincipalController {
 
- private TelaPrincipal telaPrincipal;
- Connection conexao = null;
+    private TelaPrincipal telaPrincipal;
+    Connection conexao = null;
 
     public TelaPrincipalController(TelaPrincipal telaPrincipal) {
         this.telaPrincipal = telaPrincipal;
     }
 
-    
-    
-    
- 
-public void apresentarUsuarioData(){
-    
-    Date data = new Date();
-    DateFormat dataFormatada = DateFormat.getDateInstance(DateFormat.SHORT);
-    telaPrincipal.getLblData().setText(dataFormatada.format(data));
+    public void apresentarUsuarioData() {
 
+        Date data = new Date();
+        DateFormat dataFormatada = DateFormat.getDateInstance(DateFormat.SHORT);
+        telaPrincipal.getLblData().setText(dataFormatada.format(data));
 
-}
+    }
 
     public void fecharSistema() {
-        
+
         int sair = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja sair do sistema", "Atenção", JOptionPane.YES_NO_OPTION);
-        
+
         if (sair == JOptionPane.YES_OPTION) {
             System.exit(0);
-            
+
         }
-        
+
     }
-    
-    public void controlarAcessoPorPerfil(){
-    conexao = ModuloConexao.conector();
-    String login = telaPrincipal.getLblUsuario().getText();
-    Usuario usario = new Usuario(login);
-    UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
-    String perfil = usuarioDao.decubrirPerfil(usario);
-    
+
+    public void controlarAcessoPorPerfil() {
+        conexao = ModuloConexao.conector();
+        String login = telaPrincipal.getLblUsuario().getText();
+        Usuario usario = new Usuario(login);
+        UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
+        String perfil = usuarioDao.decubrirPerfil(usario);
+
         if (perfil.equals("gerente")) {
             telaPrincipal.getMenuPeca().setEnabled(true);
             telaPrincipal.getMenuLocacao().setEnabled(true);
@@ -68,26 +63,22 @@ public void apresentarUsuarioData(){
             telaPrincipal.getMenuColaborador().setEnabled(true);
             telaPrincipal.getMenuRelatorios().setEnabled(true);
         }
-    
+
         //System.out.println(perfil);
-     }
+    }
 
     public void abrirTelaUsuario() {
         TelaUsuario telaUsuario = new TelaUsuario();
         telaUsuario.setVisible(true);
         telaPrincipal.getDesktop().add(telaUsuario);
-                
-        
+
     }
-    
-     public void abrirTelaLocacao() {
+
+    public void abrirTelaLocacao() {
         TelaLocacao telaLocacao = new TelaLocacao();
         telaLocacao.setVisible(true);
         telaPrincipal.getDesktop().add(telaLocacao);
-                
-        
+
     }
-    
-    
-    
+
 }

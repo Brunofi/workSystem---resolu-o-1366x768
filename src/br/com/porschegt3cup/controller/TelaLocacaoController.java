@@ -14,6 +14,7 @@ import java.sql.ResultSet;
 import javax.swing.DropMode;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -33,7 +34,8 @@ public class TelaLocacaoController {
         telaLocacao.getTxtLocacao().setText(null);
         telaLocacao.getTxtSubLocacao().setText(null);
         telaLocacao.getTxtId().setText(null);
-       
+        DefaultTableModel tabela = (DefaultTableModel) telaLocacao.getTblLocacao().getModel();
+       tabela.setRowCount(0);
         
     }
     

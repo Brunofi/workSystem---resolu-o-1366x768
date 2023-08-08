@@ -45,7 +45,7 @@ public class LocacaoDAO {
     }
 
     public ResultSet pesquisarLocacao(Locacao locacao) {
-        String sql = "select * from tblocacoes where locacao like ?";
+        String sql = "select id as ID,locacao as LOCAÇÃO, sub as `SUB LOCAÇÃO` from  tblocacoes where locacao like ?";
 
         try {
             pst = conexao.prepareStatement(sql);
@@ -78,8 +78,17 @@ public class LocacaoDAO {
     }
 
     public void removerLocacao(Locacao locacao) {
-        
-        
+        String sql = "delete from tblocacoes where id=?";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, locacao.getId());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Locacao removida com sucesso");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
         }
+
+    }
 
 }
