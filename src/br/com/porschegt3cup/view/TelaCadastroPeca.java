@@ -5,8 +5,9 @@
  */
 package br.com.porschegt3cup.view;
 
-import br.com.porschegt3cup.controller.TelaLocacaoController;
+import br.com.porschegt3cup.controller.TelaCadastroPecaController;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -17,14 +18,14 @@ import javax.swing.JTextField;
  */
 public class TelaCadastroPeca extends javax.swing.JInternalFrame {
 
-    private final TelaLocacaoController controller;
+    private final TelaCadastroPecaController controller;
 
     /**
      * Creates new form TelaLocacao
      */
     public TelaCadastroPeca() {
         initComponents();
-        controller = new TelaLocacaoController(this);
+        controller = new TelaCadastroPecaController(this);
     }
 
     private boolean existeCamposVaziosParaCadastrar() {
@@ -433,6 +434,14 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
         this.btnCadastrar = btnCadastrar;
     }
 
+    public JButton getBtnProcurar() {
+        return btnProcurar;
+    }
+
+    public void setBtnProcurar(JButton btnProcurar) {
+        this.btnProcurar = btnProcurar;
+    }
+
     public JButton getBtnRemover() {
         return btnRemover;
     }
@@ -441,12 +450,28 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
         this.btnRemover = btnRemover;
     }
 
-    public JTable getTblLocacao() {
+    public JComboBox<String> getCbEstado() {
+        return cbEstado;
+    }
+
+    public void setCbEstado(JComboBox<String> cbEstado) {
+        this.cbEstado = cbEstado;
+    }
+
+    public JTable getTblPeca() {
         return tblPeca;
     }
 
-    public void setTblLocacao(JTable tblLocacao) {
-        this.tblPeca = tblLocacao;
+    public void setTblPeca(JTable tblPeca) {
+        this.tblPeca = tblPeca;
+    }
+
+    public JTextField getTxtFabricante() {
+        return txtFabricante;
+    }
+
+    public void setTxtFabricante(JTextField txtFabricante) {
+        this.txtFabricante = txtFabricante;
     }
 
     public JTextField getTxtId() {
@@ -465,52 +490,131 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
         this.txtLPesquisar = txtLPesquisar;
     }
 
-    public JTextField getTxtLocacao() {
-        return txtSubSistema;
+    public JTextField getTxtModelo() {
+        return txtModelo;
     }
 
-    public void setTxtLocacao(JTextField txtLocacao) {
-        this.txtSubSistema = txtLocacao;
+    public void setTxtModelo(JTextField txtModelo) {
+        this.txtModelo = txtModelo;
     }
 
-    public JTextField getTxtSubLocacao() {
+    public JTextField getTxtNcm() {
+        return txtNcm;
+    }
+
+    public void setTxtNcm(JTextField txtNcm) {
+        this.txtNcm = txtNcm;
+    }
+
+    public JTextField getTxtNome() {
+        return txtNome;
+    }
+
+    public void setTxtNome(JTextField txtNome) {
+        this.txtNome = txtNome;
+    }
+
+    public JTextField getTxtPartNumber() {
         return txtPartNumber;
     }
 
-    public void setTxtSubLocacao(JTextField txtSubLocacao) {
-        this.txtPartNumber = txtSubLocacao;
+    public void setTxtPartNumber(JTextField txtPartNumber) {
+        this.txtPartNumber = txtPartNumber;
     }
 
+    public JTextField getTxtPartNumberSimilar() {
+        return txtPartNumberSimilar;
+    }
+
+    public void setTxtPartNumberSimilar(JTextField txtPartNumberSimilar) {
+        this.txtPartNumberSimilar = txtPartNumberSimilar;
+    }
+
+    public JTextField getTxtPeso() {
+        return txtPeso;
+    }
+
+    public void setTxtPeso(JTextField txtPeso) {
+        this.txtPeso = txtPeso;
+    }
+
+    public JTextField getTxtPreco() {
+        return txtPreco;
+    }
+
+    public void setTxtPreco(JTextField txtPreco) {
+        this.txtPreco = txtPreco;
+    }
+
+    public JTextField getTxtQtdMax() {
+        return txtQtdMax;
+    }
+
+    public void setTxtQtdMax(JTextField txtQtdMax) {
+        this.txtQtdMax = txtQtdMax;
+    }
+
+    public JTextField getTxtQtdMed() {
+        return txtQtdMed;
+    }
+
+    public void setTxtQtdMed(JTextField txtQtdMed) {
+        this.txtQtdMed = txtQtdMed;
+    }
+
+    public JTextField getTxtQtdMin() {
+        return txtQtdMin;
+    }
+
+    public void setTxtQtdMin(JTextField txtQtdMin) {
+        this.txtQtdMin = txtQtdMin;
+    }
+
+    public JTextField getTxtSubSistema() {
+        return txtSubSistema;
+    }
+
+    public void setTxtSubSistema(JTextField txtSubSistema) {
+        this.txtSubSistema = txtSubSistema;
+    }
+    
+
     private void btnProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarActionPerformed
+       /*
         deixarCamposazios();
         controller.procurarLocacao();
+        */
     }//GEN-LAST:event_btnProcurarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        if (existeCamposVaziosParaCadastrar()) {
+        /*
+        f (existeCamposVaziosParaCadastrar()) {
             JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios para adicionar uma locação");
         } else if (!txtId.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Não é possivel cadastrar uma locação com o campo (ID) preenchido");
         } else {
             controller.inserirLocacao();
         }
-
+        */
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void tblPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecaMouseClicked
-        controller.preencherCampos();
+       /* controller.preencherCampos();*/
     }//GEN-LAST:event_tblPecaMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
+        /*
         if ((!existeCamposVaziosParaCadastrar()) && (!txtId.getText().isEmpty())) {
             controller.alterarLocacao();
 
         } else {
             JOptionPane.showMessageDialog(null, "Para alterar uma locação todos os campos devem estar preenchidos inclusive o ID");
         }
+        */
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        /*
         if (!txtId.getText().isEmpty()) {
             int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esta locação?", "ATENÇÃO!", JOptionPane.YES_NO_OPTION);
             if (confirma == JOptionPane.YES_OPTION) {
@@ -520,7 +624,7 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Para remover uma locação o campo (ID) deve estar preenchido");
         }
-
+        */
     }//GEN-LAST:event_btnRemoverActionPerformed
 
 
