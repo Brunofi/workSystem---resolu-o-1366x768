@@ -6,6 +6,7 @@
 package br.com.porschegt3cup.dao;
 
 import br.com.porschegt3cup.model.Peca;
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,10 +42,10 @@ public class PecaDAO {
             pst.setInt(9,peca.getQtdMin());
             pst.setInt(10,peca.getQtdMed());
             pst.setInt(11,peca.getQtdMax());
-            pst.setString(12,peca.getNome());
-            pst.setString(13,peca.getNome());
+            pst.setBigDecimal(12, peca.getPreco());
+            pst.setString(13,peca.getPartNumberSimilar());
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Locação cadastrada com sucesso!");
+            JOptionPane.showMessageDialog(null, "Peça cadastrada com sucesso!");
             
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

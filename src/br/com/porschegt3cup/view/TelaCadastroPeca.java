@@ -28,9 +28,14 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
         controller = new TelaCadastroPecaController(this);
     }
 
-    private boolean existeCamposVaziosParaCadastrar() {
-        if (txtSubSistema.getText().isEmpty()
-                || txtPartNumber.getText().isEmpty()) {
+    private boolean existeCamposObrigatoriosVazios() {
+        if (txtPartNumber.getText().isEmpty()
+                || txtNome.getText().isEmpty()
+                || txtSubSistema.getText().isEmpty()
+                || txtFabricante.getText().isEmpty()
+                || cbEstado.getSelectedItem().toString().isEmpty()
+                || txtPreco.getText().isEmpty()
+                ) {
             return true;
 
         } else {
@@ -39,7 +44,7 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
 
     }
 
-    void deixarCamposazios() {
+    void deixarCamposVazios() {
         txtSubSistema.setText(null);
         txtId.setText(null);
         txtPartNumber.setText(null);
@@ -205,16 +210,16 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
         txtPeso.setPreferredSize(new java.awt.Dimension(500, 28));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel8.setText("*Modelo");
+        jLabel8.setText("Modelo");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("*Estado");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel10.setText("*Peso");
+        jLabel10.setText("Peso");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel11.setText("*NCM");
+        jLabel11.setText("NCM");
 
         txtNcm.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtNcm.setPreferredSize(new java.awt.Dimension(500, 28));
@@ -587,15 +592,15 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnProcurarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        /*
-        f (existeCamposVaziosParaCadastrar()) {
-            JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios para adicionar uma locação");
+        
+        if (existeCamposObrigatoriosVazios()) {
+            JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios paracadastrar uma peça");
         } else if (!txtId.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Não é possivel cadastrar uma locação com o campo (ID) preenchido");
+            JOptionPane.showMessageDialog(null, "Não é possivel cadastrar uma peça com o campo (ID) preenchido");
         } else {
-            controller.inserirLocacao();
+            controller.cadastrarPeca();
         }
-        */
+        
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void tblPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecaMouseClicked

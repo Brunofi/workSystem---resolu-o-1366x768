@@ -8,6 +8,7 @@ package br.com.porschegt3cup.controller;
 import br.com.porschegt3cup.dao.ModuloConexao;
 import br.com.porschegt3cup.dao.UsuarioDAO;
 import br.com.porschegt3cup.model.Usuario;
+import br.com.porschegt3cup.view.TelaCadastroPeca;
 import br.com.porschegt3cup.view.TelaLocacao;
 import br.com.porschegt3cup.view.TelaPrincipal;
 import br.com.porschegt3cup.view.TelaUsuario;
@@ -79,6 +80,13 @@ public class TelaPrincipalController {
         telaLocacao.setVisible(true);
         telaPrincipal.getDesktop().add(telaLocacao);
 
+    }
+    
+    public void abrirTelaCadastroPeca(){
+        TelaCadastroPeca telaCadastroPeca = new TelaCadastroPeca();
+        telaCadastroPeca.setVisible(true);
+        telaPrincipal.getDesktop().add(telaCadastroPeca);
+    
     }
 
 }

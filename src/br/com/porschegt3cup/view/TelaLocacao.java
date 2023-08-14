@@ -27,7 +27,7 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
         controller = new TelaLocacaoController(this);
     }
 
-    private boolean existeCamposVaziosParaCadastrar() {
+    private boolean existeCamposObrigatoriosVazios() {
         if (txtLocacao.getText().isEmpty()
                 || txtSubLocacao.getText().isEmpty()) {
             return true;
@@ -304,7 +304,7 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnProcurarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        if (existeCamposVaziosParaCadastrar()) {
+        if (existeCamposObrigatoriosVazios()) {
             JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios para adicionar uma locação");
         } else if (!txtId.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Não é possivel cadastrar uma locação com o campo (ID) preenchido");
@@ -319,7 +319,7 @@ public class TelaLocacao extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblLocacaoMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        if ((!existeCamposVaziosParaCadastrar()) && (!txtId.getText().isEmpty())) {
+        if ((!existeCamposObrigatoriosVazios()) && (!txtId.getText().isEmpty())) {
             controller.alterarLocacao();
 
         } else {

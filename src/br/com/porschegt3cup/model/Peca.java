@@ -56,6 +56,24 @@ public class Peca {
         this.partNumber = partNumberOuNome;
     }
 
+    public Peca(String nome, String partNumber, String peso, String ncm, String estado, String modeloCarro, String subSistema, String fabricante, int qtdMin, int qtdMed, int qtdMax, BigDecimal preco, String partNumberSimilar) {
+        this.nome = nome;
+        this.partNumber = partNumber;
+        this.peso = peso;
+        this.ncm = ncm;
+        this.estado = estado;
+        this.modeloCarro = modeloCarro;
+        this.subSistema = subSistema;
+        this.fabricante = fabricante;
+        this.qtdMin = qtdMin;
+        this.qtdMed = qtdMed;
+        this.qtdMax = qtdMax;
+        this.preco = preco;
+        this.partNumberSimilar = partNumberSimilar;
+    }
+    
+    
+
     public int getId() {
         return id;
     }

@@ -102,6 +102,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menuPeca.setText("Peça");
         menuPeca.setEnabled(false);
+        menuPeca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuPecaActionPerformed(evt);
+            }
+        });
         menuCadastro.add(menuPeca);
 
         menuLocacao.setText("Locação");
@@ -213,6 +218,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void menuLocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuLocacaoActionPerformed
         controller.abrirTelaLocacao();
     }//GEN-LAST:event_menuLocacaoActionPerformed
+
+    private void menuPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPecaActionPerformed
+        controller.abrirTelaCadastroPeca();
+    }//GEN-LAST:event_menuPecaActionPerformed
 
     /**
      * @param args the command line arguments
