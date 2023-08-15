@@ -53,6 +53,66 @@ public class PecaDAO {
         
     }
     
+    public void alterarPeca(Peca peca){
+        String sql = "update tbpecas set nome=?, partnumber=?, peso=?, ncm=?,"
+                + " estado=?, modelocarro=?, subsistema=?, fabricante=?, qtdmin=?,"
+                + " qtdmed=?, qtdmax=?, preco=?, ptnumber_similar=? where id=?";
+        
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1,peca.getNome());
+            pst.setString(2,peca.getPartNumber());
+            pst.setString(3,peca.getPeso());
+            pst.setString(4,peca.getNcm());
+            pst.setString(5,peca.getEstado());
+            pst.setString(6,peca.getModeloCarro());
+            pst.setString(7,peca.getSubSistema());
+            pst.setString(8,peca.getFabricante());
+            pst.setInt(9,peca.getQtdMin());
+            pst.setInt(10,peca.getQtdMed());
+            pst.setInt(11,peca.getQtdMax());
+            pst.setBigDecimal(12, peca.getPreco());
+            pst.setString(13,peca.getPartNumberSimilar());
+            pst.setInt(14, peca.getId());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Peca alterada com sucesso");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    
+    }
+    
+    public ResultSet pesquisarPorPartNumber(Peca peca){
+        String sql = "select * from tbpecas where partnumber like ?";
+        
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, peca.getPartNumber() + "%");
+            rs = pst.executeQuery();
+            return rs;
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return null;
+    
+    }
+    
+    public ResultSet pesquisarPorNome(Peca peca){
+        String sql = "select * from tbpecas where nome like ?";
+        
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, peca.getPartNumber() + "%");
+            rs = pst.executeQuery();
+            return rs;
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return null;
+    
+    }
     
     
 }

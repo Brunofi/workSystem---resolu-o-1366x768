@@ -32,10 +32,15 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
         if (txtPartNumber.getText().isEmpty()
                 || txtNome.getText().isEmpty()
                 || txtSubSistema.getText().isEmpty()
+                || txtModelo.getText().isEmpty()
                 || txtFabricante.getText().isEmpty()
                 || cbEstado.getSelectedItem().toString().isEmpty()
-                || txtPreco.getText().isEmpty()
-                ) {
+                || txtPeso.getText().isEmpty()
+                || txtNcm.getText().isEmpty()
+                || txtQtdMin.getText().isEmpty()
+                || txtQtdMed.getText().isEmpty()
+                || txtQtdMax.getText().isEmpty()
+                || txtPreco.getText().isEmpty()) {
             return true;
 
         } else {
@@ -208,27 +213,42 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
 
         txtPeso.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtPeso.setPreferredSize(new java.awt.Dimension(500, 28));
+        txtPeso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPesoKeyTyped(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel8.setText("Modelo");
+        jLabel8.setText("*Modelo");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("*Estado");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel10.setText("Peso");
+        jLabel10.setText("*Peso");
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel11.setText("NCM");
+        jLabel11.setText("*NCM");
 
         txtNcm.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtNcm.setPreferredSize(new java.awt.Dimension(500, 28));
+        txtNcm.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNcmKeyTyped(evt);
+            }
+        });
 
         txtPartNumberSimilar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtPartNumberSimilar.setPreferredSize(new java.awt.Dimension(500, 28));
 
         txtPreco.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtPreco.setPreferredSize(new java.awt.Dimension(500, 28));
+        txtPreco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPrecoKeyTyped(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel12.setText("*Preço");
@@ -237,22 +257,37 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
         jLabel13.setText("Part Number Similar");
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel14.setText("Qtd Min");
+        jLabel14.setText("*Qtd Min");
 
         txtQtdMin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtQtdMin.setPreferredSize(new java.awt.Dimension(500, 28));
+        txtQtdMin.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQtdMinKeyTyped(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel15.setText("Qtd Méd");
+        jLabel15.setText("*Qtd Méd");
 
         txtQtdMed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtQtdMed.setPreferredSize(new java.awt.Dimension(500, 28));
+        txtQtdMed.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQtdMedKeyTyped(evt);
+            }
+        });
 
         txtQtdMax.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtQtdMax.setPreferredSize(new java.awt.Dimension(500, 28));
+        txtQtdMax.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQtdMaxKeyTyped(evt);
+            }
+        });
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel16.setText("Qtd Max");
+        jLabel16.setText("*Qtd Max");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -345,7 +380,7 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
                     .addComponent(btnProcurar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(52, 52, 52)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -415,7 +450,7 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
                         .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("Locacao");
@@ -582,17 +617,17 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
     public void setTxtSubSistema(JTextField txtSubSistema) {
         this.txtSubSistema = txtSubSistema;
     }
-    
+
 
     private void btnProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarActionPerformed
-       /*
-        deixarCamposazios();
-        controller.procurarLocacao();
-        */
+       
+        //deixarCamposazios();
+        controller.procurarPeca();
+         
     }//GEN-LAST:event_btnProcurarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        
+
         if (existeCamposObrigatoriosVazios()) {
             JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios paracadastrar uma peça");
         } else if (!txtId.getText().isEmpty()) {
@@ -600,11 +635,11 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
         } else {
             controller.cadastrarPeca();
         }
-        
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void tblPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecaMouseClicked
-       /* controller.preencherCampos();*/
+        /* controller.preencherCampos();*/
     }//GEN-LAST:event_tblPecaMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
@@ -615,7 +650,7 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Para alterar uma locação todos os campos devem estar preenchidos inclusive o ID");
         }
-        */
+         */
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
@@ -629,8 +664,50 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Para remover uma locação o campo (ID) deve estar preenchido");
         }
-        */
+         */
     }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void txtPrecoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecoKeyTyped
+        String caracteresPermitidos = "0123456789,";
+        if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPrecoKeyTyped
+
+    private void txtQtdMinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtdMinKeyTyped
+        String caracteresPermitidos = "0123456789";
+        if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtQtdMinKeyTyped
+
+    private void txtQtdMedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtdMedKeyTyped
+        String caracteresPermitidos = "0123456789";
+        if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtQtdMedKeyTyped
+
+    private void txtQtdMaxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtdMaxKeyTyped
+        String caracteresPermitidos = "0123456789";
+        if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtQtdMaxKeyTyped
+
+    private void txtPesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesoKeyTyped
+        String caracteresPermitidos = "0123456789,";
+        if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtPesoKeyTyped
+
+    private void txtNcmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNcmKeyTyped
+        String caracteresPermitidos = "0123456789";
+        if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNcmKeyTyped
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

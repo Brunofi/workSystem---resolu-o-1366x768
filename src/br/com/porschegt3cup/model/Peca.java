@@ -55,7 +55,8 @@ public class Peca {
     public Peca(String partNumberOuNome) {
         this.partNumber = partNumberOuNome;
     }
-
+    
+  
     public Peca(String nome, String partNumber, String peso, String ncm, String estado, String modeloCarro, String subSistema, String fabricante, int qtdMin, int qtdMed, int qtdMax, BigDecimal preco, String partNumberSimilar) {
         this.nome = nome;
         this.partNumber = partNumber;

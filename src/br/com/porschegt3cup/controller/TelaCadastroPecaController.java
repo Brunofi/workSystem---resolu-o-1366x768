@@ -11,6 +11,9 @@ import br.com.porschegt3cup.model.Peca;
 import br.com.porschegt3cup.view.TelaCadastroPeca;
 import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -53,7 +56,7 @@ public class TelaCadastroPecaController {
         String estado = telaCadastroPeca.getCbEstado().getSelectedItem().toString();
         String peso = telaCadastroPeca.getTxtPeso().getText();
         String ncm = telaCadastroPeca.getTxtNcm().getText();
-        String precoString = telaCadastroPeca.getTxtPreco().getText();
+        String precoString = telaCadastroPeca.getTxtPreco().getText().replaceAll(",", ".");
         BigDecimal preco  = new BigDecimal(precoString);
         String partNumberSimilar = telaCadastroPeca.getTxtPartNumberSimilar().getText();
         int qtdMin = Integer.parseInt(telaCadastroPeca.getTxtQtdMin().getText());
@@ -65,6 +68,22 @@ public class TelaCadastroPecaController {
         apagarCampos();
         
         
+    }
+    
+    public void procurarPeca(){
+        conexao = ModuloConexao.conector();
+        String pecaPesquisada = telaCadastroPeca.getTxtLPesquisar().getText();
+        Peca peca = new Peca(pecaPesquisada);
+        PecaDAO pecaDao = new PecaDAO(conexao);
+        ResultSet rs;
+        rs = pecaDao.pesquisarPorPartNumber(peca);
+        if (rs != null) {
+            telaCadastroPeca.getTblPeca().setModel(DbUtils.resultSetToTableModel(rs));
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Peça não encontrada");
+        }
+    
     }
     
     

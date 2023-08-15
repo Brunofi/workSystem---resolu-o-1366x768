@@ -5,6 +5,7 @@
         <group>
             <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/view/TelaCadastroPeca.java</file>
             <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/controller/TelaCadastroPecaController.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/model/Peca.java</file>
             <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/dao/PecaDAO.java</file>
         </group>
     </open-files>
