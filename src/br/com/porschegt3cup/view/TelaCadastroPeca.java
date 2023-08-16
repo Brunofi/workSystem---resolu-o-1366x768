@@ -639,7 +639,7 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void tblPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecaMouseClicked
-        /* controller.preencherCampos();*/
+         controller.pegaPecaSelecionadaEPreencheCampos();
     }//GEN-LAST:event_tblPecaMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed

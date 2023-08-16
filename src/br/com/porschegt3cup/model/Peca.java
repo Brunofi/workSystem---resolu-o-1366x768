@@ -186,6 +186,11 @@ public class Peca {
     public void setPartNumberSimilar(String partNumberSimilar) {
         this.partNumberSimilar = partNumberSimilar;
     }
+
+    @Override
+    public String toString() {
+        return "Peca{" + "id=" + id + ", nome=" + nome + ", partNumber=" + partNumber + ", peso=" + peso + ", ncm=" + ncm + ", estado=" + estado + ", modeloCarro=" + modeloCarro + ", subSistema=" + subSistema + ", fabricante=" + fabricante + ", qtdMin=" + qtdMin + ", qtdMed=" + qtdMed + ", qtdMax=" + qtdMax + ", preco=" + preco + ", partNumberSimilar=" + partNumberSimilar + '}';
+    }
     
     
 

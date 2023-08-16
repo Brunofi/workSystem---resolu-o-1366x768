@@ -82,12 +82,12 @@ public class PecaDAO {
     
     }
     
-    public ResultSet pesquisarPorPartNumber(Peca peca){
-        String sql = "select * from tbpecas where partnumber like ?";
+    public ResultSet pesquisarPorPartNumber(String peca){
+        String sql = "select id as ID, nome as `NOME DA PEÇA`, partnumber as `PART NUMBER` from tbpecas where partnumber like ?";
         
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, peca.getPartNumber() + "%");
+            pst.setString(1, peca + "%");
             rs = pst.executeQuery();
             return rs;
             
@@ -98,12 +98,12 @@ public class PecaDAO {
     
     }
     
-    public ResultSet pesquisarPorNome(Peca peca){
+    public ResultSet pesquisarPorNome(String peca){
         String sql = "select * from tbpecas where nome like ?";
         
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, peca.getPartNumber() + "%");
+            pst.setString(1, peca + "%");
             rs = pst.executeQuery();
             return rs;
             
@@ -111,6 +111,23 @@ public class PecaDAO {
             JOptionPane.showMessageDialog(null, e);
         }
         return null;
+    
+    }
+    
+    public ResultSet pesquisarPorId(int idPeca){
+        String sql = "select * from tbpecas where id=?";
+        
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, idPeca);
+            rs = pst.executeQuery();
+            return rs;
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return null;
+        
     
     }
     
