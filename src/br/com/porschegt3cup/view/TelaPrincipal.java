@@ -22,18 +22,12 @@ import javax.swing.JMenuItem;
  */
 public class TelaPrincipal extends javax.swing.JFrame {
 
-    
     private final TelaPrincipalController controller;
-    
-    
-    
-    
+
     public TelaPrincipal() {
         initComponents();
         controller = new TelaPrincipalController(this);
-        
-                
-        
+
     }
 
     /**
@@ -57,6 +51,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuLocacao = new javax.swing.JMenuItem();
         menuUsuario = new javax.swing.JMenuItem();
         menuColaborador = new javax.swing.JMenuItem();
+        menuEstoque = new javax.swing.JMenuItem();
         menuEntrada = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -131,6 +126,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuColaborador.setEnabled(false);
         menuCadastro.add(menuColaborador);
 
+        menuEstoque.setText("Estoque");
+        menuEstoque.setEnabled(false);
+        menuEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuEstoqueActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(menuEstoque);
+
         menu.add(menuCadastro);
 
         menuEntrada.setText("Lançamentos");
@@ -202,9 +206,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         controller.apresentarUsuarioData();
-    
-            controller.controlarAcessoPorPerfil();
-        
+
+        controller.controlarAcessoPorPerfil();
+
     }//GEN-LAST:event_formWindowActivated
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
@@ -222,6 +226,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void menuPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPecaActionPerformed
         controller.abrirTelaCadastroPeca();
     }//GEN-LAST:event_menuPecaActionPerformed
+
+    private void menuEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuEstoqueActionPerformed
+        controller.abrirTelaCadastroEstoque();
+    }//GEN-LAST:event_menuEstoqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,39 +266,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
     }
 
-    public static JMenuItem getMenuPeca() {
-        return menuPeca;
-    }
-
-    public static void setMenuPeca(JMenuItem menuPeca) {
-        TelaPrincipal.menuPeca = menuPeca;
-    }
-    
-    
-    public JDesktopPane getDesktop() {
-        return desktop;
-    }
-
-    public void setDesktop(JDesktopPane desktop) {
-        this.desktop = desktop;
-    }
-
-    public JLabel getLblData() {
-        return lblData;
-    }
-
-    public void setLblData(JLabel lblData) {
-        this.lblData = lblData;
-    }
-
-    public JLabel getLblUsuario() {
-        return lblUsuario;
-    }
-
-    public void setLblUsuario(JLabel lblUsuario) {
-        this.lblUsuario = lblUsuario;
-    }
-
     public JMenuBar getMenu() {
         return menu;
     }
@@ -299,37 +274,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.menu = menu;
     }
 
-    public JMenu getMenuEntrada() {
-        return menuEntrada;
+    public JMenu getMenuCadastro() {
+        return menuCadastro;
     }
 
-    public void setMenuEntrada(JMenu menuEntrada) {
-        this.menuEntrada = menuEntrada;
-    }
-
-    public JMenuItem getMenuLocacao() {
-        return menuLocacao;
-    }
-
-    public void setMenuLocacao(JMenuItem menuLocacao) {
-        this.menuLocacao = menuLocacao;
-    }
-
-    public JMenu getMenuOpcoes() {
-        return menuOpcoes;
-    }
-
-    public void setMenuOpcoes(JMenu menuOpcoes) {
-        this.menuOpcoes = menuOpcoes;
-    }
-
-  
-    public JMenu getMenuRelatorios() {
-        return menuRelatorios;
-    }
-
-    public void setMenuRelatorios(JMenu menuRelatorios) {
-        this.menuRelatorios = menuRelatorios;
+    public void setMenuCadastro(JMenu menuCadastro) {
+        this.menuCadastro = menuCadastro;
     }
 
     public JMenuItem getMenuColaborador() {
@@ -340,17 +290,91 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.menuColaborador = menuColaborador;
     }
 
-    public JMenuItem getMenuUsuario() {
+    public JMenu getMenuEntrada() {
+        return menuEntrada;
+    }
+
+    public void setMenuEntrada(JMenu menuEntrada) {
+        this.menuEntrada = menuEntrada;
+    }
+
+    public static JMenuItem getMenuEstoque() {
+        return menuEstoque;
+    }
+
+    public static void setMenuEstoque(JMenuItem menuEstoque) {
+        TelaPrincipal.menuEstoque = menuEstoque;
+    }
+
+    public static JMenuItem getMenuLocacao() {
+        return menuLocacao;
+    }
+
+    public static void setMenuLocacao(JMenuItem menuLocacao) {
+        TelaPrincipal.menuLocacao = menuLocacao;
+    }
+
+    public JMenu getMenuOpcoes() {
+        return menuOpcoes;
+    }
+
+    public void setMenuOpcoes(JMenu menuOpcoes) {
+        this.menuOpcoes = menuOpcoes;
+    }
+
+    public static JMenuItem getMenuPeca() {
+        return menuPeca;
+    }
+
+    public static void setMenuPeca(JMenuItem menuPeca) {
+        TelaPrincipal.menuPeca = menuPeca;
+    }
+
+    public static JMenu getMenuRelatorios() {
+        return menuRelatorios;
+    }
+
+    public static void setMenuRelatorios(JMenu menuRelatorios) {
+        TelaPrincipal.menuRelatorios = menuRelatorios;
+    }
+
+    public static JMenuItem getMenuUsuario() {
         return menuUsuario;
     }
 
-    public void setMenuUsuario(JMenuItem menuUsuario) {
-        this.menuUsuario = menuUsuario;
+    public static void setMenuUsuario(JMenuItem menuUsuario) {
+        TelaPrincipal.menuUsuario = menuUsuario;
     }
+
+    public JDesktopPane getDesktop() {
+        return desktop;
+    }
+
+    public void setDesktop(JDesktopPane desktop) {
+        this.desktop = desktop;
+    }
+
+    public JLabel getLblUsuario() {
+        return lblUsuario;
+    }
+
+    public void setLblUsuario(JLabel lblUsuario) {
+        this.lblUsuario = lblUsuario;
+    }
+
+    public JLabel getLblData() {
+        return lblData;
+    }
+
+    public void setLblData(JLabel lblData) {
+        this.lblData = lblData;
+    }
+
+    
+
     
     
-    
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktop;
@@ -361,11 +385,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JLabel lblData;
-    private javax.swing.JLabel lblUsuario;
+    public javax.swing.JLabel lblUsuario;
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenuItem menuColaborador;
     private javax.swing.JMenu menuEntrada;
+    public static javax.swing.JMenuItem menuEstoque;
     public static javax.swing.JMenuItem menuLocacao;
     private javax.swing.JMenu menuOpcoes;
     public static javax.swing.JMenuItem menuPeca;

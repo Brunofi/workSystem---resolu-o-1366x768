@@ -10,8 +10,55 @@ package br.com.porschegt3cup.model;
  * @author bruno
  */
 public class Estoque {
+
+    private int id;
+    private int quantidade;
+    private int idPeca;
+    private int idLocacao;
+
+    public Estoque() {
+    }
+
+    public Estoque(int id, int quantidade, int idPeca, int idLocacao) {
+        this.id = id;
+        this.quantidade = quantidade;
+        this.idPeca = idPeca;
+        this.idLocacao = idLocacao;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public int getIdPeca() {
+        return idPeca;
+    }
+
+    public void setIdPeca(int idPeca) {
+        this.idPeca = idPeca;
+    }
+
+    public int getIdLocacao() {
+        return idLocacao;
+    }
+
+    public void setIdLocacao(int idLocacao) {
+        this.idLocacao = idLocacao;
+    }
     
     
     
-    
+
 }
