@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -44,11 +45,13 @@ public class TelaCadastroPecaController {
         telaCadastroPeca.getTxtQtdMed().setText(null);
         telaCadastroPeca.getTxtQtdMax().setText(null);
         telaCadastroPeca.getTxtId().setText(null);
+        DefaultTableModel tabela = (DefaultTableModel) telaCadastroPeca.getTblPeca().getModel();
+        tabela.setRowCount(0);
 
     }
 
-    public void cadastrarPeca() {
-        conexao = ModuloConexao.conector();
+    public Peca SetaPecaAtravesDeCamposPreenchidos() {
+
         String partNumber = telaCadastroPeca.getTxtPartNumber().getText();
         String nome = telaCadastroPeca.getTxtNome().getText();
         String subSistema = telaCadastroPeca.getTxtSubSistema().getText();
@@ -64,13 +67,44 @@ public class TelaCadastroPecaController {
         int qtdMed = Integer.parseInt(telaCadastroPeca.getTxtQtdMed().getText());
         int qtdMax = Integer.parseInt(telaCadastroPeca.getTxtQtdMax().getText());
         Peca peca = new Peca(nome, partNumber, peso, ncm, estado, modeloCarro, subSistema, fabricante, qtdMin, qtdMed, qtdMax, preco, partNumberSimilar);
+        return peca;
+
+    }
+
+    public void cadastrarPeca() {
+        conexao = ModuloConexao.conector();
+        Peca peca = new Peca();
+        peca = SetaPecaAtravesDeCamposPreenchidos();
         PecaDAO pecaDao = new PecaDAO(conexao);
         pecaDao.inserirPeca(peca);
         apagarCampos();
 
     }
 
+    public void alterarPrca() {
+        conexao = ModuloConexao.conector();
+        int id = Integer.parseInt(telaCadastroPeca.getTxtId().getText());
+        Peca peca = new Peca();
+        peca = SetaPecaAtravesDeCamposPreenchidos();
+        peca.setId(id);
+        PecaDAO pecaDao = new PecaDAO(conexao);
+        pecaDao.alterarPeca(peca);
+        telaCadastroPeca.getBtnCadastrar().setEnabled(true);
+        apagarCampos();
+
+    }
+    
+    public void removePeca(){
+        conexao = ModuloConexao.conector();
+        int id = Integer.parseInt(telaCadastroPeca.getTxtId().getText());
+        PecaDAO pecaDao = new PecaDAO(conexao);
+        pecaDao.removerPeca(id);
+        telaCadastroPeca.getBtnCadastrar().setEnabled(true);
+        apagarCampos();
+    }
+
     public void procurarPeca() {
+        apagarCampos();
         conexao = ModuloConexao.conector();
         String peca = telaCadastroPeca.getTxtLPesquisar().getText();
         PecaDAO pecaDao = new PecaDAO(conexao);
@@ -85,58 +119,38 @@ public class TelaCadastroPecaController {
 
     }
 
-    public void pegaPecaSelecionadaEPreencheCampos() throws SQLException {
+    public void buscaPecaSelecionadaNoBanco() {
+        conexao = ModuloConexao.conector();
         telaCadastroPeca.getBtnCadastrar().setEnabled(false);
         int linhaSelecionada = telaCadastroPeca.getTblPeca().getSelectedRow();
         int id = Integer.parseInt(telaCadastroPeca.getTblPeca().getModel().getValueAt(linhaSelecionada, 0).toString());//Integer.parseInt(telaCadastroPeca.getTxtId().getText());
-        System.out.println(id);
-        Peca peca = new Peca();
-        
-            peca = buscarObjetoPecaNoBanco(id);
-            telaCadastroPeca.getTxtPartNumber().setText(peca.getPartNumber());
-            telaCadastroPeca.getTxtNome().setText(null);
-            telaCadastroPeca.getTxtSubSistema().setText(null);
-            telaCadastroPeca.getTxtModelo().setText(null);
-            telaCadastroPeca.getTxtFabricante().setText(null);
-            telaCadastroPeca.getCbEstado().setSelectedItem(null);
-            telaCadastroPeca.getTxtPeso().setText(null);
-            telaCadastroPeca.getTxtNcm().setText(null);
-            telaCadastroPeca.getTxtPreco().setText(null);
-            telaCadastroPeca.getTxtPartNumberSimilar().setText(null);
-            telaCadastroPeca.getTxtQtdMin().setText(null);
-            telaCadastroPeca.getTxtQtdMed().setText(null);
-            telaCadastroPeca.getTxtQtdMax().setText(null);
-            telaCadastroPeca.getTxtId().setText(null);
-
-        
-            JOptionPane.showMessageDialog(null, "Peça não encontrada");
-        
+        PecaDAO pecaDao = new PecaDAO(conexao);
+        Peca pecaProcurada = new Peca();
+        pecaProcurada = pecaDao.pesquisarPorId(id);
+        preencheCamposAtravesDeUmObjetoPeca(pecaProcurada);
 
     }
 
-    public Peca buscarObjetoPecaNoBanco(int id) throws SQLException {
-        conexao = ModuloConexao.conector();
-        PecaDAO pecaDao = new PecaDAO(conexao);
-        System.out.println("o id do metodo buscarObjetoPecaNoBanco é:" + id);
-        ResultSet resultSet = pecaDao.pesquisarPorId(id);
-        Peca peca = new Peca();
-        peca.setId(resultSet.getInt("id"));
-        System.out.println("O id do objeto pça é" + peca.getId());
-        /*
-        peca.setNome(resultSet.getString("nome"));
-        peca.setPartNumber(resultSet.getString("partnumber"));
-        peca.setPeso(resultSet.getString("peso"));
-        peca.setNcm(resultSet.getString("ncm"));
-        peca.setEstado(resultSet.getString("estado"));
-        peca.setModeloCarro(resultSet.getString("modelocarro"));
-        peca.setFabricante(resultSet.getString("fabricante"));
-        peca.setQtdMin(resultSet.getInt("qtdmin"));
-        peca.setQtdMed(resultSet.getInt("qtdmed"));
-        peca.setQtdMax(resultSet.getInt("qtdmax"));
-        peca.setPreco(resultSet.getBigDecimal("preco"));
-        peca.setPartNumberSimilar(resultSet.getString("ptnumber_similar"));
-*/
-        return peca;
+    public void preencheCamposAtravesDeUmObjetoPeca(Peca peca) {
+        telaCadastroPeca.getTxtPartNumber().setText(peca.getPartNumber());
+        telaCadastroPeca.getTxtNome().setText(peca.getNome());
+        telaCadastroPeca.getTxtSubSistema().setText(peca.getSubSistema());
+        telaCadastroPeca.getTxtModelo().setText(peca.getModeloCarro());
+        telaCadastroPeca.getTxtFabricante().setText(peca.getFabricante());
+        telaCadastroPeca.getCbEstado().setSelectedItem(peca.getEstado());
+        telaCadastroPeca.getTxtPeso().setText(peca.getPeso());
+        telaCadastroPeca.getTxtNcm().setText(peca.getNcm());
+        String preco = String.valueOf(peca.getPreco().toString().replaceAll("\\.", ","));
+        telaCadastroPeca.getTxtPreco().setText(preco);
+        telaCadastroPeca.getTxtPartNumberSimilar().setText(peca.getPartNumberSimilar());
+        String qtdmin = String.valueOf(peca.getQtdMin());
+        String qtdmed = String.valueOf(peca.getQtdMed());
+        String qtdmax = String.valueOf(peca.getQtdMax());
+        String idString = String.valueOf(peca.getId());
+        telaCadastroPeca.getTxtQtdMin().setText(qtdmin);
+        telaCadastroPeca.getTxtQtdMed().setText(qtdmed);
+        telaCadastroPeca.getTxtQtdMax().setText(qtdmax);
+        telaCadastroPeca.getTxtId().setText(idString);
 
     }
 

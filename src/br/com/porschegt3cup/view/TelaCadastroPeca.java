@@ -620,10 +620,9 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
 
 
     private void btnProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarActionPerformed
-       
-        //deixarCamposazios();
+
         controller.procurarPeca();
-         
+
     }//GEN-LAST:event_btnProcurarActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
@@ -639,32 +638,32 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void tblPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecaMouseClicked
-         controller.pegaPecaSelecionadaEPreencheCampos();
+        controller.buscaPecaSelecionadaNoBanco();
     }//GEN-LAST:event_tblPecaMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-        /*
-        if ((!existeCamposVaziosParaCadastrar()) && (!txtId.getText().isEmpty())) {
-            controller.alterarLocacao();
+
+        if ((!existeCamposObrigatoriosVazios()) && (!txtId.getText().isEmpty())) {
+            controller.alterarPrca();
 
         } else {
-            JOptionPane.showMessageDialog(null, "Para alterar uma locação todos os campos devem estar preenchidos inclusive o ID");
+            JOptionPane.showMessageDialog(null, "Para alterar uma peça todos os campos devem estar preenchidos inclusive o ID");
         }
-         */
+
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        /*
+        
         if (!txtId.getText().isEmpty()) {
             int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esta locação?", "ATENÇÃO!", JOptionPane.YES_NO_OPTION);
             if (confirma == JOptionPane.YES_OPTION) {
-                controller.removerLocacao();
+                controller.removePeca();
             }
 
         } else {
             JOptionPane.showMessageDialog(null, "Para remover uma locação o campo (ID) deve estar preenchido");
         }
-         */
+         
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void txtPrecoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecoKeyTyped

@@ -22,23 +22,23 @@ import net.proteanit.sql.DbUtils;
  * @author bruno
  */
 public class TelaLocacaoController {
-    
+
     private TelaLocacao telaLocacao;
     Connection conexao = null;
-    
+
     public TelaLocacaoController(TelaLocacao telaLocacao) {
         this.telaLocacao = telaLocacao;
     }
-    
+
     private void apagarCampos() {
         telaLocacao.getTxtLocacao().setText(null);
         telaLocacao.getTxtSubLocacao().setText(null);
         telaLocacao.getTxtId().setText(null);
         DefaultTableModel tabela = (DefaultTableModel) telaLocacao.getTblLocacao().getModel();
-       tabela.setRowCount(0);
-        
+        tabela.setRowCount(0);
+
     }
-    
+
     public void inserirLocacao() {
         conexao = ModuloConexao.conector();
         String nome = telaLocacao.getTxtLocacao().getText();
@@ -47,11 +47,11 @@ public class TelaLocacaoController {
         LocacaoDAO locacaoDao = new LocacaoDAO(conexao);
         locacaoDao.inserirLocacao(locacao);
         apagarCampos();
-        
+
     }
-    
+
     public void procurarLocacao() {
-        
+
         conexao = ModuloConexao.conector();
         String nome = telaLocacao.getTxtLPesquisar().getText();
         Locacao locacao = new Locacao(nome);
@@ -60,27 +60,27 @@ public class TelaLocacaoController {
         rs = locacaoDao.pesquisarLocacao(locacao);
         if (rs != null) {
             telaLocacao.getTblLocacao().setModel(DbUtils.resultSetToTableModel(rs));
-            
+
         } else {
             JOptionPane.showMessageDialog(null, "Locação não encontrada");
         }
-        
+
     }
-    
+
     public void alterarLocacao() {
         conexao = ModuloConexao.conector();
         int id = Integer.parseInt(telaLocacao.getTxtId().getText());
         String nome = telaLocacao.getTxtLocacao().getText();
         String sub = telaLocacao.getTxtSubLocacao().getText();
-        Locacao locacao = new Locacao(id,nome,sub);
+        Locacao locacao = new Locacao(id, nome, sub);
         LocacaoDAO locacaoDao = new LocacaoDAO(conexao);
         locacaoDao.alterarLocacao(locacao);
         telaLocacao.getBtnCadastrar().setEnabled(true);
         apagarCampos();
-        
+
     }
-    
-    public void removerLocacao(){
+
+    public void removerLocacao() {
         conexao = ModuloConexao.conector();
         int id = Integer.parseInt(telaLocacao.getTxtId().getText());
         Locacao locacao = new Locacao(id);
@@ -88,16 +88,16 @@ public class TelaLocacaoController {
         locacaoDao.removerLocacao(locacao);
         telaLocacao.getBtnCadastrar().setEnabled(true);
         apagarCampos();
-    
+
     }
-    
+
     public void preencherCampos() {
         telaLocacao.getBtnCadastrar().setEnabled(false);
         int linhaSelecionada = telaLocacao.getTblLocacao().getSelectedRow();
         telaLocacao.getTxtId().setText(telaLocacao.getTblLocacao().getModel().getValueAt(linhaSelecionada, 0).toString());
         telaLocacao.getTxtLocacao().setText(telaLocacao.getTblLocacao().getModel().getValueAt(linhaSelecionada, 1).toString());
         telaLocacao.getTxtSubLocacao().setText(telaLocacao.getTblLocacao().getModel().getValueAt(linhaSelecionada, 2).toString());
-        
+
     }
-    
+
 }
