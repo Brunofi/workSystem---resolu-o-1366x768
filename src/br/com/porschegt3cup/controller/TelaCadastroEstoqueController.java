@@ -5,6 +5,7 @@
  */
 package br.com.porschegt3cup.controller;
 
+import br.com.porschegt3cup.dao.EstoqueDAO;
 import br.com.porschegt3cup.dao.LocacaoDAO;
 import br.com.porschegt3cup.dao.ModuloConexao;
 import br.com.porschegt3cup.dao.PecaDAO;
@@ -13,6 +14,7 @@ import br.com.porschegt3cup.view.TelaCadastroEstoque;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -23,25 +25,45 @@ public class TelaCadastroEstoqueController {
 
     Connection conexao = null;
     private TelaCadastroEstoque telaCadastroEstoque;
+    private int idPeca;
+    private int idLocacao;
 
     public TelaCadastroEstoqueController(TelaCadastroEstoque telaCadastroEstoque) {
         this.telaCadastroEstoque = telaCadastroEstoque;
+    }
+
+    public void apagarCamposPeca() {
+
+        telaCadastroEstoque.getTxtPesquisaPeca().setText(null);
+        DefaultTableModel tabelaPeca = (DefaultTableModel) telaCadastroEstoque.getTblPecas().getModel();
+        tabelaPeca.setRowCount(0);
+        idPeca = 0;
+
+    }
+
+    public void apagarCamposLocacao() {
+        telaCadastroEstoque.getTxtPesquisaLocacao().setText(null);
+        DefaultTableModel tabelaLocacao = (DefaultTableModel) telaCadastroEstoque.getTblLocacao().getModel();
+        tabelaLocacao.setRowCount(0);
+        idLocacao = 0;
+
     }
 
     public void procurarPeca() {
         conexao = ModuloConexao.conector();
         String peca = telaCadastroEstoque.getTxtPesquisaPeca().getText();
         PecaDAO pecaDao = new PecaDAO(conexao);
-        ResultSet rs = pecaDao.pesquisarPorPartNumber(peca);
+        ResultSet rs;
+        rs = pecaDao.pesquisarPorPartNumber(peca);
         if (rs != null) {
-            telaCadastroEstoque.getTblPeca().setModel(DbUtils.resultSetToTableModel(rs));
+            telaCadastroEstoque.getTblPecas().setModel(DbUtils.resultSetToTableModel(rs));
 
         } else {
             JOptionPane.showMessageDialog(null, "Peça não encontrada");
         }
-        
+
     }
-    
+
     public void procurarLocacao() {
 
         conexao = ModuloConexao.conector();
@@ -59,16 +81,33 @@ public class TelaCadastroEstoqueController {
 
     }
     
-    public void preencherIdPeca() {
-        int linhaSelecionada = telaCadastroEstoque.getTblPeca().getSelectedRow();
-        telaCadastroEstoque.getTxtIdPeca().setText(telaCadastroEstoque.getTblPeca().getModel().getValueAt(linhaSelecionada, 0).toString());
-       
-    }
     
+
+    public void preencherIdPeca() {
+        int linhaSelecionada = telaCadastroEstoque.getTblPecas().getSelectedRow();
+        idPeca = Integer.parseInt(telaCadastroEstoque.getTblPecas().getModel().getValueAt(linhaSelecionada, 0).toString());
+        //telaCadastroEstoque.getTxtIdPeca().setText(telaCadastroEstoque.getTblPecas().getModel().getValueAt(linhaSelecionada, 0).toString());
+
+    }
+
     public void preencherIdLocacao() {
         int linhaSelecionada = telaCadastroEstoque.getTblLocacao().getSelectedRow();
-        telaCadastroEstoque.getTxtIdLocacao().setText(telaCadastroEstoque.getTblLocacao().getModel().getValueAt(linhaSelecionada, 0).toString());
-       
+        idLocacao = Integer.parseInt(telaCadastroEstoque.getTblLocacao().getModel().getValueAt(linhaSelecionada, 0).toString());
+        //telaCadastroEstoque.getTxtIdLocacao().setText(telaCadastroEstoque.getTblLocacao().getModel().getValueAt(linhaSelecionada, 0).toString());
+
+    }
+
+    public void cadastrarPecaNoEstoque() {
+        if (idPeca != 0 && idLocacao != 0) {
+            conexao = ModuloConexao.conector();
+            EstoqueDAO estoqueDao = new EstoqueDAO(conexao);
+            estoqueDao.inserirEstoque(0,idPeca, idLocacao);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "É necessário selecionar uma peça e uma locação para criar estoque ");
+
+        }
+
     }
 
 }

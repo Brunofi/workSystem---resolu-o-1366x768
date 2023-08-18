@@ -19,7 +19,6 @@ import javax.swing.JTextField;
  */
 public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
 
-    
     private final TelaCadastroEstoqueController controller;
 
     /**
@@ -32,8 +31,7 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
 
     private boolean existeCamposObrigatoriosVazios() {
         if (txtPesquisaPeca.getText().isEmpty()
-                || txtPesquisaLocacao.getText().isEmpty()
-                ) {
+                || txtPesquisaLocacao.getText().isEmpty()) {
             return true;
 
         } else {
@@ -41,8 +39,6 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
         }
 
     }
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -53,13 +49,9 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        txtIdPeca = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtPesquisaPeca = new javax.swing.JTextField();
         btnProcurarPeca = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblPeca = new javax.swing.JTable();
         btnCadastrar = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
@@ -67,20 +59,16 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
         btnProcurarLocacao = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblLocacao = new javax.swing.JTable();
-        txtIdLocacao = new javax.swing.JTextField();
-        jLabel19 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblPecas = new javax.swing.JTable();
+        btnLimparPeca = new javax.swing.JButton();
+        btnLimparLocacao = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(1530, 905));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Id");
-
-        txtIdPeca.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtIdPeca.setEnabled(false);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setText("Pesquisar Peça:");
@@ -97,32 +85,6 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
                 btnProcurarPecaActionPerformed(evt);
             }
         });
-
-        tblPeca = new javax.swing.JTable(){
-            public boolean isCellEditable(int rowIndex, int colIndex){
-                return false;
-            }
-        };
-        tblPeca.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "ID Peça", "Part Number", "Nome"
-            }
-        ));
-        tblPeca.setFocusable(false);
-        tblPeca.getTableHeader().setReorderingAllowed(false);
-        tblPeca.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPecaMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblPeca);
 
         btnCadastrar.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         btnCadastrar.setText("Cadastrar");
@@ -150,7 +112,7 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
             }
         });
 
-        tblPeca = new javax.swing.JTable(){
+        tblPecas = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
                 return false;
             }
@@ -176,11 +138,47 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
         });
         jScrollPane2.setViewportView(tblLocacao);
 
-        txtIdLocacao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtIdLocacao.setEnabled(false);
+        tblPecas = new javax.swing.JTable(){
+            public boolean isCellEditable(int rowIndex, int colIndex){
+                return false;
+            }
+        };
+        tblPecas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "ID Locação", "Locação", "Sub Locação"
+            }
+        ));
+        tblPecas.setFocusable(false);
+        tblPecas.getTableHeader().setReorderingAllowed(false);
+        tblPecas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPecasMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(tblPecas);
 
-        jLabel19.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel19.setText("Id");
+        btnLimparPeca.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnLimparPeca.setText("Limpar");
+        btnLimparPeca.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparPecaActionPerformed(evt);
+            }
+        });
+
+        btnLimparLocacao.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnLimparLocacao.setText("Limpar");
+        btnLimparLocacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparLocacaoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,27 +194,24 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel19)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtIdLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
+                                    .addComponent(txtPesquisaPeca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnProcurarPeca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel18)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(txtPesquisaLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(btnProcurarLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnLimparPeca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtPesquisaPeca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnProcurarPeca, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel18)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txtPesquisaLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(btnProcurarLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel1)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtIdPeca, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addGap(25, 25, 25)
+                                        .addComponent(btnLimparLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(808, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -232,10 +227,9 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtPesquisaPeca, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtIdPeca, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnLimparPeca)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(65, 65, 65)
                 .addComponent(jLabel17)
                 .addGap(34, 34, 34)
@@ -245,22 +239,18 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
                     .addComponent(txtPesquisaLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnProcurarLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtIdLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
+                .addComponent(btnLimparLocacao)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("Locacao");
 
         setBounds(0, 0, 1599, 905);
     }// </editor-fold>//GEN-END:initComponents
-
-
 
 
     private void btnProcurarPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarPecaActionPerformed
@@ -270,7 +260,10 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnProcurarPecaActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-/*
+
+        controller.cadastrarPecaNoEstoque();
+
+        /*
         if (existeCamposObrigatoriosVazios()) {
             JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios paracadastrar uma peça");
         } else if (!txtIdPeca.getText().isEmpty()) {
@@ -278,12 +271,8 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
         } else {
             controller.cadastrarPeca();
         }
-*/
+         */
     }//GEN-LAST:event_btnCadastrarActionPerformed
-
-    private void tblPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecaMouseClicked
-        controller.preencherIdPeca();
-    }//GEN-LAST:event_tblPecaMouseClicked
 
     private void btnProcurarLocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarLocacaoActionPerformed
         controller.procurarLocacao();
@@ -292,6 +281,18 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
     private void tblLocacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLocacaoMouseClicked
         controller.preencherIdLocacao();
     }//GEN-LAST:event_tblLocacaoMouseClicked
+
+    private void tblPecasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecasMouseClicked
+        controller.preencherIdPeca();
+    }//GEN-LAST:event_tblPecasMouseClicked
+
+    private void btnLimparPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparPecaActionPerformed
+        controller.apagarCamposPeca();
+    }//GEN-LAST:event_btnLimparPecaActionPerformed
+
+    private void btnLimparLocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparLocacaoActionPerformed
+        controller.apagarCamposLocacao();
+    }//GEN-LAST:event_btnLimparLocacaoActionPerformed
 
     public JButton getBtnCadastrar() {
         return btnCadastrar;
@@ -309,28 +310,12 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
         this.tblLocacao = tblLocacao;
     }
 
-    public JTable getTblPeca() {
-        return tblPeca;
+    public JTable getTblPecas() {
+        return tblPecas;
     }
 
-    public void setTblPeca(JTable tblPeca) {
-        this.tblPeca = tblPeca;
-    }
-
-    public JTextField getTxtIdLocacao() {
-        return txtIdLocacao;
-    }
-
-    public void setTxtIdLocacao(JTextField txtIdLocacao) {
-        this.txtIdLocacao = txtIdLocacao;
-    }
-
-    public JTextField getTxtIdPeca() {
-        return txtIdPeca;
-    }
-
-    public void setTxtIdPeca(JTextField txtIdPeca) {
-        this.txtIdPeca = txtIdPeca;
+    public void setTblPecas(JTable tblPeca) {
+        this.tblPecas = tblPeca;
     }
 
     public JTextField getTxtPesquisaLocacao() {
@@ -352,19 +337,17 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastrar;
+    private javax.swing.JButton btnLimparLocacao;
+    private javax.swing.JButton btnLimparPeca;
     private javax.swing.JButton btnProcurarLocacao;
     private javax.swing.JButton btnProcurarPeca;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tblLocacao;
-    private javax.swing.JTable tblPeca;
-    private javax.swing.JTextField txtIdLocacao;
-    private javax.swing.JTextField txtIdPeca;
+    private javax.swing.JTable tblPecas;
     private javax.swing.JTextField txtPesquisaLocacao;
     private javax.swing.JTextField txtPesquisaPeca;
     // End of variables declaration//GEN-END:variables

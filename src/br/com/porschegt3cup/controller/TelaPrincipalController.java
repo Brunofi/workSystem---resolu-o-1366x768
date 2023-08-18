@@ -10,6 +10,7 @@ import br.com.porschegt3cup.dao.UsuarioDAO;
 import br.com.porschegt3cup.model.Usuario;
 import br.com.porschegt3cup.view.TelaCadastroEstoque;
 import br.com.porschegt3cup.view.TelaCadastroPeca;
+import br.com.porschegt3cup.view.TelaEntradaPeca;
 import br.com.porschegt3cup.view.TelaLocacao;
 import br.com.porschegt3cup.view.TelaPrincipal;
 import br.com.porschegt3cup.view.TelaUsuario;
@@ -63,7 +64,7 @@ public class TelaPrincipalController {
             telaPrincipal.getMenuLocacao().setEnabled(true);
             telaPrincipal.getMenuUsuario().setEnabled(true);
             telaPrincipal.getMenuColaborador().setEnabled(true);
-            //telaPrincipal.menuEstoque.setEnabled(true);
+            telaPrincipal.getMenuEstoque().setEnabled(true);
             
         }
 
@@ -95,6 +96,12 @@ public class TelaPrincipalController {
         TelaCadastroEstoque telaCadastroEstoque = new TelaCadastroEstoque();
         telaCadastroEstoque.setVisible(true);
         telaPrincipal.getDesktop().add(telaCadastroEstoque);
+    }
+
+    public void abrirTelaEntradaPeca() {
+        TelaEntradaPeca telaEntradaPeca = new TelaEntradaPeca();
+        telaEntradaPeca.setVisible(true);
+        telaPrincipal.getDesktop().add(telaEntradaPeca);
     }
 
 }
