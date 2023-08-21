@@ -54,13 +54,17 @@ public class TelaCadastroEstoqueController {
         String peca = telaCadastroEstoque.getTxtPesquisaPeca().getText();
         PecaDAO pecaDao = new PecaDAO(conexao);
         ResultSet rs;
-        rs = pecaDao.pesquisarPorPartNumber(peca);
-        if (rs != null) {
-            telaCadastroEstoque.getTblPecas().setModel(DbUtils.resultSetToTableModel(rs));
+        if (telaCadastroEstoque.getrBtnPartNumber().isSelected()) {
+            rs = pecaDao.pesquisarPorPartNumber(peca);
 
         } else {
-            JOptionPane.showMessageDialog(null, "Peça não encontrada");
+            rs = pecaDao.pesquisarPorNome(peca);
         }
+
+        if (rs != null) {
+            telaCadastroEstoque.getTblPecas().setModel(DbUtils.resultSetToTableModel(rs));
+        }
+        
 
     }
 
@@ -80,8 +84,6 @@ public class TelaCadastroEstoqueController {
         }
 
     }
-    
-    
 
     public void preencherIdPeca() {
         int linhaSelecionada = telaCadastroEstoque.getTblPecas().getSelectedRow();
@@ -101,7 +103,7 @@ public class TelaCadastroEstoqueController {
         if (idPeca != 0 && idLocacao != 0) {
             conexao = ModuloConexao.conector();
             EstoqueDAO estoqueDao = new EstoqueDAO(conexao);
-            estoqueDao.inserirEstoque(0,idPeca, idLocacao);
+            estoqueDao.inserirEstoque(0, idPeca, idLocacao);
 
         } else {
             JOptionPane.showMessageDialog(null, "É necessário selecionar uma peça e uma locação para criar estoque ");

@@ -30,7 +30,7 @@ public class TelaCadastroPecaController {
         this.telaCadastroPeca = telaCadastroPeca;
     }
 
-    private void apagarCampos() {
+    public void apagarCampos() {
         telaCadastroPeca.getTxtPartNumber().setText(null);
         telaCadastroPeca.getTxtNome().setText(null);
         telaCadastroPeca.getTxtSubSistema().setText(null);
@@ -45,6 +45,7 @@ public class TelaCadastroPecaController {
         telaCadastroPeca.getTxtQtdMed().setText(null);
         telaCadastroPeca.getTxtQtdMax().setText(null);
         telaCadastroPeca.getTxtId().setText(null);
+        telaCadastroPeca.getBtnCadastrar().setEnabled(true);
         DefaultTableModel tabela = (DefaultTableModel) telaCadastroPeca.getTblPeca().getModel();
         tabela.setRowCount(0);
 
@@ -89,7 +90,6 @@ public class TelaCadastroPecaController {
         peca.setId(id);
         PecaDAO pecaDao = new PecaDAO(conexao);
         pecaDao.alterarPeca(peca);
-        telaCadastroPeca.getBtnCadastrar().setEnabled(true);
         apagarCampos();
 
     }
@@ -99,23 +99,25 @@ public class TelaCadastroPecaController {
         int id = Integer.parseInt(telaCadastroPeca.getTxtId().getText());
         PecaDAO pecaDao = new PecaDAO(conexao);
         pecaDao.removerPeca(id);
-        telaCadastroPeca.getBtnCadastrar().setEnabled(true);
         apagarCampos();
     }
 
     public void procurarPeca() {
         apagarCampos();
         conexao = ModuloConexao.conector();
-        String peca = telaCadastroPeca.getTxtLPesquisar().getText();
+        String peca = telaCadastroPeca.getTxtPesquisar().getText();
         PecaDAO pecaDao = new PecaDAO(conexao);
         ResultSet rs;
-        rs = pecaDao.pesquisarPorPartNumber(peca);
+        
+        if (telaCadastroPeca.getrBtnPartNumber().isSelected()) {
+            rs = pecaDao.pesquisarPorPartNumber(peca);
+        } else {
+            rs = pecaDao.pesquisarPorNome(peca);
+        }
+        
         if (rs != null) {
             telaCadastroPeca.getTblPeca().setModel(DbUtils.resultSetToTableModel(rs));
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Peça não encontrada");
-        }
+        } 
 
     }
 

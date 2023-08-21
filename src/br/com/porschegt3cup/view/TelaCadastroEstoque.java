@@ -10,6 +10,7 @@ import br.com.porschegt3cup.controller.TelaCadastroPecaController;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -20,6 +21,7 @@ import javax.swing.JTextField;
 public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
 
     private final TelaCadastroEstoqueController controller;
+    //private String tipoPesquisa;
 
     /**
      * Creates new form TelaLocacao
@@ -49,6 +51,7 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel4 = new javax.swing.JLabel();
         txtPesquisaPeca = new javax.swing.JTextField();
         btnProcurarPeca = new javax.swing.JButton();
@@ -63,12 +66,31 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
         tblPecas = new javax.swing.JTable();
         btnLimparPeca = new javax.swing.JButton();
         btnLimparLocacao = new javax.swing.JButton();
+        rBtnPartNumber = new javax.swing.JRadioButton();
+        rBtnDescricao = new javax.swing.JRadioButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setPreferredSize(new java.awt.Dimension(1530, 905));
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setText("Pesquisar Peça:");
@@ -180,6 +202,22 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup1.add(rBtnPartNumber);
+        rBtnPartNumber.setText("Part Number");
+        rBtnPartNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rBtnPartNumberActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rBtnDescricao);
+        rBtnDescricao.setText("Descrição");
+        rBtnDescricao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rBtnDescricaoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -188,7 +226,11 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(72, 72, 72)
-                        .addComponent(jLabel4))
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rBtnPartNumber)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rBtnDescricao))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(64, 64, 64)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -208,9 +250,7 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
                                     .addComponent(btnLimparPeca, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(25, 25, 25)
-                                        .addComponent(btnLimparLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btnLimparLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                 .addContainerGap(808, Short.MAX_VALUE))
         );
@@ -218,7 +258,11 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rBtnPartNumber)
+                        .addComponent(rBtnDescricao)))
                 .addGap(2, 2, 2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -263,15 +307,7 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
 
         controller.cadastrarPecaNoEstoque();
 
-        /*
-        if (existeCamposObrigatoriosVazios()) {
-            JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios paracadastrar uma peça");
-        } else if (!txtIdPeca.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Não é possivel cadastrar uma peça com o campo (ID) preenchido");
-        } else {
-            controller.cadastrarPeca();
-        }
-         */
+
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnProcurarLocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarLocacaoActionPerformed
@@ -293,6 +329,36 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
     private void btnLimparLocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparLocacaoActionPerformed
         controller.apagarCamposLocacao();
     }//GEN-LAST:event_btnLimparLocacaoActionPerformed
+
+    private void rBtnPartNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBtnPartNumberActionPerformed
+        // tipoPesquisa="partnumber";
+    }//GEN-LAST:event_rBtnPartNumberActionPerformed
+
+    private void rBtnDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBtnDescricaoActionPerformed
+        //  tipoPesquisa="descricao";
+    }//GEN-LAST:event_rBtnDescricaoActionPerformed
+
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        rBtnPartNumber.setSelected(true);
+    }//GEN-LAST:event_formInternalFrameOpened
+
+    public JRadioButton getrBtnDescricao() {
+        return rBtnDescricao;
+    }
+
+    public void setrBtnDescricao(JRadioButton rBtnDescricao) {
+        this.rBtnDescricao = rBtnDescricao;
+    }
+
+    public JRadioButton getrBtnPartNumber() {
+        return rBtnPartNumber;
+    }
+
+    public void setrBtnPartNumber(JRadioButton rBtnPartNumber) {
+        this.rBtnPartNumber = rBtnPartNumber;
+    }
+
+   
 
     public JButton getBtnCadastrar() {
         return btnCadastrar;
@@ -341,11 +407,14 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLimparPeca;
     private javax.swing.JButton btnProcurarLocacao;
     private javax.swing.JButton btnProcurarPeca;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JRadioButton rBtnDescricao;
+    private javax.swing.JRadioButton rBtnPartNumber;
     private javax.swing.JTable tblLocacao;
     private javax.swing.JTable tblPecas;
     private javax.swing.JTextField txtPesquisaLocacao;

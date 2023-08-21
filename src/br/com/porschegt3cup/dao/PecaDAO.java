@@ -90,7 +90,12 @@ public class PecaDAO {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, peca + "%");
             rs = pst.executeQuery();
-            return rs;
+
+            if (rs.next()) {
+                return rs;
+            } else {
+                JOptionPane.showMessageDialog(null, "Nenhuma peça foi encontrada!");
+            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -106,7 +111,11 @@ public class PecaDAO {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, peca + "%");
             rs = pst.executeQuery();
-            return rs;
+            if (rs.next()) {
+                return rs;
+            } else {
+                JOptionPane.showMessageDialog(null, "Nenhuma peça foi encontrada!");
+            }
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
@@ -150,22 +159,19 @@ public class PecaDAO {
         return null;
 
     }
-    
-    public void removerPeca (int id){
+
+    public void removerPeca(int id) {
         String sql = "delete from tbpecas where id=?";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setInt(1, id);
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null, "Peca removida com sucesso");
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-    
-    
+
     }
-    
-    
 
 }

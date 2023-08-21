@@ -8,7 +8,7 @@ package br.com.porschegt3cup.controller;
 import br.com.porschegt3cup.dao.LocacaoDAO;
 import br.com.porschegt3cup.dao.ModuloConexao;
 import br.com.porschegt3cup.model.Locacao;
-import br.com.porschegt3cup.view.TelaLocacao;
+import br.com.porschegt3cup.view.TelaCadastroLocacao;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import javax.swing.DropMode;
@@ -21,21 +21,24 @@ import net.proteanit.sql.DbUtils;
  *
  * @author bruno
  */
-public class TelaLocacaoController {
+public class TelaCadastroLocacaoController {
 
-    private TelaLocacao telaLocacao;
+    private TelaCadastroLocacao telaLocacao;
     Connection conexao = null;
 
-    public TelaLocacaoController(TelaLocacao telaLocacao) {
+    public TelaCadastroLocacaoController(TelaCadastroLocacao telaLocacao) {
         this.telaLocacao = telaLocacao;
     }
 
-    private void apagarCampos() {
+    public void apagarCampos() {
         telaLocacao.getTxtLocacao().setText(null);
         telaLocacao.getTxtSubLocacao().setText(null);
         telaLocacao.getTxtId().setText(null);
+        telaLocacao.getTxtLPesquisar().setText(null);
+        telaLocacao.getBtnCadastrar().setEnabled(true);
         DefaultTableModel tabela = (DefaultTableModel) telaLocacao.getTblLocacao().getModel();
         tabela.setRowCount(0);
+        
 
     }
 
@@ -75,7 +78,6 @@ public class TelaLocacaoController {
         Locacao locacao = new Locacao(id, nome, sub);
         LocacaoDAO locacaoDao = new LocacaoDAO(conexao);
         locacaoDao.alterarLocacao(locacao);
-        telaLocacao.getBtnCadastrar().setEnabled(true);
         apagarCampos();
 
     }
@@ -86,7 +88,6 @@ public class TelaLocacaoController {
         Locacao locacao = new Locacao(id);
         LocacaoDAO locacaoDao = new LocacaoDAO(conexao);
         locacaoDao.removerLocacao(locacao);
-        telaLocacao.getBtnCadastrar().setEnabled(true);
         apagarCampos();
 
     }

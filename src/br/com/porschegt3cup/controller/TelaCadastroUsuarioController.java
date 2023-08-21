@@ -8,7 +8,7 @@ package br.com.porschegt3cup.controller;
 import br.com.porschegt3cup.dao.ModuloConexao;
 import br.com.porschegt3cup.dao.UsuarioDAO;
 import br.com.porschegt3cup.model.Usuario;
-import br.com.porschegt3cup.view.TelaUsuario;
+import br.com.porschegt3cup.view.TelaCadastroUsuario;
 import java.sql.Connection;
 import javax.swing.JOptionPane;
 
@@ -16,12 +16,12 @@ import javax.swing.JOptionPane;
  *
  * @author bruno
  */
-public class TelaUsuarioController {
+public class TelaCadastroUsuarioController {
 
-    private TelaUsuario telaUsuario;
+    private TelaCadastroUsuario telaUsuario;
     Connection conexao = null;
 
-    public TelaUsuarioController(TelaUsuario telaUsuario) {
+    public TelaCadastroUsuarioController(TelaCadastroUsuario telaUsuario) {
         this.telaUsuario = telaUsuario;
     }
 

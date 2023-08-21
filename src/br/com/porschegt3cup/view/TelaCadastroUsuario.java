@@ -5,7 +5,7 @@
  */
 package br.com.porschegt3cup.view;
 
-import br.com.porschegt3cup.controller.TelaUsuarioController;
+import br.com.porschegt3cup.controller.TelaCadastroUsuarioController;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -15,16 +15,16 @@ import javax.swing.JTextField;
  *
  * @author bruno
  */
-public class TelaUsuario extends javax.swing.JInternalFrame {
+public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
 
-    private final TelaUsuarioController controller;
+    private final TelaCadastroUsuarioController controller;
 
     /**
      * Creates new form TelaUsuario
      */
-    public TelaUsuario() {
+    public TelaCadastroUsuario() {
         initComponents();
-        controller = new TelaUsuarioController(this);
+        controller = new TelaCadastroUsuarioController(this);
     }
 
     private boolean existeCamposVazios() {
