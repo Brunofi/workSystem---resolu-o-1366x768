@@ -21,6 +21,7 @@ public class TelaLoginController {
 
     private TelaLogin telaLogin;
     Connection conexao = null;
+    public static String colaborador;
 
     public TelaLoginController(TelaLogin telaLogin) {
         this.telaLogin = telaLogin;
@@ -52,6 +53,7 @@ public class TelaLoginController {
                 TelaPrincipal telaPrincipal = new TelaPrincipal();
                 telaPrincipal.setVisible(true);
                 telaPrincipal.getLblUsuario().setText(login);
+                colaborador=login;
                 telaLogin.dispose();
                
             } else {

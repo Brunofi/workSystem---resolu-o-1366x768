@@ -204,11 +204,6 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
 
         buttonGroup1.add(rBtnPartNumber);
         rBtnPartNumber.setText("Part Number");
-        rBtnPartNumber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rBtnPartNumberActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(rBtnDescricao);
         rBtnDescricao.setText("Descrição");
@@ -329,10 +324,6 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
     private void btnLimparLocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparLocacaoActionPerformed
         controller.apagarCamposLocacao();
     }//GEN-LAST:event_btnLimparLocacaoActionPerformed
-
-    private void rBtnPartNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBtnPartNumberActionPerformed
-        // tipoPesquisa="partnumber";
-    }//GEN-LAST:event_rBtnPartNumberActionPerformed
 
     private void rBtnDescricaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rBtnDescricaoActionPerformed
         //  tipoPesquisa="descricao";

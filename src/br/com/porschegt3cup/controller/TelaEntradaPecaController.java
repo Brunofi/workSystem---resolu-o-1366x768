@@ -13,16 +13,20 @@ import java.sql.Connection;
  * @author Bruno
  */
 public class TelaEntradaPecaController {
-    
+
     private TelaEntradaPeca telaEntradaPeca;
     Connection conexao = null;
+    
+    
 
     public TelaEntradaPecaController(TelaEntradaPeca telaEntradaPeca) {
         this.telaEntradaPeca = telaEntradaPeca;
     }
 
-    
-    
-    
-    
+    public void descobreColaborador() {
+        /*colaborador = TelaLoginController.colaborador;
+        System.out.println(colaborador);
+        */
+    }
+
 }

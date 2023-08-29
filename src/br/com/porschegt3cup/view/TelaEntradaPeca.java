@@ -10,6 +10,7 @@ import br.com.porschegt3cup.controller.TelaEntradaPecaController;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
@@ -51,14 +52,7 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
         }
 
     }
-        */
-
-    void deixarCamposVazios() {
-        txtSubSistema.setText(null);
-        txtId.setText(null);
-        txtPartNumber.setText(null);
-    }
-
+     */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,43 +62,24 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        txtId = new javax.swing.JTextField();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel2 = new javax.swing.JLabel();
-        txtSubSistema = new javax.swing.JTextField();
+        txtColaborador = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        txtPartNumber = new javax.swing.JTextField();
+        txtQuantidadeEntrada = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtLPesquisar = new javax.swing.JTextField();
-        btnProcurar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblPeca = new javax.swing.JTable();
-        btnCadastrar = new javax.swing.JButton();
-        btnAlterar = new javax.swing.JButton();
-        btnRemover = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
-        cbEstado = new javax.swing.JComboBox<>();
+        tblEntradaPeca = new javax.swing.JTable();
+        btnRegistrar = new javax.swing.JButton();
+        cbMotivo = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        txtFabricante = new javax.swing.JTextField();
-        txtModelo = new javax.swing.JTextField();
-        txtPeso = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
+        txtObservacao = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        txtNcm = new javax.swing.JTextField();
-        txtPartNumberSimilar = new javax.swing.JTextField();
-        txtPreco = new javax.swing.JTextField();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        txtQtdMin = new javax.swing.JTextField();
-        jLabel15 = new javax.swing.JLabel();
-        txtQtdMed = new javax.swing.JTextField();
-        txtQtdMax = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
+        rBtnPartNumber = new javax.swing.JRadioButton();
+        rBtnDescricao = new javax.swing.JRadioButton();
+        btnProcurar = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -112,24 +87,40 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
         setResizable(true);
         setTitle("Tela Entrada Peças");
         setPreferredSize(new java.awt.Dimension(1530, 905));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Id");
-
-        txtId.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtId.setEnabled(false);
+        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
+            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
+                formInternalFrameOpened(evt);
+            }
+            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("*Subsistema");
+        jLabel2.setText("*Colaborador");
 
-        txtSubSistema.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtSubSistema.setPreferredSize(new java.awt.Dimension(500, 28));
+        txtColaborador.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtColaborador.setPreferredSize(new java.awt.Dimension(500, 28));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel3.setText("*Part Number");
+        jLabel3.setText("*Quantidade entrada");
 
-        txtPartNumber.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtPartNumber.setPreferredSize(new java.awt.Dimension(500, 28));
+        txtQuantidadeEntrada.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtQuantidadeEntrada.setPreferredSize(new java.awt.Dimension(500, 28));
+        txtQuantidadeEntrada.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtQuantidadeEntradaKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel4.setText("Pesquisar");
@@ -137,162 +128,60 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
         txtLPesquisar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtLPesquisar.setPreferredSize(new java.awt.Dimension(500, 28));
 
-        btnProcurar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/porschegt3cup/icones/iconFind.png"))); // NOI18N
-        btnProcurar.setToolTipText("Procurar");
-        btnProcurar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnProcurar.setPreferredSize(new java.awt.Dimension(80, 80));
-        btnProcurar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnProcurarActionPerformed(evt);
-            }
-        });
+        jLabel5.setText("___________________________________________________________________________________________________________________________________________________________");
 
-        jLabel5.setText("________________________________________________________________________________________________________________");
-
-        tblPeca = new javax.swing.JTable(){
+        tblEntradaPeca = new javax.swing.JTable(){
             public boolean isCellEditable(int rowIndex, int colIndex){
                 return false;
             }
         };
-        tblPeca.setModel(new javax.swing.table.DefaultTableModel(
+        tblEntradaPeca.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Part Number", "Nome"
+                "Part Number", "Descrição", "Quantidade", "Locação", "Sub-Locação", "ID estoque", "ID peça", "ID locação"
             }
         ));
-        tblPeca.setFocusable(false);
-        tblPeca.getTableHeader().setReorderingAllowed(false);
-        tblPeca.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblEntradaPeca.setFocusable(false);
+        tblEntradaPeca.getTableHeader().setReorderingAllowed(false);
+        tblEntradaPeca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPecaMouseClicked(evt);
+                tblEntradaPecaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblPeca);
+        jScrollPane1.setViewportView(tblEntradaPeca);
 
-        btnCadastrar.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        btnCadastrar.setText("Cadastrar");
-        btnCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        btnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarActionPerformed(evt);
+                btnRegistrarActionPerformed(evt);
             }
         });
 
-        btnAlterar.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        btnAlterar.setText("Alterar");
-        btnAlterar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAlterarActionPerformed(evt);
-            }
-        });
-
-        btnRemover.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        btnRemover.setText("Remover");
-        btnRemover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRemoverActionPerformed(evt);
-            }
-        });
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel6.setText("*Nome");
-
-        txtNome.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtNome.setPreferredSize(new java.awt.Dimension(500, 28));
-
-        cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "NOVA", "REC" }));
+        cbMotivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COMPRA", "RECUPERACAO" }));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel7.setText("*Fabricante");
+        jLabel7.setText("Observação");
 
-        txtFabricante.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtFabricante.setPreferredSize(new java.awt.Dimension(500, 28));
-
-        txtModelo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtModelo.setPreferredSize(new java.awt.Dimension(500, 28));
-
-        txtPeso.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtPeso.setPreferredSize(new java.awt.Dimension(500, 28));
-        txtPeso.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPesoKeyTyped(evt);
-            }
-        });
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel8.setText("*Modelo");
+        txtObservacao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        txtObservacao.setPreferredSize(new java.awt.Dimension(500, 28));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel9.setText("*Estado");
+        jLabel9.setText("*Motivo");
 
-        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel10.setText("*Peso");
+        buttonGroup1.add(rBtnPartNumber);
+        rBtnPartNumber.setText("Part Number");
 
-        jLabel11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel11.setText("*NCM");
+        buttonGroup1.add(rBtnDescricao);
+        rBtnDescricao.setText("Descrição");
 
-        txtNcm.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtNcm.setPreferredSize(new java.awt.Dimension(500, 28));
-        txtNcm.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNcmKeyTyped(evt);
-            }
-        });
-
-        txtPartNumberSimilar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtPartNumberSimilar.setPreferredSize(new java.awt.Dimension(500, 28));
-
-        txtPreco.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtPreco.setPreferredSize(new java.awt.Dimension(500, 28));
-        txtPreco.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtPrecoKeyTyped(evt);
-            }
-        });
-
-        jLabel12.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel12.setText("*Preço");
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel13.setText("Part Number Similar");
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel14.setText("*Qtd Min");
-
-        txtQtdMin.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtQtdMin.setPreferredSize(new java.awt.Dimension(500, 28));
-        txtQtdMin.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtQtdMinKeyTyped(evt);
-            }
-        });
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel15.setText("*Qtd Méd");
-
-        txtQtdMed.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtQtdMed.setPreferredSize(new java.awt.Dimension(500, 28));
-        txtQtdMed.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtQtdMedKeyTyped(evt);
-            }
-        });
-
-        txtQtdMax.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtQtdMax.setPreferredSize(new java.awt.Dimension(500, 28));
-        txtQtdMax.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtQtdMaxKeyTyped(evt);
-            }
-        });
-
-        jLabel16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel16.setText("*Qtd Max");
+        btnProcurar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/porschegt3cup/icones/iconFind.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -301,161 +190,89 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
+                        .addGap(34, 34, 34)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 1091, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1039, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addGap(44, 44, 44)
-                                .addComponent(txtLPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnProcurar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 797, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(txtId, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtPartNumber, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
-                                            .addComponent(txtSubSistema, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(rBtnPartNumber)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(rBtnDescricao))
+                                    .addComponent(txtLPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnProcurar, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(358, 358, 358))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtObservacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(txtQuantidadeEntrada, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtFabricante, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addGap(7, 7, 7)
-                                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                            .addComponent(txtNcm, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(7, 7, 7)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtPartNumberSimilar, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel13))))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(txtQtdMin, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel14)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(txtQtdMed, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel15)
-                                                    .addComponent(txtQtdMax, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel16))
-                                                .addGap(30, 30, 30)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                    .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))))))))))
-                .addContainerGap(411, Short.MAX_VALUE))
+                                        .addGap(2, 2, 2)
+                                        .addComponent(cbMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(0, 0, Short.MAX_VALUE)
+                                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(txtColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(0, 0, Short.MAX_VALUE)))))))
+                .addContainerGap(389, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(txtLPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnProcurar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rBtnPartNumber)
+                            .addComponent(rBtnDescricao))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtLPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(btnProcurar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(65, 65, 65)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtQuantidadeEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPartNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtSubSistema, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtModelo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel9))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtFabricante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPeso, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNcm, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPartNumberSimilar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cbMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel14)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtQtdMin, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(76, 76, 76))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtQtdMed, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(76, 76, 76))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel16)
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtQtdMax, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnAlterar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemover, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(63, Short.MAX_VALUE))
+                        .addComponent(txtColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtObservacao, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(226, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleName("Locacao");
@@ -463,68 +280,104 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
         setBounds(0, 0, 1530, 905);
     }// </editor-fold>//GEN-END:initComponents
 
-    public JButton getBtnAlterar() {
-        return btnAlterar;
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        /*
+        if (existeCamposObrigatoriosVazios()) {
+            JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios paracadastrar uma peça");
+        } else if (!txtId.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Não é possivel cadastrar uma peça com o campo (ID) preenchido");
+        } else {
+            controller.cadastrarPeca();
+        }
+         */
+        
+        controller.descobreColaborador();
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+
+    private void tblEntradaPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEntradaPecaMouseClicked
+        //controller.buscaPecaSelecionadaNoBanco();
+    }//GEN-LAST:event_tblEntradaPecaMouseClicked
+
+    private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
+        rBtnPartNumber.setSelected(true);
+    }//GEN-LAST:event_formInternalFrameOpened
+
+    private void txtQuantidadeEntradaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQuantidadeEntradaKeyTyped
+        String caracteresPermitidos = "0123456789";
+        if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
+            evt.consume();
+    }//GEN-LAST:event_txtQuantidadeEntradaKeyTyped
+
+    }
+    
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnProcurar;
+    private javax.swing.JButton btnRegistrar;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox<String> cbMotivo;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JRadioButton rBtnDescricao;
+    private javax.swing.JRadioButton rBtnPartNumber;
+    private javax.swing.JTable tblEntradaPeca;
+    private javax.swing.JTextField txtColaborador;
+    private javax.swing.JTextField txtLPesquisar;
+    private javax.swing.JTextField txtObservacao;
+    private javax.swing.JTextField txtQuantidadeEntrada;
+    // End of variables declaration//GEN-END:variables
+
+    public JButton getBtnRegistrar() {
+        return btnRegistrar;
     }
 
-    public void setBtnAlterar(JButton btnAlterar) {
-        this.btnAlterar = btnAlterar;
+    public void setBtnRegistrar(JButton btnRegistrar) {
+        this.btnRegistrar = btnRegistrar;
     }
 
-    public JButton getBtnCadastrar() {
-        return btnCadastrar;
+    public JComboBox<String> getCbMotivo() {
+        return cbMotivo;
     }
 
-    public void setBtnCadastrar(JButton btnCadastrar) {
-        this.btnCadastrar = btnCadastrar;
+    public void setCbMotivo(JComboBox<String> cbMotivo) {
+        this.cbMotivo = cbMotivo;
     }
 
-    public JButton getBtnProcurar() {
-        return btnProcurar;
+    public JRadioButton getrBtnDescricao() {
+        return rBtnDescricao;
     }
 
-    public void setBtnProcurar(JButton btnProcurar) {
-        this.btnProcurar = btnProcurar;
+    public void setrBtnDescricao(JRadioButton rBtnDescricao) {
+        this.rBtnDescricao = rBtnDescricao;
     }
 
-    public JButton getBtnRemover() {
-        return btnRemover;
+    public JRadioButton getrBtnPartNumber() {
+        return rBtnPartNumber;
     }
 
-    public void setBtnRemover(JButton btnRemover) {
-        this.btnRemover = btnRemover;
+    public void setrBtnPartNumber(JRadioButton rBtnPartNumber) {
+        this.rBtnPartNumber = rBtnPartNumber;
     }
 
-    public JComboBox<String> getCbEstado() {
-        return cbEstado;
+    public JTable getTblEntradaPeca() {
+        return tblEntradaPeca;
     }
 
-    public void setCbEstado(JComboBox<String> cbEstado) {
-        this.cbEstado = cbEstado;
+    public void setTblEntradaPeca(JTable tblEntradaPeca) {
+        this.tblEntradaPeca = tblEntradaPeca;
     }
 
-    public JTable getTblPeca() {
-        return tblPeca;
+    public JTextField getTxtColaborador() {
+        return txtColaborador;
     }
 
-    public void setTblPeca(JTable tblPeca) {
-        this.tblPeca = tblPeca;
-    }
-
-    public JTextField getTxtFabricante() {
-        return txtFabricante;
-    }
-
-    public void setTxtFabricante(JTextField txtFabricante) {
-        this.txtFabricante = txtFabricante;
-    }
-
-    public JTextField getTxtId() {
-        return txtId;
-    }
-
-    public void setTxtId(JTextField txtId) {
-        this.txtId = txtId;
+    public void setTxtColaborador(JTextField txtColaborador) {
+        this.txtColaborador = txtColaborador;
     }
 
     public JTextField getTxtLPesquisar() {
@@ -535,222 +388,19 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
         this.txtLPesquisar = txtLPesquisar;
     }
 
-    public JTextField getTxtModelo() {
-        return txtModelo;
+    public JTextField getTxtObservacao() {
+        return txtObservacao;
     }
 
-    public void setTxtModelo(JTextField txtModelo) {
-        this.txtModelo = txtModelo;
+    public void setTxtObservacao(JTextField txtObservacao) {
+        this.txtObservacao = txtObservacao;
     }
 
-    public JTextField getTxtNcm() {
-        return txtNcm;
+    public JTextField getTxtQuantidadeEntrada() {
+        return txtQuantidadeEntrada;
     }
 
-    public void setTxtNcm(JTextField txtNcm) {
-        this.txtNcm = txtNcm;
+    public void setTxtQuantidadeEntrada(JTextField txtQuantidadeEntrada) {
+        this.txtQuantidadeEntrada = txtQuantidadeEntrada;
     }
-
-    public JTextField getTxtNome() {
-        return txtNome;
-    }
-
-    public void setTxtNome(JTextField txtNome) {
-        this.txtNome = txtNome;
-    }
-
-    public JTextField getTxtPartNumber() {
-        return txtPartNumber;
-    }
-
-    public void setTxtPartNumber(JTextField txtPartNumber) {
-        this.txtPartNumber = txtPartNumber;
-    }
-
-    public JTextField getTxtPartNumberSimilar() {
-        return txtPartNumberSimilar;
-    }
-
-    public void setTxtPartNumberSimilar(JTextField txtPartNumberSimilar) {
-        this.txtPartNumberSimilar = txtPartNumberSimilar;
-    }
-
-    public JTextField getTxtPeso() {
-        return txtPeso;
-    }
-
-    public void setTxtPeso(JTextField txtPeso) {
-        this.txtPeso = txtPeso;
-    }
-
-    public JTextField getTxtPreco() {
-        return txtPreco;
-    }
-
-    public void setTxtPreco(JTextField txtPreco) {
-        this.txtPreco = txtPreco;
-    }
-
-    public JTextField getTxtQtdMax() {
-        return txtQtdMax;
-    }
-
-    public void setTxtQtdMax(JTextField txtQtdMax) {
-        this.txtQtdMax = txtQtdMax;
-    }
-
-    public JTextField getTxtQtdMed() {
-        return txtQtdMed;
-    }
-
-    public void setTxtQtdMed(JTextField txtQtdMed) {
-        this.txtQtdMed = txtQtdMed;
-    }
-
-    public JTextField getTxtQtdMin() {
-        return txtQtdMin;
-    }
-
-    public void setTxtQtdMin(JTextField txtQtdMin) {
-        this.txtQtdMin = txtQtdMin;
-    }
-
-    public JTextField getTxtSubSistema() {
-        return txtSubSistema;
-    }
-
-    public void setTxtSubSistema(JTextField txtSubSistema) {
-        this.txtSubSistema = txtSubSistema;
-    }
-
-
-    private void btnProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarActionPerformed
-/*
-        controller.procurarPeca();
-*/
-    }//GEN-LAST:event_btnProcurarActionPerformed
-
-    private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-/*
-        if (existeCamposObrigatoriosVazios()) {
-            JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios paracadastrar uma peça");
-        } else if (!txtId.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Não é possivel cadastrar uma peça com o campo (ID) preenchido");
-        } else {
-            controller.cadastrarPeca();
-        }
-*/
-    }//GEN-LAST:event_btnCadastrarActionPerformed
-
-    private void tblPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecaMouseClicked
-        //controller.buscaPecaSelecionadaNoBanco();
-    }//GEN-LAST:event_tblPecaMouseClicked
-
-    private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-/*
-        if ((!existeCamposObrigatoriosVazios()) && (!txtId.getText().isEmpty())) {
-            controller.alterarPrca();
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Para alterar uma peça todos os campos devem estar preenchidos inclusive o ID");
-        }
-*/
-    }//GEN-LAST:event_btnAlterarActionPerformed
-
-    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        /*
-        if (!txtId.getText().isEmpty()) {
-            int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esta locação?", "ATENÇÃO!", JOptionPane.YES_NO_OPTION);
-            if (confirma == JOptionPane.YES_OPTION) {
-                controller.removePeca();
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Para remover uma locação o campo (ID) deve estar preenchido");
-        }
-         */
-    }//GEN-LAST:event_btnRemoverActionPerformed
-
-    private void txtPrecoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecoKeyTyped
-        String caracteresPermitidos = "0123456789,";
-        if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtPrecoKeyTyped
-
-    private void txtQtdMinKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtdMinKeyTyped
-        String caracteresPermitidos = "0123456789";
-        if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtQtdMinKeyTyped
-
-    private void txtQtdMedKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtdMedKeyTyped
-        String caracteresPermitidos = "0123456789";
-        if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtQtdMedKeyTyped
-
-    private void txtQtdMaxKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQtdMaxKeyTyped
-        String caracteresPermitidos = "0123456789";
-        if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtQtdMaxKeyTyped
-
-    private void txtPesoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPesoKeyTyped
-        String caracteresPermitidos = "0123456789,";
-        if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtPesoKeyTyped
-
-    private void txtNcmKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNcmKeyTyped
-        String caracteresPermitidos = "0123456789";
-        if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtNcmKeyTyped
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAlterar;
-    private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnProcurar;
-    private javax.swing.JButton btnRemover;
-    private javax.swing.JComboBox<String> cbEstado;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tblPeca;
-    private javax.swing.JTextField txtFabricante;
-    private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtLPesquisar;
-    private javax.swing.JTextField txtModelo;
-    private javax.swing.JTextField txtNcm;
-    private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtPartNumber;
-    private javax.swing.JTextField txtPartNumberSimilar;
-    private javax.swing.JTextField txtPeso;
-    private javax.swing.JTextField txtPreco;
-    private javax.swing.JTextField txtQtdMax;
-    private javax.swing.JTextField txtQtdMed;
-    private javax.swing.JTextField txtQtdMin;
-    private javax.swing.JTextField txtSubSistema;
-    // End of variables declaration//GEN-END:variables
 }
