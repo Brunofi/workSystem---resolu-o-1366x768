@@ -30,21 +30,10 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
         controller = new TelaEntradaPecaController(this);
     }
 
-    /*
     private boolean existeCamposObrigatoriosVazios() {
-        
-        if (txtPartNumber.getText().isEmpty()
-                || txtNome.getText().isEmpty()
-                || txtSubSistema.getText().isEmpty()
-                || txtModelo.getText().isEmpty()
-                || txtFabricante.getText().isEmpty()
-                || cbEstado.getSelectedItem().toString().isEmpty()
-                || txtPeso.getText().isEmpty()
-                || txtNcm.getText().isEmpty()
-                || txtQtdMin.getText().isEmpty()
-                || txtQtdMed.getText().isEmpty()
-                || txtQtdMax.getText().isEmpty()
-                || txtPreco.getText().isEmpty()) {
+
+        if (txtQuantidadeEntrada.getText().isEmpty()
+                || cbMotivo.getSelectedItem().toString().isEmpty()) {
             return true;
 
         } else {
@@ -52,7 +41,7 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
         }
 
     }
-     */
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -63,8 +52,6 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
-        jLabel2 = new javax.swing.JLabel();
-        txtColaborador = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         txtQuantidadeEntrada = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
@@ -105,12 +92,6 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("*Colaborador");
-
-        txtColaborador.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        txtColaborador.setPreferredSize(new java.awt.Dimension(500, 28));
-
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("*Quantidade entrada");
 
@@ -149,11 +130,6 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
         ));
         tblEntradaPeca.setFocusable(false);
         tblEntradaPeca.getTableHeader().setReorderingAllowed(false);
-        tblEntradaPeca.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblEntradaPecaMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(tblEntradaPeca);
 
         btnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
@@ -182,6 +158,11 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
         rBtnDescricao.setText("Descrição");
 
         btnProcurar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/porschegt3cup/icones/iconFind.png"))); // NOI18N
+        btnProcurar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProcurarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -211,25 +192,16 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtObservacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(txtQuantidadeEntrada, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(2, 2, 2)
-                                        .addComponent(cbMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(txtColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(0, 0, Short.MAX_VALUE)))))))
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 542, Short.MAX_VALUE)
+                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(2, 2, 2)
+                                    .addComponent(cbMotivo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(txtQuantidadeEntrada, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap(389, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -257,15 +229,9 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtQuantidadeEntrada, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cbMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtColaborador, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cbMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -280,23 +246,16 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
         setBounds(0, 0, 1530, 905);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        /*
-        if (existeCamposObrigatoriosVazios()) {
-            JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios paracadastrar uma peça");
-        } else if (!txtId.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Não é possivel cadastrar uma peça com o campo (ID) preenchido");
-        } else {
-            controller.cadastrarPeca();
-        }
-         */
-        
-        controller.descobreColaborador();
-    }//GEN-LAST:event_btnRegistrarActionPerformed
 
-    private void tblEntradaPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblEntradaPecaMouseClicked
-        //controller.buscaPecaSelecionadaNoBanco();
-    }//GEN-LAST:event_tblEntradaPecaMouseClicked
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+
+        if (existeCamposObrigatoriosVazios()) {
+            JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios paragistrar a entrada de uma peça");
+        } else {
+            controller.registrarEntrada();
+        }
+
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         rBtnPartNumber.setSelected(true);
@@ -307,16 +266,17 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
         if (!caracteresPermitidos.contains(evt.getKeyChar() + "")) {
             evt.consume();
     }//GEN-LAST:event_txtQuantidadeEntradaKeyTyped
-
     }
-    
-    
+    private void btnProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarActionPerformed
+        controller.procuraPecaNoEstoque();
+    }//GEN-LAST:event_btnProcurarActionPerformed
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnProcurar;
     private javax.swing.JButton btnRegistrar;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbMotivo;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -326,7 +286,6 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
     private javax.swing.JRadioButton rBtnDescricao;
     private javax.swing.JRadioButton rBtnPartNumber;
     private javax.swing.JTable tblEntradaPeca;
-    private javax.swing.JTextField txtColaborador;
     private javax.swing.JTextField txtLPesquisar;
     private javax.swing.JTextField txtObservacao;
     private javax.swing.JTextField txtQuantidadeEntrada;
@@ -370,14 +329,6 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
 
     public void setTblEntradaPeca(JTable tblEntradaPeca) {
         this.tblEntradaPeca = tblEntradaPeca;
-    }
-
-    public JTextField getTxtColaborador() {
-        return txtColaborador;
-    }
-
-    public void setTxtColaborador(JTextField txtColaborador) {
-        this.txtColaborador = txtColaborador;
     }
 
     public JTextField getTxtLPesquisar() {

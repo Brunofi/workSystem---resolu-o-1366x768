@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
  * @author Bruno
  */
 public class EstoqueDAO {
-    
+
     private final Connection conexao;
     PreparedStatement pst = null;
     ResultSet rs = null;
@@ -23,9 +23,9 @@ public class EstoqueDAO {
     public EstoqueDAO(Connection conexao) {
         this.conexao = conexao;
     }
-    
-    public void inserirEstoque(int quantidade, int idPeca, int IdLocacao){
-        
+
+    public void inserirEstoque(int quantidade, int idPeca, int IdLocacao) {
+
         String sql = "insert into tbestoque (quantidade,idpeca,idlocacao) values (?,?,?)";
         try {
             pst = conexao.prepareStatement(sql);
@@ -38,5 +38,63 @@ public class EstoqueDAO {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+
+    public ResultSet procurarPecaEstoquePorPartNumber(String peca) {
+        String sql = "select\n"
+                + "tbpecas.partnumber as `Part Number`,tbpecas.nome as `Nome da peça`,\n"
+                + "tbestoque.quantidade as Quantidade,\n"
+                + "tblocacoes.locacao as Locação,tblocacoes.sub as `Sub-locação`,\n"
+                + "tbestoque.id as `id estoque`,tbestoque.idpeca,tbestoque.idlocacao\n"
+                + "from tbestoque\n"
+                + "inner join \n"
+                + "tbpecas on tbpecas.id = tbestoque.idpeca\n"
+                + "inner join \n"
+                + "tblocacoes ON tblocacoes.id = tbestoque.idlocacao\n"
+                + "where tbpecas.partnumber like ?";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, peca + "%");
+            rs = pst.executeQuery();
+
+            if (!rs.isBeforeFirst()) {
+                JOptionPane.showMessageDialog(null, "Peça não encontrada");
+                return null;
+            }
+
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return null;
+    }
     
+    public ResultSet procurarPecaEstoquePorDescricao(String peca) {
+        String sql = "select\n"
+                + "tbpecas.partnumber as `Part Number`,tbpecas.nome as `Nome da peça`,\n"
+                + "tbestoque.quantidade as Quantidade,\n"
+                + "tblocacoes.locacao as Locação,tblocacoes.sub as `Sub-locação`,\n"
+                + "tbestoque.id as `id estoque`,tbestoque.idpeca,tbestoque.idlocacao\n"
+                + "from tbestoque\n"
+                + "inner join \n"
+                + "tbpecas on tbpecas.id = tbestoque.idpeca\n"
+                + "inner join \n"
+                + "tblocacoes ON tblocacoes.id = tbestoque.idlocacao\n"
+                + "where tbpecas.nome like ?";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, peca + "%");
+            rs = pst.executeQuery();
+
+            if (!rs.isBeforeFirst()) {
+                JOptionPane.showMessageDialog(null, "Peça não encontrada");
+                return null;
+            }
+
+            return rs;
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return null;
+    }
+
 }

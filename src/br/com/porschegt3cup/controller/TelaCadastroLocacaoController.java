@@ -38,7 +38,6 @@ public class TelaCadastroLocacaoController {
         telaLocacao.getBtnCadastrar().setEnabled(true);
         DefaultTableModel tabela = (DefaultTableModel) telaLocacao.getTblLocacao().getModel();
         tabela.setRowCount(0);
-        
 
     }
 
@@ -63,9 +62,6 @@ public class TelaCadastroLocacaoController {
         rs = locacaoDao.pesquisarLocacao(locacao);
         if (rs != null) {
             telaLocacao.getTblLocacao().setModel(DbUtils.resultSetToTableModel(rs));
-
-        } else {
-            JOptionPane.showMessageDialog(null, "Locação não encontrada");
         }
 
     }

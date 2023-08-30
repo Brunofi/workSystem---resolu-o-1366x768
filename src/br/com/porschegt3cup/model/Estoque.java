@@ -26,6 +26,14 @@ public class Estoque {
         this.idLocacao = idLocacao;
     }
 
+    public Estoque(int quantidade, int idPeca, int idLocacao) {
+        this.quantidade = quantidade;
+        this.idPeca = idPeca;
+        this.idLocacao = idLocacao;
+    }
+    
+    
+
     public int getId() {
         return id;
     }
@@ -56,6 +64,11 @@ public class Estoque {
 
     public void setIdLocacao(int idLocacao) {
         this.idLocacao = idLocacao;
+    }
+
+    @Override
+    public String toString() {
+        return "Estoque{" + "id=" + id + ", quantidade=" + quantidade + ", idPeca=" + idPeca + ", idLocacao=" + idLocacao + '}';
     }
     
     

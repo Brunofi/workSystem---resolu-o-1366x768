@@ -167,14 +167,14 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
         };
         tblPecas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID Locação", "Locação", "Sub Locação"
+                "ID Locação", "Locação", "Sub Locação", "Estado da Peça"
             }
         ));
         tblPecas.setFocusable(false);

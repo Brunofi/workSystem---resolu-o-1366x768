@@ -51,6 +51,11 @@ public class LocacaoDAO {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, locacao.getLocacao() + "%");
             rs = pst.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                JOptionPane.showMessageDialog(null, "Locação não encontrada");
+                return null;
+            }
+
             return rs;
 
         } catch (Exception e) {

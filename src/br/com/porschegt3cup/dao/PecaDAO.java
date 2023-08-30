@@ -84,18 +84,18 @@ public class PecaDAO {
     }
 
     public ResultSet pesquisarPorPartNumber(String peca) {
-        String sql = "select id as ID, nome as `NOME DA PEÇA`, partnumber as `PART NUMBER` from tbpecas where partnumber like ?";
+        String sql = "select id as ID, nome as `NOME DA PEÇA`, partnumber as `PART NUMBER`, estado as `ESTADO DA PEÇA` from tbpecas where partnumber like ?";
 
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, peca + "%");
             rs = pst.executeQuery();
-
-            if (rs.next()) {
-                return rs;
-            } else {
-                JOptionPane.showMessageDialog(null, "Nenhuma peça foi encontrada!");
+            if (!rs.isBeforeFirst()) {
+                JOptionPane.showMessageDialog(null, "Nenhuma peça encontrada");
+                return null;
             }
+
+            return rs;
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
