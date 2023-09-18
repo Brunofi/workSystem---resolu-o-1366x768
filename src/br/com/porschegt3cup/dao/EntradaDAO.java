@@ -25,7 +25,7 @@ public class EntradaDAO {
         this.conexao = conexao;
     }
     
-    public void inserirEntradaEstoque(Entrada entrada){
+    public void registrarDadosDeEntradaNoEstoque(Entrada entrada){
     String sql = "insert into tbentrada(quantidade_entrada,motivo,colaborador,observacao,idpeca,idlocacao)values (?,?,?,?,?,?)";
         try {
             pst = conexao.prepareStatement(sql);
@@ -36,7 +36,7 @@ public class EntradaDAO {
             pst.setInt(5, entrada.getIdPeca());
             pst.setInt(6, entrada.getIdLocacao());
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "ntrada de peça realizada com sucesso!");
+            JOptionPane.showMessageDialog(null, "Registro de peça realizado com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }

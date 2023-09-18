@@ -103,7 +103,7 @@ public class TelaCadastroEstoqueController {
         if (idPeca != 0 && idLocacao != 0) {
             conexao = ModuloConexao.conector();
             EstoqueDAO estoqueDao = new EstoqueDAO(conexao);
-            estoqueDao.inserirEstoque(0, idPeca, idLocacao);
+            estoqueDao.inserirPecaNoEstoque(0, idPeca, idLocacao);
 
         } else {
             JOptionPane.showMessageDialog(null, "É necessário selecionar uma peça e uma locação para criar estoque ");

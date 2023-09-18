@@ -31,6 +31,13 @@ public class Estoque {
         this.idPeca = idPeca;
         this.idLocacao = idLocacao;
     }
+
+    public Estoque(int id, int quantidade) {
+        this.id = id;
+        this.quantidade = quantidade;
+    }
+    
+    
     
     
 
