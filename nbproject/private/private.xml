@@ -4,8 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/controller/TelaEntradaPecaController.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/dao/EntradaDAO.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/controller/TelaSaidaPecaController.java</file>
             <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/dao/EstoqueDAO.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/dao/UsuarioDAO.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/dao/SaidaDAO.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/view/TelaSaidaPeca.java</file>
             <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/view/TelaEntradaPeca.java</file>
         </group>
     </open-files>

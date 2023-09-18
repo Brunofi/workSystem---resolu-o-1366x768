@@ -14,6 +14,7 @@ import br.com.porschegt3cup.view.TelaEntradaPeca;
 import br.com.porschegt3cup.view.TelaCadastroLocacao;
 import br.com.porschegt3cup.view.TelaPrincipal;
 import br.com.porschegt3cup.view.TelaCadastroUsuario;
+import br.com.porschegt3cup.view.TelaSaidaPeca;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DateFormat;
@@ -103,5 +104,12 @@ public class TelaPrincipalController {
         telaEntradaPeca.setVisible(true);
         telaPrincipal.getDesktop().add(telaEntradaPeca);
     }
+
+    public void abrirTelaSaidaPeca() {
+        
+        TelaSaidaPeca telaSaidaPeca = new TelaSaidaPeca();
+        telaSaidaPeca.setVisible(true);
+        telaPrincipal.getDesktop().add(telaSaidaPeca);
+     }
 
 }

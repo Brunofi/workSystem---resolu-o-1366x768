@@ -24,7 +24,7 @@ public class TelaEntradaPecaController {
 
     private TelaEntradaPeca telaEntradaPeca;
     Connection conexao = null;
-    String colaborador;
+    String colaboradorlancamento;
     Entrada entrada = null;
     Estoque estoque = null;
     
@@ -34,8 +34,8 @@ public class TelaEntradaPecaController {
     }
 
     public void descobreColaborador() {
-        colaborador = TelaLoginController.colaborador;
-        System.out.println(colaborador);
+        colaboradorlancamento = TelaLoginController.colaborador;
+        //System.out.println(colaboradorlancamento);
 
     }
 
@@ -58,7 +58,7 @@ public class TelaEntradaPecaController {
     }
 
     public void coletaDadosPreencheVariaveis() {
-        colaborador = TelaLoginController.colaborador;
+        colaboradorlancamento = TelaLoginController.colaborador;
         int linhaSelecionada = telaEntradaPeca.getTblEntradaPeca().getSelectedRow();
         int quantidadeEntrada = Integer.parseInt(telaEntradaPeca.getTxtQuantidadeEntrada().getText());
         String motivo = telaEntradaPeca.getCbMotivo().getSelectedItem().toString();
@@ -68,8 +68,8 @@ public class TelaEntradaPecaController {
         int idPeca = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 6).toString());
         int idlocacao = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 7).toString());
         int quantidadeSomada = quantidadeEstoque + quantidadeEntrada;
-        System.out.println(quantidadeSomada);
-        Entrada entrada = new Entrada(quantidadeEntrada, motivo, colaborador, observacao, idPeca, idlocacao);
+        //System.out.println(quantidadeSomada);
+        Entrada entrada = new Entrada(quantidadeEntrada, motivo, colaboradorlancamento, observacao, idPeca, idlocacao);
         Estoque estoque = new Estoque(idEstoque,quantidadeSomada);
         this.entrada = entrada;
         this.estoque = estoque;
@@ -85,7 +85,7 @@ public class TelaEntradaPecaController {
         if (linhaSelecionada != -1) {
             coletaDadosPreencheVariaveis();
             estoqueDao.acrescentarQuantidadePecaNoEstoque(estoque.getId(), estoque.getQuantidade());
-            System.out.println(estoque.toString());
+           //System.out.println(estoque.toString());
             entradaDao.registrarDadosDeEntradaNoEstoque(entrada);
             
         } else {
