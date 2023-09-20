@@ -73,6 +73,7 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setMinimumSize(new java.awt.Dimension(124, 40));
         setPreferredSize(new java.awt.Dimension(1530, 905));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
@@ -247,7 +248,7 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnLimparLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(808, Short.MAX_VALUE))
+                .addContainerGap(739, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -288,7 +289,7 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
 
         getAccessibleContext().setAccessibleName("Locacao");
 
-        setBounds(0, 0, 1599, 905);
+        setBounds(0, 0, 1530, 905);
     }// </editor-fold>//GEN-END:initComponents
 
 

@@ -84,7 +84,7 @@ public class TelaEntradaPecaController {
         
         if (linhaSelecionada != -1) {
             coletaDadosPreencheVariaveis();
-            estoqueDao.acrescentarQuantidadePecaNoEstoque(estoque.getId(), estoque.getQuantidade());
+            estoqueDao.alterarQuantidadePecaNoEstoque(estoque.getId(), estoque.getQuantidade());
            //System.out.println(estoque.toString());
             entradaDao.registrarDadosDeEntradaNoEstoque(entrada);
             

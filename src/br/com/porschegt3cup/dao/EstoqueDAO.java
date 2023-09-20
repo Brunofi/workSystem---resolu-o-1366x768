@@ -97,7 +97,7 @@ public class EstoqueDAO {
         return null;
     }
     
-    public void acrescentarQuantidadePecaNoEstoque(int id, int quantidade){
+    public void alterarQuantidadePecaNoEstoque(int id, int quantidade){
         String sql = "update tbestoque set quantidade=? where id=?";
         try {
             pst = conexao.prepareStatement(sql);
@@ -105,10 +105,12 @@ public class EstoqueDAO {
             pst.setInt(2, id);
             pst.executeUpdate();
             
-            JOptionPane.showMessageDialog(null, "Acrescimo de peça realizado com sucesso");
+            JOptionPane.showMessageDialog(null, "Alteração de quantidade de peça realizado com sucesso");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+    
+    
 
 }

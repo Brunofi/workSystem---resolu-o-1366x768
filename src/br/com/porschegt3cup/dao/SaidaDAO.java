@@ -5,6 +5,7 @@
  */
 package br.com.porschegt3cup.dao;
 
+import br.com.porschegt3cup.model.Saida;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -97,7 +98,30 @@ public class SaidaDAO {
         }
         return listaEtapas;
     }
-    
-    
+
+    public void registrarDadosDeSaidaNoEstoque(Saida saida) {
+        String sql = "insert into tbsaida(quantidade,tipo_consumo,colaborador_entrega,colaborador_retirada,colaborador_lancamento,motivo_consumo,etapa,sessao,chassis,chassis_cedente,eixo_lado,idpeca,idlocacao)values(?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, saida.getQuantidadeSaida());
+            pst.setString(2, saida.getTipoMovimentacao());
+            pst.setString(3, saida.getColaboradorEntrega());
+            pst.setString(4, saida.getColaboradorRetira());
+            pst.setString(5, saida.getColaboradorLanca());
+            pst.setString(6, saida.getMotivoConsumo());
+            pst.setString(7, saida.getEtapa());
+            pst.setString(8, saida.getSessao());
+            pst.setString(9, saida.getChassis());
+            pst.setString(10, saida.getChassisCedente());
+            pst.setString(11, saida.getEixoLado());
+            pst.setInt(12, saida.getIdPeca());
+            pst.setInt(13, saida.getIdLocacao());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Registro de saída de peça realizado com sucesso!");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 
 }

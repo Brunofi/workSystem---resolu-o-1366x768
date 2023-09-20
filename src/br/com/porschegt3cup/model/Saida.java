@@ -13,7 +13,7 @@ public class Saida {
     
     private int id;
     private int quantidadeSaida;
-    private String tipoConsumo;
+    private String tipoMovimentacao;
     private String colaboradorEntrega;
     private String colaboradorRetira;
     private String colaboradorLanca;
@@ -25,6 +25,22 @@ public class Saida {
     private String eixoLado;
     private int idPeca;
     private int idLocacao;
+
+    public Saida(int quantidadeSaida, String tipoMovimentacao, String colaboradorEntrega, String colaboradorRetira, String colaboradorLanca, String motivoConsumo, String etapa, String sessao, String chassis, String chassisCedente, String eixoLado, int idPeca, int idLocacao) {
+        this.quantidadeSaida = quantidadeSaida;
+        this.tipoMovimentacao = tipoMovimentacao;
+        this.colaboradorEntrega = colaboradorEntrega;
+        this.colaboradorRetira = colaboradorRetira;
+        this.colaboradorLanca = colaboradorLanca;
+        this.motivoConsumo = motivoConsumo;
+        this.etapa = etapa;
+        this.sessao = sessao;
+        this.chassis = chassis;
+        this.chassisCedente = chassisCedente;
+        this.eixoLado = eixoLado;
+        this.idPeca = idPeca;
+        this.idLocacao = idLocacao;
+    }
     
     
 
@@ -44,12 +60,12 @@ public class Saida {
         this.quantidadeSaida = quantidadeSaida;
     }
 
-    public String getTipoConsumo() {
-        return tipoConsumo;
+    public String getTipoMovimentacao() {
+        return tipoMovimentacao;
     }
 
-    public void setTipoConsumo(String tipoConsumo) {
-        this.tipoConsumo = tipoConsumo;
+    public void setTipoMovimentacao(String tipoMovimentacao) {
+        this.tipoMovimentacao = tipoMovimentacao;
     }
 
     public String getColaboradorEntrega() {
