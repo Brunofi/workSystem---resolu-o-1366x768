@@ -64,7 +64,6 @@ public class TelaCadastroEstoqueController {
         if (rs != null) {
             telaCadastroEstoque.getTblPecas().setModel(DbUtils.resultSetToTableModel(rs));
         }
-        
 
     }
 
@@ -100,15 +99,18 @@ public class TelaCadastroEstoqueController {
     }
 
     public void cadastrarPecaNoEstoque() {
-        if (idPeca != 0 && idLocacao != 0) {
+        if (Utils.linhaSelecionadaContemDados(telaCadastroEstoque.getTblPecas()) && (Utils.linhaSelecionadaContemDados(telaCadastroEstoque.getTblLocacao()))) {
             conexao = ModuloConexao.conector();
             EstoqueDAO estoqueDao = new EstoqueDAO(conexao);
+            preencherIdPeca();
+            preencherIdLocacao();
             estoqueDao.inserirPecaNoEstoque(0, idPeca, idLocacao);
 
         } else {
             JOptionPane.showMessageDialog(null, "É necessário selecionar uma peça e uma locação para criar estoque ");
 
         }
+        
 
     }
 

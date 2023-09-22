@@ -5,6 +5,7 @@
  */
 package br.com.porschegt3cup.controller;
 
+import static br.com.porschegt3cup.controller.Utils.linhaSelecionadaContemDados;
 import br.com.porschegt3cup.dao.EstoqueDAO;
 import br.com.porschegt3cup.dao.ModuloConexao;
 import br.com.porschegt3cup.dao.SaidaDAO;
@@ -15,6 +16,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -25,19 +27,27 @@ public class TelaSaidaPecaController {
 
     private TelaSaidaPeca telaSaidaPeca;
     Connection conexao = null;
-    String colaboradorlancamento;
     Estoque estoque = null;
     Saida saida = null;
 
     public TelaSaidaPecaController(TelaSaidaPeca telaSaidaPeca) {
         this.telaSaidaPeca = telaSaidaPeca;
     }
-    
-    public void apagarCampos(){
+
+    public void apagarCampos() {
+        telaSaidaPeca.getTxtLPesquisar().setText(null);
+        telaSaidaPeca.getCbTipo().setSelectedIndex(0);
+        telaSaidaPeca.getCbChassis().setSelectedIndex(0);
+        telaSaidaPeca.getCbEtapa().setSelectedIndex(0);
         telaSaidaPeca.getCbLado().setSelectedIndex(0);
         telaSaidaPeca.getTxtQuantidadeSaida().setText(null);
+        telaSaidaPeca.getCbSessao().setSelectedIndex(0);
         telaSaidaPeca.getCbMotivo().setSelectedIndex(0);
-    
+        telaSaidaPeca.getCbColaboradorEntrega().setSelectedIndex(0);
+        telaSaidaPeca.getCbColaboradorRetira().setSelectedIndex(0);
+        DefaultTableModel tabela = (DefaultTableModel) telaSaidaPeca.getTblSaidaPeca().getModel();
+        tabela.setRowCount(0);
+
     }
 
     public void carregarListaDeColaboradores() {
@@ -115,22 +125,15 @@ public class TelaSaidaPecaController {
 
     }
 
-    public void descobreColaborador() {
-        colaboradorlancamento = TelaLoginController.colaborador;
-        //System.out.println(colaboradorlancamento);
-
-    }
-
     public void coletaDadosPreencheVariaveis() {
-        colaboradorlancamento = TelaLoginController.colaborador;
         int linhaSelecionada = telaSaidaPeca.getTblSaidaPeca().getSelectedRow();
         String tipoMovimentacao = telaSaidaPeca.getCbTipo().getSelectedItem().toString();
         String chassis = telaSaidaPeca.getCbChassis().getSelectedItem().toString();
         String etapa = telaSaidaPeca.getCbEtapa().getSelectedItem().toString();
         String chassisCedente;
-        if (telaSaidaPeca.getCbChassisCedente().getSelectedItem()==null) {
+        if (telaSaidaPeca.getCbChassisCedente().getSelectedItem() == null) {
             chassisCedente = "-";
-        } else{
+        } else {
             chassisCedente = telaSaidaPeca.getCbChassisCedente().getSelectedItem().toString();
         }
         String lado = telaSaidaPeca.getCbLado().getSelectedItem().toString();
@@ -145,30 +148,27 @@ public class TelaSaidaPecaController {
         int idlocacao = Integer.parseInt(telaSaidaPeca.getTblSaidaPeca().getModel().getValueAt(linhaSelecionada, 7).toString());
         int quantidadeSubtraida = quantidadeEstoque - quantidadeSaida;
         //System.out.println(quantidadeSomada);
-        Saida saida = new Saida(quantidadeSaida, tipoMovimentacao, colaboradorEntrega, colaboradorRetira, colaboradorlancamento, motivo, etapa, sessao, chassis, chassisCedente, lado, idPeca, idlocacao);
+        Saida saida = new Saida(quantidadeSaida, tipoMovimentacao, colaboradorEntrega, colaboradorRetira, Utils.colaboradorLogado, motivo, etapa, sessao, chassis, chassisCedente, lado, idPeca, idlocacao);
         Estoque estoque = new Estoque(idEstoque, quantidadeSubtraida);
         this.saida = saida;
         this.estoque = estoque;
 
     }
-    
-    public void registrarSaida(){
+
+    public void registrarSaida() {
         conexao = ModuloConexao.conector();
         EstoqueDAO estoqueDao = new EstoqueDAO(conexao);
         SaidaDAO saidaDao = new SaidaDAO(conexao);
-        int linhaSelecionada = telaSaidaPeca.getTblSaidaPeca().getSelectedRow();
-        
-        if (linhaSelecionada != -1) {
+
+        if (Utils.linhaSelecionadaContemDados(telaSaidaPeca.getTblSaidaPeca())) {
+            // A linha contém dados, prossiga com o registro
             coletaDadosPreencheVariaveis();
             estoqueDao.alterarQuantidadePecaNoEstoque(estoque.getId(), estoque.getQuantidade());
-           //System.out.println(estoque.toString());
             saidaDao.registrarDadosDeSaidaNoEstoque(saida);
-            
         } else {
-            JOptionPane.showMessageDialog(null, "É necessario selecionar uma linha para registrar a entrada de uma peça ");
-
+            JOptionPane.showMessageDialog(null, "É necessario selecionar uma linha com dados para registrar a saída de uma peça");
         }
-    
+
     }
 
 }

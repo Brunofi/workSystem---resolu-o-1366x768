@@ -17,7 +17,7 @@ public class ModuloConexao {
     public static Connection conector() {
         Connection conexao = null;
         String driver = "com.mysql.cj.jdbc.Driver"; //driver do banco utilizado
-        String url = "jdbc:mysql://localhost:3306/porschegt3cup"; //caminho do banco
+        String url = "jdbc:mysql://10.10.183.202:3306/porschegt3cup"; //caminho do banco
         String usuario = "root";
         String senha = "bsdnadmin";
 

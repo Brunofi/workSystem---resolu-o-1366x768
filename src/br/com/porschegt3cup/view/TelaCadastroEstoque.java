@@ -175,7 +175,7 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "ID Locação", "Locação", "Sub Locação", "Estado da Peça"
+                "ID", "NOME DA PEÇA", "PART NUMBER", "ESTADO DA PEÇA"
             }
         ));
         tblPecas.setFocusable(false);
@@ -311,11 +311,11 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnProcurarLocacaoActionPerformed
 
     private void tblLocacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLocacaoMouseClicked
-        controller.preencherIdLocacao();
+       // controller.preencherIdLocacao();
     }//GEN-LAST:event_tblLocacaoMouseClicked
 
     private void tblPecasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecasMouseClicked
-        controller.preencherIdPeca();
+        //controller.preencherIdPeca();
     }//GEN-LAST:event_tblPecasMouseClicked
 
     private void btnLimparPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparPecaActionPerformed
@@ -349,8 +349,6 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
     public void setrBtnPartNumber(JRadioButton rBtnPartNumber) {
         this.rBtnPartNumber = rBtnPartNumber;
     }
-
-   
 
     public JButton getBtnCadastrar() {
         return btnCadastrar;
