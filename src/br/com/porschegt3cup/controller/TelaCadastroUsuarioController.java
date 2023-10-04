@@ -10,7 +10,10 @@ import br.com.porschegt3cup.dao.UsuarioDAO;
 import br.com.porschegt3cup.model.Usuario;
 import br.com.porschegt3cup.view.TelaCadastroUsuario;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -20,97 +23,97 @@ public class TelaCadastroUsuarioController {
 
     private TelaCadastroUsuario telaUsuario;
     Connection conexao = null;
+    Usuario usuario = null;
+    String senha = null;
 
     public TelaCadastroUsuarioController(TelaCadastroUsuario telaUsuario) {
         this.telaUsuario = telaUsuario;
     }
 
-    public void buscarUsuario() {
-        conexao = ModuloConexao.conector();
-        String login = telaUsuario.getTxtLogin().getText();
-        Usuario usuario = new Usuario(login);
-        UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
-        usuario = usuarioDao.buscarUsuarioPorLogin(usuario);
-
-        if (usuario != null) {
-            String id = String.valueOf(usuario.getId());
-            telaUsuario.getTxtId().setText(id);
-            telaUsuario.getTxtLogin().setText(usuario.getLogin());
-            telaUsuario.getTxtNome().setText(usuario.getNome());
-            telaUsuario.getTxtSenha().setText(usuario.getSenha());
-            telaUsuario.getCboPerfil().setSelectedItem(usuario.getPerfil());
-            //conexao.close();
-
-        } else {
-
-            apagarCampos();
-        }
-
-    }
-
-    private void apagarCampos() {
+    public void apagarCampos() {
+        telaUsuario.getTxtLPesquisar().setText(null);
         telaUsuario.getTxtId().setText(null);
         telaUsuario.getTxtLogin().setText(null);
         telaUsuario.getTxtNome().setText(null);
         telaUsuario.getTxtSenha().setText(null);
         telaUsuario.getCboPerfil().setSelectedItem(null);
+        telaUsuario.getBtnCadastrar().setEnabled(true);
+        DefaultTableModel tabela = (DefaultTableModel) telaUsuario.getTblUsuario().getModel();
+        tabela.setRowCount(0);
+
+    }
+
+    private void criaUsuario() {
+
+        String login = telaUsuario.getTxtLogin().getText();
+        String nome = telaUsuario.getTxtNome().getText();
+        String senha = telaUsuario.getTxtSenha().getText();
+        String perfil = telaUsuario.getCboPerfil().getSelectedItem().toString();
+        Usuario usuario = new Usuario(nome, login, senha, perfil);
+        this.usuario = usuario;
+
+    }
+
+    private void obtemSenha(int id) {
+        conexao = ModuloConexao.conector();
+        UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
+        senha = usuarioDao.retornarSenha(id);
 
     }
 
     public void inserirUsuario() {
         conexao = ModuloConexao.conector();
-        String nome = telaUsuario.getTxtNome().getText();
-        String login = telaUsuario.getTxtLogin().getText();
-        String senha = telaUsuario.getTxtSenha().getText();
-        String perfil = telaUsuario.getCboPerfil().getSelectedItem().toString();
-        Usuario usuario = new Usuario(nome, login, senha, perfil);
+        criaUsuario();
         UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
-        try {
-            usuarioDao.InserirUsuario(usuario);
-            apagarCampos();
-        } catch (Exception e) {
+        usuarioDao.InserirUsuario(usuario);
 
-            JOptionPane.showMessageDialog(null, "Houve um problema, não foi possivel cadastrar o usuario");
+    }
 
+    public void procurarUsuario() {
+        conexao = ModuloConexao.conector();
+        String nome = telaUsuario.getTxtLPesquisar().getText();
+        UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
+        ResultSet rs;
+        rs = usuarioDao.buscarUsuarioPorNome(nome);
+        if (rs != null) {
+            telaUsuario.getTblUsuario().setModel(DbUtils.resultSetToTableModel(rs));
+        }
+    }
+
+    public void preencheCampos() {
+        if (Utils.linhaSelecionadaContemDados(telaUsuario.getTblUsuario())) {
+            telaUsuario.getBtnCadastrar().setEnabled(false);
+            int linhaSelecionada = telaUsuario.getTblUsuario().getSelectedRow();
+            telaUsuario.getTxtId().setText(telaUsuario.getTblUsuario().getModel().getValueAt(linhaSelecionada, 0).toString());
+            telaUsuario.getTxtLogin().setText(telaUsuario.getTblUsuario().getModel().getValueAt(linhaSelecionada, 1).toString());
+            telaUsuario.getTxtNome().setText(telaUsuario.getTblUsuario().getModel().getValueAt(linhaSelecionada, 2).toString());
+            telaUsuario.getCboPerfil().setSelectedItem(telaUsuario.getTblUsuario().getModel().getValueAt(linhaSelecionada, 3).toString());
+            int id = Integer.parseInt(telaUsuario.getTxtId().getText());
+            obtemSenha(id);
+            telaUsuario.getTxtSenha().setText(senha);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "è necessario conter dados selecionados para realizar a operação");
         }
 
     }
 
     public void alterarUsuario() {
-        conexao = ModuloConexao.conector();
-        int id = Integer.parseInt(telaUsuario.getTxtId().getText());
-        String nome = telaUsuario.getTxtNome().getText();
-        String login = telaUsuario.getTxtLogin().getText();
-        String senha = telaUsuario.getTxtSenha().getText();
-        String perfil = telaUsuario.getCboPerfil().getSelectedItem().toString();
-        Usuario usuario = new Usuario(id, nome, login, senha, perfil);
-        UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
-        try {
+        if (Utils.linhaSelecionadaContemDados(telaUsuario.getTblUsuario())) {
+            conexao = ModuloConexao.conector();
+            int id = Integer.parseInt(telaUsuario.getTxtId().getText());
+            String login = telaUsuario.getTxtLogin().getText();
+            String nome = telaUsuario.getTxtNome().getText();
+            String senha = telaUsuario.getTxtSenha().getText();
+            String perfil = telaUsuario.getCboPerfil().getSelectedItem().toString();
+            Usuario usuario = new Usuario(id, nome, login, senha, perfil);
+            UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
             usuarioDao.alterarUsuario(usuario);
-            apagarCampos();
-        } catch (Exception e) {
 
-            JOptionPane.showMessageDialog(null, "Houve um problema, não foi possivel cadastrar o usuario");
-
-        }
-
-    }
-
-    public void removeUsuario() {
-        conexao = ModuloConexao.conector();
-        int id = Integer.parseInt(telaUsuario.getTxtId().getText());
-        Usuario usuario = new Usuario(id);
-        UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
-        try {
-            usuarioDao.removerUsuario(usuario);
-            apagarCampos();
-            JOptionPane.showMessageDialog(null, "Usuario removido com sucesso");
-        } catch (Exception e) {
-
-            JOptionPane.showMessageDialog(null, "Houve um problema, não foi possivel remover este usuario");
+        } else {
+            JOptionPane.showMessageDialog(null, "É necessário que a linha contenha dados para ser selecionada");
 
         }
-
     }
 
 }

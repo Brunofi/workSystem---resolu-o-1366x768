@@ -52,6 +52,11 @@ public class Usuario {
         this.id = id;
     }
 
+    public Usuario() {
+    }
+    
+    
+
     public String getPerfil() {
         return perfil;
     }

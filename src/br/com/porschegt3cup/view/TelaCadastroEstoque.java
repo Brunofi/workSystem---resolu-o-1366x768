@@ -73,6 +73,7 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Cadastro de Estoque");
         setMinimumSize(new java.awt.Dimension(124, 40));
         setPreferredSize(new java.awt.Dimension(1530, 905));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {

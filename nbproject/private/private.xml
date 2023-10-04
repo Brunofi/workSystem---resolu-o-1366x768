@@ -3,10 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/controller/TelaEntradaPecaController.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/controller/TelaCadastroEstoqueController.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/controller/Utils.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/view/TelaCadastroEstoque.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/controller/TelaCadastroUsuarioController.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/dao/LocacaoDAO.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/controller/TelaCadastroLocacaoController.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/view/TelaCadastroUsuario.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/dao/UsuarioDAO.java</file>
         </group>
     </open-files>
 </project-private>

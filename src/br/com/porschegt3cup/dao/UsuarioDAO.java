@@ -152,6 +152,28 @@ public class UsuarioDAO {
 
     }
 
+    public String retornarSenha(int id) {
+        try {
+            String sql = "select * from tbusuarios where id=?";
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1, id);
+            rs = pst.executeQuery();
+            if (rs.next()) {
+                String senha = rs.getString(4);
+                return senha;
+            } else {
+                JOptionPane.showMessageDialog(null, "Problema ao captar a senha");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showConfirmDialog(null, e);
+            e.printStackTrace();
+            
+        }
+        return null;
+
+    }
+
     public Usuario buscarUsuarioPorLogin(Usuario usuario) {
 
         try {
@@ -190,6 +212,25 @@ public class UsuarioDAO {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public ResultSet buscarUsuarioPorNome(String nome) {
+        String sql = "select id as ID,nome as NOME, login as LOGIN, perfil as PERFIL from  tbusuarios where nome like ?";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, nome + "%");
+            rs = pst.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                JOptionPane.showMessageDialog(null, "Usuario não encontrada");
+                return null;
+            }
+
+            return rs;
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return null;
     }
 
 }

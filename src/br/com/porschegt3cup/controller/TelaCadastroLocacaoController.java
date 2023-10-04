@@ -67,14 +67,18 @@ public class TelaCadastroLocacaoController {
     }
 
     public void alterarLocacao() {
-        conexao = ModuloConexao.conector();
-        int id = Integer.parseInt(telaLocacao.getTxtId().getText());
-        String nome = telaLocacao.getTxtLocacao().getText();
-        String sub = telaLocacao.getTxtSubLocacao().getText();
-        Locacao locacao = new Locacao(id, nome, sub);
-        LocacaoDAO locacaoDao = new LocacaoDAO(conexao);
-        locacaoDao.alterarLocacao(locacao);
-        apagarCampos();
+        if (Utils.linhaSelecionadaContemDados(telaLocacao.getTblLocacao())) {
+            conexao = ModuloConexao.conector();
+            int id = Integer.parseInt(telaLocacao.getTxtId().getText());
+            String nome = telaLocacao.getTxtLocacao().getText();
+            String sub = telaLocacao.getTxtSubLocacao().getText();
+            Locacao locacao = new Locacao(id, nome, sub);
+            LocacaoDAO locacaoDao = new LocacaoDAO(conexao);
+            locacaoDao.alterarLocacao(locacao);
+            apagarCampos();
+        } else {
+            JOptionPane.showMessageDialog(null, "É necessário que a linha contenha dados para ser selecionada");
+        }
 
     }
 
@@ -89,11 +93,17 @@ public class TelaCadastroLocacaoController {
     }
 
     public void preencherCampos() {
-        telaLocacao.getBtnCadastrar().setEnabled(false);
-        int linhaSelecionada = telaLocacao.getTblLocacao().getSelectedRow();
-        telaLocacao.getTxtId().setText(telaLocacao.getTblLocacao().getModel().getValueAt(linhaSelecionada, 0).toString());
-        telaLocacao.getTxtLocacao().setText(telaLocacao.getTblLocacao().getModel().getValueAt(linhaSelecionada, 1).toString());
-        telaLocacao.getTxtSubLocacao().setText(telaLocacao.getTblLocacao().getModel().getValueAt(linhaSelecionada, 2).toString());
+        if (Utils.linhaSelecionadaContemDados(telaLocacao.getTblLocacao())) {
+            telaLocacao.getBtnCadastrar().setEnabled(false);
+            int linhaSelecionada = telaLocacao.getTblLocacao().getSelectedRow();
+            telaLocacao.getTxtId().setText(telaLocacao.getTblLocacao().getModel().getValueAt(linhaSelecionada, 0).toString());
+            telaLocacao.getTxtLocacao().setText(telaLocacao.getTblLocacao().getModel().getValueAt(linhaSelecionada, 1).toString());
+            telaLocacao.getTxtSubLocacao().setText(telaLocacao.getTblLocacao().getModel().getValueAt(linhaSelecionada, 2).toString());
+
+        } else {
+            JOptionPane.showMessageDialog(null, "è necessario conter dados selecionados para realizar a operação");
+
+        }
 
     }
 

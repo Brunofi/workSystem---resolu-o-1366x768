@@ -93,8 +93,8 @@ public class TelaCadastroPecaController {
         apagarCampos();
 
     }
-    
-    public void removePeca(){
+
+    public void removePeca() {
         conexao = ModuloConexao.conector();
         int id = Integer.parseInt(telaCadastroPeca.getTxtId().getText());
         PecaDAO pecaDao = new PecaDAO(conexao);
@@ -108,28 +108,34 @@ public class TelaCadastroPecaController {
         String peca = telaCadastroPeca.getTxtPesquisar().getText();
         PecaDAO pecaDao = new PecaDAO(conexao);
         ResultSet rs;
-        
+
         if (telaCadastroPeca.getrBtnPartNumber().isSelected()) {
             rs = pecaDao.pesquisarPorPartNumber(peca);
         } else {
             rs = pecaDao.pesquisarPorNome(peca);
         }
-        
+
         if (rs != null) {
             telaCadastroPeca.getTblPeca().setModel(DbUtils.resultSetToTableModel(rs));
-        } 
+        }
 
     }
 
     public void buscaPecaSelecionadaNoBanco() {
-        conexao = ModuloConexao.conector();
-        telaCadastroPeca.getBtnCadastrar().setEnabled(false);
-        int linhaSelecionada = telaCadastroPeca.getTblPeca().getSelectedRow();
-        int id = Integer.parseInt(telaCadastroPeca.getTblPeca().getModel().getValueAt(linhaSelecionada, 0).toString());//Integer.parseInt(telaCadastroPeca.getTxtId().getText());
-        PecaDAO pecaDao = new PecaDAO(conexao);
-        Peca pecaProcurada = new Peca();
-        pecaProcurada = pecaDao.pesquisarPorId(id);
-        preencheCamposAtravesDeUmObjetoPeca(pecaProcurada);
+        if (Utils.linhaSelecionadaContemDados(telaCadastroPeca.getTblPeca())) {
+            conexao = ModuloConexao.conector();
+            telaCadastroPeca.getBtnCadastrar().setEnabled(false);
+            int linhaSelecionada = telaCadastroPeca.getTblPeca().getSelectedRow();
+            int id = Integer.parseInt(telaCadastroPeca.getTblPeca().getModel().getValueAt(linhaSelecionada, 0).toString());//Integer.parseInt(telaCadastroPeca.getTxtId().getText());
+            PecaDAO pecaDao = new PecaDAO(conexao);
+            Peca pecaProcurada = new Peca();
+            pecaProcurada = pecaDao.pesquisarPorId(id);
+            preencheCamposAtravesDeUmObjetoPeca(pecaProcurada);
+
+        } else {
+            JOptionPane.showMessageDialog(null, "É necessário que a linha contenha dados para ser selecionada");
+
+        }
 
     }
 

@@ -74,6 +74,7 @@ public class TelaCadastroLocacao extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
+        setTitle("Cadastro de Locação");
         setPreferredSize(new java.awt.Dimension(1530, 905));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
