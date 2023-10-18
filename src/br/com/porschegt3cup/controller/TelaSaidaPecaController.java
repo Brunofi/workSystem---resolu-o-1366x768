@@ -50,6 +50,14 @@ public class TelaSaidaPecaController {
 
     }
 
+    public void apagarCamposPosLancamento() {
+        telaSaidaPeca.getTxtQuantidadeSaida().setText(null);
+        telaSaidaPeca.getCbLado().setSelectedIndex(0);
+        telaSaidaPeca.getCbSessao().setSelectedIndex(0);
+        telaSaidaPeca.getCbMotivo().setSelectedIndex(0);
+
+    }
+
     public void carregarListaDeColaboradores() {
         conexao = ModuloConexao.conector();
         SaidaDAO saidaDao = new SaidaDAO(conexao);
@@ -121,6 +129,7 @@ public class TelaSaidaPecaController {
 
         if (rs != null) {
             telaSaidaPeca.getTblSaidaPeca().setModel(DbUtils.resultSetToTableModel(rs));
+            Utils.ajustarLarguraColunas(telaSaidaPeca.getTblSaidaPeca());
         }
 
     }
@@ -142,14 +151,11 @@ public class TelaSaidaPecaController {
         String motivo = telaSaidaPeca.getCbMotivo().getSelectedItem().toString();
         String colaboradorEntrega = telaSaidaPeca.getCbColaboradorEntrega().getSelectedItem().toString();
         String colaboradorRetira = telaSaidaPeca.getCbColaboradorRetira().getSelectedItem().toString();
-        int quantidadeEstoque = Integer.parseInt(telaSaidaPeca.getTblSaidaPeca().getModel().getValueAt(linhaSelecionada, 2).toString());
         int idEstoque = Integer.parseInt(telaSaidaPeca.getTblSaidaPeca().getModel().getValueAt(linhaSelecionada, 5).toString());
         int idPeca = Integer.parseInt(telaSaidaPeca.getTblSaidaPeca().getModel().getValueAt(linhaSelecionada, 6).toString());
         int idlocacao = Integer.parseInt(telaSaidaPeca.getTblSaidaPeca().getModel().getValueAt(linhaSelecionada, 7).toString());
-        int quantidadeSubtraida = quantidadeEstoque - quantidadeSaida;
-        //System.out.println(quantidadeSomada);
         Saida saida = new Saida(quantidadeSaida, tipoMovimentacao, colaboradorEntrega, colaboradorRetira, Utils.colaboradorLogado, motivo, etapa, sessao, chassis, chassisCedente, lado, idPeca, idlocacao);
-        Estoque estoque = new Estoque(idEstoque, quantidadeSubtraida);
+        Estoque estoque = new Estoque(idEstoque, quantidadeSaida);
         this.saida = saida;
         this.estoque = estoque;
 
@@ -157,18 +163,35 @@ public class TelaSaidaPecaController {
 
     public void registrarSaida() {
         conexao = ModuloConexao.conector();
-        EstoqueDAO estoqueDao = new EstoqueDAO(conexao);
-        SaidaDAO saidaDao = new SaidaDAO(conexao);
-
+        
         if (Utils.linhaSelecionadaContemDados(telaSaidaPeca.getTblSaidaPeca())) {
             // A linha contém dados, prossiga com o registro
             coletaDadosPreencheVariaveis();
-            estoqueDao.alterarQuantidadePecaNoEstoque(estoque.getId(), estoque.getQuantidade());
+            if (!telaSaidaPeca.getCbTipo().getSelectedItem().toString().equals("VALE-PECA")) {
+                EstoqueDAO estoqueDao = new EstoqueDAO(conexao);
+                estoqueDao.subtrairQuantidadePecaNoEstoque(estoque.getId(), estoque.getQuantidade());
+            }
+            SaidaDAO saidaDao = new SaidaDAO(conexao);
             saidaDao.registrarDadosDeSaidaNoEstoque(saida);
+            apagarCamposPosLancamento();
         } else {
             JOptionPane.showMessageDialog(null, "É necessario selecionar uma linha com dados para registrar a saída de uma peça");
         }
 
+    }
+
+    public void verificaTipoConsumo() {
+        if (telaSaidaPeca.getCbTipo().getSelectedItem().toString().equals("VALE-PECA")) {
+            conexao = ModuloConexao.conector();
+            SaidaDAO saidaDao = new SaidaDAO(conexao);
+            List<String> listaChassis = carregarChassis();
+            for (String chassis : listaChassis) {
+                telaSaidaPeca.getCbChassisCedente().addItem(chassis);
+            }
+
+        } else {
+            telaSaidaPeca.getCbChassisCedente().removeAllItems();
+        }
     }
 
 }

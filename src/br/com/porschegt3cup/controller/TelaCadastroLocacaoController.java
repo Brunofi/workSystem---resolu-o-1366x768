@@ -62,6 +62,7 @@ public class TelaCadastroLocacaoController {
         rs = locacaoDao.pesquisarLocacao(locacao);
         if (rs != null) {
             telaLocacao.getTblLocacao().setModel(DbUtils.resultSetToTableModel(rs));
+            Utils.ajustarLarguraColunas(telaLocacao.getTblLocacao());
         }
 
     }

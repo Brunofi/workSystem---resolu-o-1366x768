@@ -93,8 +93,6 @@ public class UsuarioDAO {
     public void alterarUsuario(Usuario usuario) {
         String sql = "update tbusuarios set nome=?,login=?,senha=?,perfil=? where id=? ";
         try {
-            System.out.println(usuario.toString());
-
             pst = conexao.prepareStatement(sql);
             pst.setString(1, usuario.getNome());
             pst.setString(2, usuario.getLogin());
@@ -110,12 +108,13 @@ public class UsuarioDAO {
 
     }
 
-    public void removerUsuario(Usuario usuario) {
+    public void removerUsuario(int id) {
         String sql = "delete from tbusuarios where id=?";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setInt(1, usuario.getId());
+            pst.setInt(1, id);
             pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Usuario removido com sucesso");
 
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);

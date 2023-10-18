@@ -67,7 +67,7 @@ public class EstoqueDAO {
         }
         return null;
     }
-    
+
     public ResultSet procurarPecaEstoquePorDescricao(String peca) {
         String sql = "select\n"
                 + "tbpecas.partnumber as `Part Number`,tbpecas.nome as `Nome da peça`,\n"
@@ -96,21 +96,32 @@ public class EstoqueDAO {
         }
         return null;
     }
-    
-    public void alterarQuantidadePecaNoEstoque(int id, int quantidade){
-        String sql = "update tbestoque set quantidade=? where id=?";
-        try {
-            pst = conexao.prepareStatement(sql);
+
+    public void subtrairQuantidadePecaNoEstoque(int id, int quantidade) {
+        String sql = "UPDATE tbestoque SET quantidade = quantidade - ? WHERE id = ?";
+
+        try (PreparedStatement pst = conexao.prepareStatement(sql)) {
             pst.setInt(1, quantidade);
             pst.setInt(2, id);
             pst.executeUpdate();
-            
             JOptionPane.showMessageDialog(null, "Alteração de quantidade de peça realizado com sucesso");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
     }
     
-    
+    public void adicionarQuantidadePecaNoEstoque(int id, int quantidade) {
+        String sql = "UPDATE tbestoque SET quantidade = quantidade + ? WHERE id = ?";
 
+        try (PreparedStatement pst = conexao.prepareStatement(sql)) {
+            pst.setInt(1, quantidade);
+            pst.setInt(2, id);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Alteração de quantidade de peça realizado com sucesso");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
+
+    
 }

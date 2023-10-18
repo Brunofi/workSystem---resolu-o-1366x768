@@ -322,7 +322,7 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
         rBtnPartNumber.setText("Part Number");
 
         buttonGroup1.add(rBtnPartDescricao);
-        rBtnPartDescricao.setText("Descriçãp");
+        rBtnPartDescricao.setText("Descrição");
 
         txtPesquisar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtPesquisar.setPreferredSize(new java.awt.Dimension(500, 28));

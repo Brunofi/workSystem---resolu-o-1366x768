@@ -77,6 +77,7 @@ public class TelaCadastroUsuarioController {
         rs = usuarioDao.buscarUsuarioPorNome(nome);
         if (rs != null) {
             telaUsuario.getTblUsuario().setModel(DbUtils.resultSetToTableModel(rs));
+            Utils.ajustarLarguraColunas(telaUsuario.getTblUsuario());
         }
     }
 
@@ -109,11 +110,23 @@ public class TelaCadastroUsuarioController {
             Usuario usuario = new Usuario(id, nome, login, senha, perfil);
             UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
             usuarioDao.alterarUsuario(usuario);
+            apagarCampos();
 
         } else {
             JOptionPane.showMessageDialog(null, "É necessário que a linha contenha dados para ser selecionada");
 
         }
     }
+    
+    public void removerUsuario(){
+        conexao = ModuloConexao.conector();
+        int id = Integer.parseInt(telaUsuario.getTxtId().getText());
+        UsuarioDAO usuarioDao = new UsuarioDAO(conexao);
+        usuarioDao.removerUsuario(id);
+        apagarCampos();
+    
+    }
+    
+    
 
 }

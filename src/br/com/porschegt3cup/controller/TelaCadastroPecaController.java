@@ -117,6 +117,7 @@ public class TelaCadastroPecaController {
 
         if (rs != null) {
             telaCadastroPeca.getTblPeca().setModel(DbUtils.resultSetToTableModel(rs));
+            Utils.ajustarLarguraColunas(telaCadastroPeca.getTblPeca());
         }
 
     }

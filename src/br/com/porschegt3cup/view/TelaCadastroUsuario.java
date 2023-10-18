@@ -151,7 +151,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Cadastro de Locação");
+        setTitle("Cadastro de Usuario");
         setPreferredSize(new java.awt.Dimension(1530, 905));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -389,25 +389,25 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_tblUsuarioMouseClicked
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
-      /*  if ((!existeCamposObrigatoriosVazios()) && (!txtId.getText().isEmpty())) {
-            controller.alterarLocacao();
+        if ((!existeCamposObrigatoriosVazios()) && (!txtId.getText().isEmpty())) {
+            controller.alterarUsuario();
 
         } else {
             JOptionPane.showMessageDialog(null, "Para alterar uma locação todos os campos devem estar preenchidos inclusive o ID");
-        }*/
+        }
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-       /* if (!txtId.getText().isEmpty()) {
-            int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover esta locação?", "ATENÇÃO!", JOptionPane.YES_NO_OPTION);
+        if (!txtId.getText().isEmpty()) {
+            int confirma = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja remover este Usuario?", "ATENÇÃO!", JOptionPane.YES_NO_OPTION);
             if (confirma == JOptionPane.YES_OPTION) {
-                controller.removerLocacao();
+                controller.removerUsuario();
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "Para remover uma locação o campo (ID) deve estar preenchido");
+            JOptionPane.showMessageDialog(null, "Para remover um usuario o campo (ID) deve estar preenchido");
         }
-*/
+
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void btnLimparPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparPesquisaActionPerformed

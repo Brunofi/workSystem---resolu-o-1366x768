@@ -169,6 +169,11 @@ public class TelaSaidaPeca extends javax.swing.JInternalFrame {
         });
 
         cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CONSUMO", "VALE-PECA" }));
+        cbTipo.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                cbTipoFocusLost(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel9.setText("*Chassis");
@@ -393,6 +398,10 @@ public class TelaSaidaPeca extends javax.swing.JInternalFrame {
     private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
         controller.apagarCampos();
     }//GEN-LAST:event_btnLimparCamposActionPerformed
+
+    private void cbTipoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_cbTipoFocusLost
+        controller.verificaTipoConsumo();
+    }//GEN-LAST:event_cbTipoFocusLost
 
     public ButtonGroup getButtonGroup1() {
         return buttonGroup1;

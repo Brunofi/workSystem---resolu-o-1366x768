@@ -57,6 +57,7 @@ public class TelaEntradaPecaController {
 
         if (rs != null) {
             telaEntradaPeca.getTblEntradaPeca().setModel(DbUtils.resultSetToTableModel(rs));
+            Utils.ajustarLarguraColunas(telaEntradaPeca.getTblEntradaPeca());
         }
 
     }
@@ -66,14 +67,14 @@ public class TelaEntradaPecaController {
         int quantidadeEntrada = Integer.parseInt(telaEntradaPeca.getTxtQuantidadeEntrada().getText());
         String motivo = telaEntradaPeca.getCbMotivo().getSelectedItem().toString();
         String observacao = telaEntradaPeca.getTxtObservacao().getText();
-        int quantidadeEstoque = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 2).toString());
+        //int quantidadeEstoque = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 2).toString());
         int idEstoque = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 5).toString());
         int idPeca = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 6).toString());
         int idlocacao = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 7).toString());
-        int quantidadeSomada = quantidadeEstoque + quantidadeEntrada;
+        //int quantidadeSomada = quantidadeEstoque + quantidadeEntrada;
         //System.out.println(quantidadeSomada);
         Entrada entrada = new Entrada(quantidadeEntrada, motivo, Utils.colaboradorLogado, observacao, idPeca, idlocacao);
-        Estoque estoque = new Estoque(idEstoque, quantidadeSomada);
+        Estoque estoque = new Estoque(idEstoque, quantidadeEntrada);
         this.entrada = entrada;
         this.estoque = estoque;
 
@@ -86,8 +87,9 @@ public class TelaEntradaPecaController {
 
         if (Utils.linhaSelecionadaContemDados(telaEntradaPeca.getTblEntradaPeca())) {
             coletaDadosPreencheVariaveis();
-            estoqueDao.alterarQuantidadePecaNoEstoque(estoque.getId(), estoque.getQuantidade());
+            estoqueDao.adicionarQuantidadePecaNoEstoque(estoque.getId(), estoque.getQuantidade());
             entradaDao.registrarDadosDeEntradaNoEstoque(entrada);
+            apagarCampos();
 
         } else {
             JOptionPane.showMessageDialog(null, "É necessario selecionar uma linha da tabela com dados para registrar a entrada de uma peça ");
