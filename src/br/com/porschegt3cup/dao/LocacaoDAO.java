@@ -10,6 +10,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 /**
@@ -95,5 +98,24 @@ public class LocacaoDAO {
         }
 
     }
+
+    public List<String> buscaListaLocacoes() {
+        
+        List <String> listaLocacoes = new ArrayList<>();
+        String sql = "select * from tblocacoes";
+        
+        try {
+            Statement statement = conexao.createStatement();
+            rs = statement.executeQuery(sql);
+            while (rs.next()){
+                String locacao = rs.getString("locacao");
+                listaLocacoes.add(locacao);
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return listaLocacoes;
+        
+        }
 
 }
