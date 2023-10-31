@@ -102,11 +102,11 @@ public class TelaInventario extends javax.swing.JInternalFrame {
 
         jLabel4 = new javax.swing.JLabel();
         btnProcurar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblInventario = new javax.swing.JTable();
         btnAplicar = new javax.swing.JButton();
         btnLimparPesquisa = new javax.swing.JButton();
         cbLocacao = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblInventario = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -128,16 +128,24 @@ public class TelaInventario extends javax.swing.JInternalFrame {
             }
         });
 
-        tblInventario = new javax.swing.JTable(){
-            public boolean isCellEditable(int rowIndex, int colIndex){
-                return false;
+        btnAplicar.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnAplicar.setText("Aplicar");
+        btnAplicar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAplicarActionPerformed(evt);
             }
-        };
+        });
+
+        btnLimparPesquisa.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnLimparPesquisa.setText("Limpar campos");
+        btnLimparPesquisa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparPesquisaActionPerformed(evt);
+            }
+        });
+
         tblInventario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
                 {null, null, null, null, null, null},
@@ -168,51 +176,29 @@ public class TelaInventario extends javax.swing.JInternalFrame {
                 "ID", "PART NUMBER", "DESCRIÇÃO", "LOCAÇÃO", "SUB LOCAÇÃO", "QTD CONFERIDA"
             }
         ));
-        tblInventario.setToolTipText("");
-        tblInventario.setFocusable(false);
-        tblInventario.getTableHeader().setReorderingAllowed(false);
-        tblInventario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblInventarioMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(tblInventario);
-
-        btnAplicar.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        btnAplicar.setText("Aplicar");
-        btnAplicar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAplicarActionPerformed(evt);
-            }
-        });
-
-        btnLimparPesquisa.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btnLimparPesquisa.setText("Limpar campos");
-        btnLimparPesquisa.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparPesquisaActionPerformed(evt);
-            }
-        });
+        jScrollPane2.setViewportView(tblInventario);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(65, 65, 65)
-                .addComponent(jLabel4)
-                .addGap(18, 18, 18)
-                .addComponent(cbLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnProcurar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 75, Short.MAX_VALUE)
+                .addGap(0, 1024, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnLimparPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1086, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnLimparPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(353, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(65, 65, 65)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(cbLocacao, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnProcurar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,9 +208,9 @@ public class TelaInventario extends javax.swing.JInternalFrame {
                     .addComponent(jLabel4)
                     .addComponent(btnProcurar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cbLocacao))
-                .addGap(52, 52, 52)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 540, Short.MAX_VALUE)
-                .addGap(33, 33, 33)
+                .addGap(48, 48, 48)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                 .addComponent(btnLimparPesquisa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAplicar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -238,24 +224,17 @@ public class TelaInventario extends javax.swing.JInternalFrame {
 
 
     private void btnProcurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarActionPerformed
-        
+        if (existeCamposObrigatoriosVazios()) {
+            JOptionPane.showMessageDialog(null, "é necessario selecionar uma locação para iniciar o inventario");
+        } else {
+            controller.obterPecasNaTabelaDeInventario();
+        }
     }//GEN-LAST:event_btnProcurarActionPerformed
 
     private void btnAplicarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAplicarActionPerformed
-      /*  if (existeCamposObrigatoriosVazios()) {
-            JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios para cadastrar um usuario");
-        } else if (!txtId.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Não é possivel cadastrar um usuario com  campo ID preenchido");
-        } else {
-            controller.inserirUsuario();
-        }
-*/
-    }//GEN-LAST:event_btnAplicarActionPerformed
+        
 
-    private void tblInventarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblInventarioMouseClicked
-       // deixarCamposazios();
-        //controller.preencheCampos();
-    }//GEN-LAST:event_tblInventarioMouseClicked
+    }//GEN-LAST:event_btnAplicarActionPerformed
 
     private void btnLimparPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparPesquisaActionPerformed
        // controller.apagarCampos();
@@ -268,7 +247,7 @@ public class TelaInventario extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnProcurar;
     private javax.swing.JComboBox<String> cbLocacao;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tblInventario;
     // End of variables declaration//GEN-END:variables
 }

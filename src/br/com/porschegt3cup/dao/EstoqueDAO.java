@@ -97,6 +97,36 @@ public class EstoqueDAO {
         return null;
     }
 
+    public ResultSet procurarPecaEstoquePorLocacao(String locacao) {
+        String sql = "select\n"
+                + "tbestoque.id as `ID`,\n"
+                + "tbpecas.partnumber as `PART NUMBER`,tbpecas.nome as `DESCRIÇÂO`,\n"
+                + "tblocacoes.locacao as `LOCAÇÂO`,tblocacoes.sub as `SUB LOCAÇÂO`\n"
+                + "from tbestoque\n"
+                + "inner join\n"
+                + "tbpecas on tbpecas.id = tbestoque.idpeca\n"
+                + "inner join\n"
+                + "tblocacoes on tblocacoes.id = tbestoque.idlocacao\n"
+                + "where tblocacoes.locacao = ?\n"
+                + "order by tblocacoes.sub;";
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setString(1, locacao);
+            rs = pst.executeQuery();
+            if (!rs.isBeforeFirst()) {
+                JOptionPane.showMessageDialog(null, "Peça não encontrada");
+                return null;
+            }
+
+            return rs;
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return null;
+ 
+    }
+
     public void subtrairQuantidadePecaNoEstoque(int id, int quantidade) {
         String sql = "UPDATE tbestoque SET quantidade = quantidade - ? WHERE id = ?";
 
@@ -109,7 +139,7 @@ public class EstoqueDAO {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
+
     public void adicionarQuantidadePecaNoEstoque(int id, int quantidade) {
         String sql = "UPDATE tbestoque SET quantidade = quantidade + ? WHERE id = ?";
 
@@ -123,5 +153,4 @@ public class EstoqueDAO {
         }
     }
 
-    
 }

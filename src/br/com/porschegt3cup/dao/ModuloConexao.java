@@ -12,7 +12,7 @@ import java.sql.*;
  * @author bruno
  */
 public class ModuloConexao {
-
+/*
     // método para estabelecer conexão
     public static Connection conector() {
         Connection conexao = null;
@@ -31,4 +31,28 @@ public class ModuloConexao {
             return null;
         }
     }
+*/
+    
+    //metodo para estabelecer conexão
+    public static Connection conector() {
+        Connection conexao = null;
+        String driver = "com.mysql.cj.jdbc.Driver"; //driver do banco utilizado
+        String url = "jdbc:mysql://localhost/porschegt3cup"; //caminho do banco
+        String usuario = System.getenv("DB_USERNAME");
+        String senha = System.getenv("DB_PASSWORD");
+
+        try {
+            Class.forName(driver);
+            conexao = DriverManager.getConnection(url, usuario, senha);
+            return conexao;
+        } catch (Exception e) {
+
+            return null;
+
+        }
+
+    }
+
+    
+    
 }

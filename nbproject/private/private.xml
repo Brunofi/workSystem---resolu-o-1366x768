@@ -3,13 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/controller/TelaSaidaPecaController.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/dao/LocacaoDAO.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/view/TelaPrincipal.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/controller/TelaPrincipalController.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/view/TelaInventario.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/view/TelaSaidaPeca.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem/src/br/com/porschegt3cup/controller/TelaInventarioController.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/PecasSystem/src/br/com/porschegt3cup/view/TelaInventario.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/PecasSystem/src/br/com/porschegt3cup/dao/EstoqueDAO.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/PecasSystem/src/br/com/porschegt3cup/controller/TelaInventarioController.java</file>
         </group>
     </open-files>
 </project-private>
