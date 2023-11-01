@@ -12,7 +12,7 @@ import java.sql.*;
  * @author bruno
  */
 public class ModuloConexao {
-/*
+
     // método para estabelecer conexão
     public static Connection conector() {
         Connection conexao = null;
@@ -31,8 +31,8 @@ public class ModuloConexao {
             return null;
         }
     }
-*/
-    
+
+    /*
     //metodo para estabelecer conexão
     public static Connection conector() {
         Connection conexao = null;
@@ -53,6 +53,6 @@ public class ModuloConexao {
 
     }
 
-    
+    */
     
 }

@@ -12,7 +12,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import javax.swing.JOptionPane;
 
 /**
@@ -99,15 +102,13 @@ public class LocacaoDAO {
 
     }
 
-    public List<String> buscaListaLocacoes() {
-        
-        List <String> listaLocacoes = new ArrayList<>();
+    public Set<String> buscaListaLocacoes() {
+        Set<String> listaLocacoes = new TreeSet<>();
         String sql = "select * from tblocacoes";
-        
         try {
             Statement statement = conexao.createStatement();
             rs = statement.executeQuery(sql);
-            while (rs.next()){
+            while (rs.next()) {
                 String locacao = rs.getString("locacao");
                 listaLocacoes.add(locacao);
             }
@@ -115,7 +116,6 @@ public class LocacaoDAO {
             JOptionPane.showMessageDialog(null, e);
         }
         return listaLocacoes;
-        
-        }
+    }
 
 }
