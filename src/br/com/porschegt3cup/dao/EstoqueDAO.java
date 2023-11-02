@@ -152,5 +152,18 @@ public class EstoqueDAO {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+    
+    public void alterarQuantidadePecaEstoque(int id, int quantidade) {
+        String sql = "UPDATE tbestoque SET quantidade = ? WHERE id = ?";
+
+        try (PreparedStatement pst = conexao.prepareStatement(sql)) {
+            pst.setInt(1, quantidade);
+            pst.setInt(2, id);
+            pst.executeUpdate();
+            //JOptionPane.showMessageDialog(null, "Alteração de quantidade de peça realizado com sucesso");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 
 }

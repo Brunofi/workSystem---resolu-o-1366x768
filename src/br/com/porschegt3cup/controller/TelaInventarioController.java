@@ -9,19 +9,13 @@ import br.com.porschegt3cup.dao.EstoqueDAO;
 import br.com.porschegt3cup.dao.LocacaoDAO;
 import br.com.porschegt3cup.dao.ModuloConexao;
 import br.com.porschegt3cup.view.TelaInventario;
-import java.awt.Component;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.Set;
-import javax.swing.DefaultCellEditor;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumn;
 
 /**
  *
@@ -46,16 +40,11 @@ public class TelaInventarioController {
         }
     }
 
-    public void obterPecasNaTabelaDeInventario() {
-        conexao = ModuloConexao.conector();
-        String locacao = telaInventario.getCbLocacao().getSelectedItem().toString();
-        EstoqueDAO estoqueDao = new EstoqueDAO(conexao);
-        ResultSet rs = estoqueDao.procurarPecaEstoquePorLocacao(locacao);
-
+    public void preencheTabelaInventario(ResultSet rs, JTable jTable) {
         if (rs != null) {
             try {
                 // Obtém o modelo da tabela
-                DefaultTableModel model = (DefaultTableModel) telaInventario.getTblInventario().getModel();
+                DefaultTableModel model = (DefaultTableModel) jTable.getModel();
 
                 // Limpa as linhas existentes, se houver
                 model.setRowCount(0);
@@ -73,23 +62,71 @@ public class TelaInventarioController {
                     model.addRow(row);
                 }
 
-                // Define um editor de células para as cinco primeiras colunas
-                for (int i = 0; i < 5; i++) {
-                    TableColumn column = telaInventario.getTblInventario().getColumnModel().getColumn(i);
-                    column.setCellEditor(new DefaultCellEditor(new JTextField()));
-                    column.setCellRenderer(new DefaultTableCellRenderer() {
-                        @Override
-                        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-                            c.setEnabled(false);
-                            return c;
-                        }
-                    });
-                }
+                //Utils.tornarColunasNaoEditaveis(telaInventario.getTblInventario(), 5);
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Erro ao preencher a tabela: " + e.getMessage());
             }
         }
+
+    }
+
+    public void obterPecasNaTabelaDeInventario() {
+        conexao = ModuloConexao.conector();
+        String locacao = telaInventario.getCbLocacao().getSelectedItem().toString();
+        EstoqueDAO estoqueDao = new EstoqueDAO(conexao);
+        ResultSet rs = estoqueDao.procurarPecaEstoquePorLocacao(locacao);
+        preencheTabelaInventario(rs, telaInventario.getTblInventario());
+        Utils.permitirSelecaoApenasUmaLinha(telaInventario.getTblInventario());
+        Utils.ajustarLarguraColunas(telaInventario.getTblInventario());
+        Utils.tornarColunasNaoEditaveis(telaInventario.getTblInventario(), 5);
+
+    }
+
+    public void atualizarQuantidadeConferidaNoEstoque() {
+        conexao = ModuloConexao.conector();
+        EstoqueDAO estoqueDao = new EstoqueDAO(conexao);
+
+        try {
+            if (Utils.tabelaEstaPreenchida(telaInventario.getTblInventario())) {
+                DefaultTableModel model = (DefaultTableModel) telaInventario.getTblInventario().getModel();
+                int numRows = model.getRowCount();
+
+                for (int i = 0; i < numRows; i++) {
+                    int idEstoque = (int) model.getValueAt(i, 0); // Obtém o ID do estoque da primeira coluna
+                    Object quantidadeConferida = model.getValueAt(i, 5);
+                    try {
+                        if (quantidadeConferida != null && !quantidadeConferida.toString().isEmpty()) {
+                            quantidadeConferida = Integer.parseInt(quantidadeConferida.toString());
+                        } else {
+                            quantidadeConferida = 0; // Defina um valor padrão quando estiver vazio
+                        }
+                    } catch (NumberFormatException e) {
+                        // Tratamento para o caso de não ser um número válido
+                        quantidadeConferida = 0;
+                    }
+
+                    // Chama o método para atualizar a quantidade na base de dados
+                    estoqueDao.alterarQuantidadePecaEstoque(idEstoque, (int) quantidadeConferida);
+
+                }
+                JOptionPane.showMessageDialog(null, "Alteração de quantidade de peça realizado com sucesso");
+                apagarCampos();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "A tabela está vazia. Preencha os dados antes de atualizar.");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+    
+    public void apagarCampos(){
+        DefaultTableModel tabela = (DefaultTableModel) telaInventario.getTblInventario().getModel();
+        tabela.setRowCount(0);
+        telaInventario.getCbLocacao().setSelectedItem(null);
+        carregarLocacoes();
     }
 
 }
