@@ -8,10 +8,13 @@ package br.com.porschegt3cup.controller;
 import br.com.porschegt3cup.dao.EstoqueDAO;
 import br.com.porschegt3cup.dao.LocacaoDAO;
 import br.com.porschegt3cup.dao.ModuloConexao;
+import br.com.porschegt3cup.model.Inventario;
 import br.com.porschegt3cup.view.TelaInventario;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -25,6 +28,7 @@ public class TelaInventarioController {
 
     private TelaInventario telaInventario;
     Connection conexao = null;
+    private List<Inventario> inventario = new ArrayList<>();
 
     public TelaInventarioController(TelaInventario telaInventario) {
         this.telaInventario = telaInventario;
@@ -69,6 +73,31 @@ public class TelaInventarioController {
         }
 
     }
+/*
+    public void preencheListaLocacaoInventariada(ResultSet rs) {
+        if (rs != null) {
+
+            try {
+                Inventario inventario = new Inventario();
+
+                while (rs.next()) {
+                    inventario.setIdEstoque(rs.getInt("ID"));
+                    inventario.setQuantidadeVelha(rs.getInt("QUANTIDADE"));
+                    this.inventario.add(inventario);
+
+                }
+                
+                for(Inventario i: this.inventario){
+                    System.out.println(i.toString());
+                }
+
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, e.getMessage());
+            }
+
+        }
+
+    }*/
 
     public void obterPecasNaTabelaDeInventario() {
         conexao = ModuloConexao.conector();
@@ -121,8 +150,8 @@ public class TelaInventarioController {
         }
 
     }
-    
-    public void apagarCampos(){
+
+    public void apagarCampos() {
         DefaultTableModel tabela = (DefaultTableModel) telaInventario.getTblInventario().getModel();
         tabela.setRowCount(0);
         telaInventario.getCbLocacao().setSelectedItem(null);

@@ -100,6 +100,7 @@ public class EstoqueDAO {
     public ResultSet procurarPecaEstoquePorLocacao(String locacao) {
         String sql = "select\n"
                 + "tbestoque.id as `ID`,\n"
+                + "tbestoque.quantidade as `QUANTIDADE`, \n"
                 + "tbpecas.partnumber as `PART NUMBER`,tbpecas.nome as `DESCRIÇÂO`,\n"
                 + "tblocacoes.locacao as `LOCAÇÂO`,tblocacoes.sub as `SUB LOCAÇÂO`\n"
                 + "from tbestoque\n"
@@ -114,7 +115,7 @@ public class EstoqueDAO {
             pst.setString(1, locacao);
             rs = pst.executeQuery();
             if (!rs.isBeforeFirst()) {
-                JOptionPane.showMessageDialog(null, "Peça não encontrada");
+                JOptionPane.showMessageDialog(null, "Locação Vazia");
                 return null;
             }
 
