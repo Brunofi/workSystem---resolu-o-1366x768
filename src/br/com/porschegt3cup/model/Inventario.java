@@ -14,15 +14,30 @@ public class Inventario {
     private int id;
     private int idEstoque;
     private int quantidadeVelha;
-    private int quantidaAtual;
+    private int quantidadeAtual;
+    private String nomeColaborador;
+    
 
-    public Inventario(int idEstoque, int quantidadeVelha, int quantidaAtual) {
-        this.idEstoque = idEstoque;
-        this.quantidadeVelha = quantidadeVelha;
-        this.quantidaAtual = quantidaAtual;
-    }
+    
 
     public Inventario() {
+    }
+
+    public Inventario(int idEstoque, int quantidadeVelha, int quantidaAtual, String nomeColaborador) {
+        this.idEstoque = idEstoque;
+        this.quantidadeVelha = quantidadeVelha;
+        this.quantidadeAtual = quantidaAtual;
+        this.nomeColaborador = nomeColaborador;
+    }
+    
+    
+
+    public String getNomeColaborador() {
+        return nomeColaborador;
+    }
+
+    public void setNomeColaborador(String nomeColaborador) {
+        this.nomeColaborador = nomeColaborador;
     }
     
     
@@ -52,17 +67,17 @@ public class Inventario {
         this.quantidadeVelha = quantidadeVelha;
     }
 
-    public int getQuantidaAtual() {
-        return quantidaAtual;
+    public int getQuantidadeAtual() {
+        return quantidadeAtual;
     }
 
-    public void setQuantidaAtual(int quantidaAtual) {
-        this.quantidaAtual = quantidaAtual;
+    public void setQuantidadeAtual(int quantidadeAtual) {
+        this.quantidadeAtual = quantidadeAtual;
     }
 
     @Override
     public String toString() {
-        return "Inventario{" + "id=" + id + ", idEstoque=" + idEstoque + ", quantidadeVelha=" + quantidadeVelha + ", quantidaAtual=" + quantidaAtual + '}';
+        return "Inventario{" + "id=" + id + ", idEstoque=" + idEstoque + ", quantidadeVelha=" + quantidadeVelha + ", quantidaAtual=" + quantidadeAtual + '}';
     }
     
     

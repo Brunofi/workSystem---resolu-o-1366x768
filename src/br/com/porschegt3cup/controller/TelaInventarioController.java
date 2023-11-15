@@ -6,6 +6,7 @@
 package br.com.porschegt3cup.controller;
 
 import br.com.porschegt3cup.dao.EstoqueDAO;
+import br.com.porschegt3cup.dao.InventarioDao;
 import br.com.porschegt3cup.dao.LocacaoDAO;
 import br.com.porschegt3cup.dao.ModuloConexao;
 import br.com.porschegt3cup.model.Inventario;
@@ -28,7 +29,6 @@ public class TelaInventarioController {
 
     private TelaInventario telaInventario;
     Connection conexao = null;
-    private List<Inventario> inventario = new ArrayList<>();
 
     public TelaInventarioController(TelaInventario telaInventario) {
         this.telaInventario = telaInventario;
@@ -61,19 +61,20 @@ public class TelaInventarioController {
                         rs.getString("DESCRIÇÂO"),
                         rs.getString("LOCAÇÂO"),
                         rs.getString("SUB LOCAÇÂO"),
+                        rs.getString("QUANTIDADE"),
                         "" // Adicione uma coluna vazia editável
                     };
                     model.addRow(row);
                 }
 
-                //Utils.tornarColunasNaoEditaveis(telaInventario.getTblInventario(), 5);
             } catch (SQLException e) {
                 JOptionPane.showMessageDialog(null, "Erro ao preencher a tabela: " + e.getMessage());
             }
         }
 
     }
-/*
+
+    /*
     public void preencheListaLocacaoInventariada(ResultSet rs) {
         if (rs != null) {
 
@@ -107,8 +108,15 @@ public class TelaInventarioController {
         preencheTabelaInventario(rs, telaInventario.getTblInventario());
         Utils.permitirSelecaoApenasUmaLinha(telaInventario.getTblInventario());
         Utils.ajustarLarguraColunas(telaInventario.getTblInventario());
-        Utils.tornarColunasNaoEditaveis(telaInventario.getTblInventario(), 5);
+        Utils.tornarColunasNaoEditaveis(telaInventario.getTblInventario(), 6);
 
+    }
+    
+    public void aplicarInventario(){
+        atualizarQuantidadeConferidaNoEstoque();
+        inserirDadosDeInventario();
+        apagarCampos();
+    
     }
 
     public void atualizarQuantidadeConferidaNoEstoque() {
@@ -122,7 +130,7 @@ public class TelaInventarioController {
 
                 for (int i = 0; i < numRows; i++) {
                     int idEstoque = (int) model.getValueAt(i, 0); // Obtém o ID do estoque da primeira coluna
-                    Object quantidadeConferida = model.getValueAt(i, 5);
+                    Object quantidadeConferida = model.getValueAt(i, 6);
                     try {
                         if (quantidadeConferida != null && !quantidadeConferida.toString().isEmpty()) {
                             quantidadeConferida = Integer.parseInt(quantidadeConferida.toString());
@@ -139,7 +147,52 @@ public class TelaInventarioController {
 
                 }
                 JOptionPane.showMessageDialog(null, "Alteração de quantidade de peça realizado com sucesso");
-                apagarCampos();
+                //apagarCampos();
+
+            } else {
+                JOptionPane.showMessageDialog(null, "A tabela está vazia. Preencha os dados antes de atualizar.");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+
+    }
+
+    public void inserirDadosDeInventario() {
+        conexao = ModuloConexao.conector();
+        InventarioDao inventarioDao = new InventarioDao(conexao);
+        List<Inventario> dados = new ArrayList<>();
+
+        try {
+            if (Utils.tabelaEstaPreenchida(telaInventario.getTblInventario())) {
+                DefaultTableModel model = (DefaultTableModel) telaInventario.getTblInventario().getModel();
+                int numRows = model.getRowCount();
+
+                for (int i = 0; i < numRows; i++) {
+                    int idEstoque = (int) model.getValueAt(i, 0); // Obtém o ID do estoque da primeira coluna
+                    Object quantidadeAntiga =  model.getValueAt(i, 5);
+                    Object quantidadeConferida = model.getValueAt(i, 6);
+                    String colaborador = Utils.colaboradorLogado;
+                    try {
+                        if (quantidadeConferida != null && !quantidadeConferida.toString().isEmpty()) {
+                            quantidadeAntiga = Integer.parseInt(quantidadeAntiga.toString());
+                            quantidadeConferida = Integer.parseInt(quantidadeConferida.toString());
+                            
+                        } else {
+                            quantidadeConferida = 0; // Defina um valor padrão quando estiver vazio
+                        }
+                    } catch (NumberFormatException e) {
+                        // Tratamento para o caso de não ser um número válido
+                        quantidadeConferida = 0;
+                    }
+                    //adiciona na lista 
+                    dados.add(new Inventario(idEstoque, (Integer)quantidadeAntiga, (Integer)quantidadeConferida, colaborador));
+                    
+                }
+                inventarioDao.inserirDadosNoInventario(dados);
+                JOptionPane.showMessageDialog(null, "Tabela de controle de inventario atualizada com sucesso");
+                
 
             } else {
                 JOptionPane.showMessageDialog(null, "A tabela está vazia. Preencha os dados antes de atualizar.");
