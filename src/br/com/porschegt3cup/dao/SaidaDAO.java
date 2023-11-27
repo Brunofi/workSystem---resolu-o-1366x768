@@ -98,7 +98,7 @@ public class SaidaDAO {
         }
         return listaEtapas;
     }
-
+/*
     public void registrarDadosDeSaidaNoEstoque(Saida saida) {
         String sql = "insert into tbsaida(quantidade,tipo_consumo,colaborador_entrega,colaborador_retirada,colaborador_lancamento,motivo_consumo,etapa,sessao,chassis,chassis_cedente,eixo_lado,idpeca,idlocacao)values(?,?,?,?,?,?,?,?,?,?,?,?,?) ";
 
@@ -122,6 +122,49 @@ public class SaidaDAO {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
+    }*/
+    
+    public int registrarDadosDeSaidaNoEstoque(Saida saida) {
+    String sql = "insert into tbsaida(quantidade,tipo_consumo,colaborador_entrega,colaborador_retirada,colaborador_lancamento,motivo_consumo,etapa,sessao,chassis,chassis_cedente,eixo_lado,idpeca,idlocacao) values(?,?,?,?,?,?,?,?,?,?,?,?,?) ";
+
+    try {
+        // Configurar o PreparedStatement para retornar o ID gerado
+        pst = conexao.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+        pst.setInt(1, saida.getQuantidadeSaida());
+        pst.setString(2, saida.getTipoMovimentacao());
+        pst.setString(3, saida.getColaboradorEntrega());
+        pst.setString(4, saida.getColaboradorRetira());
+        pst.setString(5, saida.getColaboradorLanca());
+        pst.setString(6, saida.getMotivoConsumo());
+        pst.setString(7, saida.getEtapa());
+        pst.setString(8, saida.getSessao());
+        pst.setString(9, saida.getChassis());
+        pst.setString(10, saida.getChassisCedente());
+        pst.setString(11, saida.getEixoLado());
+        pst.setInt(12, saida.getIdPeca());
+        pst.setInt(13, saida.getIdLocacao());
+
+        // Executar a atualização e obter o ID gerado
+        pst.executeUpdate();
+
+        ResultSet generatedKeys = pst.getGeneratedKeys();
+        if (generatedKeys.next()) {
+            int idGerado = generatedKeys.getInt(1);
+            JOptionPane.showMessageDialog(null, "Registro de saída de peça realizado com sucesso! ID gerado: " + idGerado);
+            return idGerado;  // Retornar o ID gerado
+        } else {
+            JOptionPane.showMessageDialog(null, "Falha ao obter o ID gerado.");
+            return -1;  // Ou outro valor padrão ou indicativo de falha
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+        return -1;  // Ou outro valor padrão ou indicativo de falha
+    } finally {
+        // Lembre-se de fechar os recursos, como PreparedStatement
+        // Aqui você deve fechar o PreparedStatement, a conexão, etc.
     }
+}
+
 
 }

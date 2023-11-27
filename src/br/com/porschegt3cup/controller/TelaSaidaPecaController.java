@@ -8,8 +8,10 @@ package br.com.porschegt3cup.controller;
 import static br.com.porschegt3cup.controller.Utils.linhaSelecionadaContemDados;
 import br.com.porschegt3cup.dao.EstoqueDAO;
 import br.com.porschegt3cup.dao.ModuloConexao;
+import br.com.porschegt3cup.dao.RecuperacaoPecaControleDAO;
 import br.com.porschegt3cup.dao.SaidaDAO;
 import br.com.porschegt3cup.model.Estoque;
+import br.com.porschegt3cup.model.PecaRecuperacao;
 import br.com.porschegt3cup.model.Saida;
 import br.com.porschegt3cup.view.TelaSaidaPeca;
 import java.sql.Connection;
@@ -171,13 +173,22 @@ public class TelaSaidaPecaController {
                 EstoqueDAO estoqueDao = new EstoqueDAO(conexao);
                 estoqueDao.subtrairQuantidadePecaNoEstoque(estoque.getId(), estoque.getQuantidade());
             }
+            
             SaidaDAO saidaDao = new SaidaDAO(conexao);
-            saidaDao.registrarDadosDeSaidaNoEstoque(saida);
+            int idRegistroSaida = saidaDao.registrarDadosDeSaidaNoEstoque(saida);
+            registrarPecaTabelaDeRecuperacao(idRegistroSaida);
             apagarCamposPosLancamento();
         } else {
             JOptionPane.showMessageDialog(null, "É necessario selecionar uma linha com dados para registrar a saída de uma peça");
         }
 
+    }
+    
+    public void registrarPecaTabelaDeRecuperacao(int idRegistroSaida){
+        conexao = ModuloConexao.conector();
+        RecuperacaoPecaControleDAO recuperacaoPecaControleDAO = new RecuperacaoPecaControleDAO(conexao);
+        PecaRecuperacao pecaRecuperacao = new PecaRecuperacao(idRegistroSaida, "EM ANALISE", "ESTOQUE");
+        recuperacaoPecaControleDAO.inserirPecaRecuperacao(pecaRecuperacao);
     }
 
     public void verificaTipoConsumo() {
