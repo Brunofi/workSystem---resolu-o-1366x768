@@ -6,7 +6,9 @@
 package br.com.porschegt3cup.view;
 
 import br.com.porschegt3cup.controller.TelaCadastroPecaController;
-import br.com.porschegt3cup.controller.TelaEntradaPecaController;
+
+import br.com.porschegt3cup.controller.TelaPecasEmRecuperacaoController;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -20,27 +22,25 @@ import javax.swing.JTextField;
  */
 public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
 
-    private final TelaEntradaPecaController controller;
+    private final TelaPecasEmRecuperacaoController controller;
 
     /**
      * Creates new form TelaLocacao
      */
     public TelaPecasEmRecuperacao() {
         initComponents();
-        controller = new TelaEntradaPecaController(this);
+        controller = new TelaPecasEmRecuperacaoController(this);
     }
 
+    
     private boolean existeCamposObrigatoriosVazios() {
+    return (
+        txtidRecuperacao.getText().isEmpty() ||
+        cbAtualizarSetor.getSelectedItem().toString().trim().isEmpty() ||
+        cbAtualizarSituacao.getSelectedItem().toString().trim().isEmpty()
+    );
+}
 
-        if (txtidRecuperacao.getText().isEmpty()
-                || cbMotivo.getSelectedItem().toString().isEmpty()) {
-            return true;
-
-        } else {
-            return false;
-        }
-
-    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -103,6 +103,7 @@ public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setText("Id");
 
+        txtidRecuperacao.setEditable(false);
         txtidRecuperacao.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtidRecuperacao.setPreferredSize(new java.awt.Dimension(500, 28));
         txtidRecuperacao.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -138,10 +139,15 @@ public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
         ));
         tblPecasEmRecuperacao.setFocusable(false);
         tblPecasEmRecuperacao.getTableHeader().setReorderingAllowed(false);
+        tblPecasEmRecuperacao.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblPecasEmRecuperacaoMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblPecasEmRecuperacao);
 
         btnAtualizar.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
-        btnAtualizar.setText("Registrar");
+        btnAtualizar.setText("Atualizar");
         btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAtualizarActionPerformed(evt);
@@ -331,10 +337,10 @@ public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
 
-        if (existeCamposObrigatoriosVazios()) {
-            JOptionPane.showMessageDialog(null, "é necessario preencher os campos obrigatórios paragistrar a entrada de uma peça");
+        if (existeCamposObrigatoriosVazios()==true) {
+            JOptionPane.showMessageDialog(null, "é necessario preencher os campos de STATUS e SETOR para atualizar o status da peça");
         } else {
-            controller.registrarEntrada();
+            controller.atualizarStatusPeca();
         }
 
     }//GEN-LAST:event_btnAtualizarActionPerformed
@@ -350,12 +356,16 @@ public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtidRecuperacaoKeyTyped
     }
     private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
-        controller.apagarCampos();
+        controller.limparBusca();
     }//GEN-LAST:event_btnLimparCamposActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        // TODO add your handling code here:
+        controller.procurarPecas();
     }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void tblPecasEmRecuperacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecasEmRecuperacaoMouseClicked
+        controller.preencherCampos();
+    }//GEN-LAST:event_tblPecasEmRecuperacaoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -385,20 +395,68 @@ public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtidRecuperacao;
     // End of variables declaration//GEN-END:variables
 
-    public JButton getBtnRegistrar() {
+    public JButton getBtnAtualizar() {
         return btnAtualizar;
     }
 
-    public void setBtnRegistrar(JButton btnRegistrar) {
-        this.btnAtualizar = btnRegistrar;
+    public void setBtnAtualizar(JButton btnAtualizar) {
+        this.btnAtualizar = btnAtualizar;
     }
 
-    public JComboBox<String> getCbMotivo() {
-        return cbMotivo;
+    public JButton getBtnBuscar() {
+        return btnBuscar;
     }
 
-    public void setCbMotivo(JComboBox<String> cbMotivo) {
-        this.cbMotivo = cbMotivo;
+    public void setBtnBuscar(JButton btnBuscar) {
+        this.btnBuscar = btnBuscar;
+    }
+
+    public JButton getBtnLimparCampos() {
+        return btnLimparCampos;
+    }
+
+    public void setBtnLimparCampos(JButton btnLimparCampos) {
+        this.btnLimparCampos = btnLimparCampos;
+    }
+
+    public ButtonGroup getButtonGroup1() {
+        return buttonGroup1;
+    }
+
+    public void setButtonGroup1(ButtonGroup buttonGroup1) {
+        this.buttonGroup1 = buttonGroup1;
+    }
+
+    public JComboBox<String> getCbAtualizarSetor() {
+        return cbAtualizarSetor;
+    }
+
+    public void setCbAtualizarSetor(JComboBox<String> cbAtualizarSetor) {
+        this.cbAtualizarSetor = cbAtualizarSetor;
+    }
+
+    public JComboBox<String> getCbAtualizarSituacao() {
+        return cbAtualizarSituacao;
+    }
+
+    public void setCbAtualizarSituacao(JComboBox<String> cbAtualizarSituacao) {
+        this.cbAtualizarSituacao = cbAtualizarSituacao;
+    }
+
+    public JComboBox<String> getCbFiltroSetor() {
+        return cbFiltroSetor;
+    }
+
+    public void setCbFiltroSetor(JComboBox<String> cbFiltroSetor) {
+        this.cbFiltroSetor = cbFiltroSetor;
+    }
+
+    public JComboBox<String> getCbFiltroSituacao() {
+        return cbFiltroSituacao;
+    }
+
+    public void setCbFiltroSituacao(JComboBox<String> cbFiltroSituacao) {
+        this.cbFiltroSituacao = cbFiltroSituacao;
     }
 
     public JRadioButton getrBtnDescricao() {
@@ -417,12 +475,12 @@ public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
         this.rBtnPartNumber = rBtnPartNumber;
     }
 
-    public JTable getTblEntradaPeca() {
+    public JTable getTblPecasEmRecuperacao() {
         return tblPecasEmRecuperacao;
     }
 
-    public void setTblEntradaPeca(JTable tblEntradaPeca) {
-        this.tblPecasEmRecuperacao = tblEntradaPeca;
+    public void setTblPecasEmRecuperacao(JTable tblPecasEmRecuperacao) {
+        this.tblPecasEmRecuperacao = tblPecasEmRecuperacao;
     }
 
     public JTextField getTxtLPesquisar() {
@@ -433,19 +491,13 @@ public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
         this.txtLPesquisar = txtLPesquisar;
     }
 
-    public JTextField getTxtObservacao() {
-        return txtObservacao;
-    }
-
-    public void setTxtObservacao(JTextField txtObservacao) {
-        this.txtObservacao = txtObservacao;
-    }
-
-    public JTextField getTxtQuantidadeEntrada() {
+    public JTextField getTxtidRecuperacao() {
         return txtidRecuperacao;
     }
 
-    public void setTxtQuantidadeEntrada(JTextField txtQuantidadeEntrada) {
-        this.txtidRecuperacao = txtQuantidadeEntrada;
+    public void setTxtidRecuperacao(JTextField txtidRecuperacao) {
+        this.txtidRecuperacao = txtidRecuperacao;
     }
+
+    
 }
