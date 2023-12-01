@@ -17,10 +17,12 @@ import br.com.porschegt3cup.view.TelaCadastroUsuario;
 import br.com.porschegt3cup.view.TelaInventario;
 import br.com.porschegt3cup.view.TelaPecasEmRecuperacao;
 import br.com.porschegt3cup.view.TelaSaidaPeca;
+import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.Date;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -74,55 +76,70 @@ public class TelaPrincipalController {
         //System.out.println(perfil);
     }
 
-    public void abrirTelaUsuario() {
+    public void abrirTelaUsuario() throws PropertyVetoException {
         TelaCadastroUsuario telaUsuario = new TelaCadastroUsuario();
         telaUsuario.setVisible(true);
         telaPrincipal.getDesktop().add(telaUsuario);
-
+        telaUsuario.setMaximum(true);
     }
 
-    public void abrirTelaLocacao() {
+    public void abrirTelaLocacao() throws PropertyVetoException {
         TelaCadastroLocacao telaLocacao = new TelaCadastroLocacao();
         telaLocacao.setVisible(true);
         telaPrincipal.getDesktop().add(telaLocacao);
+        telaLocacao.setMaximum(true);
 
     }
 
-    public void abrirTelaCadastroPeca() {
+    public void abrirTelaCadastroPeca() throws PropertyVetoException {
         TelaCadastroPeca telaCadastroPeca = new TelaCadastroPeca();
         telaCadastroPeca.setVisible(true);
         telaPrincipal.getDesktop().add(telaCadastroPeca);
+        telaCadastroPeca.setMaximum(true);
 
     }
 
-    public void abrirTelaCadastroEstoque() {
+    public void abrirTelaCadastroEstoque() throws PropertyVetoException {
         TelaCadastroEstoque telaCadastroEstoque = new TelaCadastroEstoque();
         telaCadastroEstoque.setVisible(true);
         telaPrincipal.getDesktop().add(telaCadastroEstoque);
+        telaCadastroEstoque.setMaximum(true);
     }
 
-    public void abrirTelaEntradaPeca() {
+    public void abrirTelaEntradaPeca() throws PropertyVetoException {
         TelaEntradaPeca telaEntradaPeca = new TelaEntradaPeca();
         telaEntradaPeca.setVisible(true);
         telaPrincipal.getDesktop().add(telaEntradaPeca);
+        telaEntradaPeca.setMaximum(true);
     }
 
-    public void abrirTelaSaidaPeca() {
+    public void abrirTelaSaidaPeca() throws PropertyVetoException {
         
         TelaSaidaPeca telaSaidaPeca = new TelaSaidaPeca();
         telaSaidaPeca.setVisible(true);
         telaPrincipal.getDesktop().add(telaSaidaPeca);
+        telaSaidaPeca.setMaximum(true);
      }
     
-    public void abrirTelaInventario(){
+    public void abrirTelaInventario() throws PropertyVetoException{
         TelaInventario telaInventario = new TelaInventario();
         telaInventario.setVisible(true);
         telaPrincipal.getDesktop().add(telaInventario);
+        telaInventario.setMaximum(true);
     }
 
-    public void abrirTelaRecuperacaoPecas() {
-        TelaPecasEmRecuperacao telaPecasEmRecuperacao = new TelaPecasEmRecuperacao();
-        telaPecasEmRecuperacao.setVisible(true);
-        telaPrincipal.getDesktop().add(telaPecasEmRecuperacao);
-       }
+    public void abrirTelaRecuperacaoPecas() throws PropertyVetoException {
+    TelaPecasEmRecuperacao telaPecasEmRecuperacao = new TelaPecasEmRecuperacao();
+    telaPecasEmRecuperacao.setVisible(true);
+    telaPrincipal.getDesktop().add(telaPecasEmRecuperacao);
+    telaPecasEmRecuperacao.setMaximum(true);
+}
+
+  
+
+
+
+
+
+
 }

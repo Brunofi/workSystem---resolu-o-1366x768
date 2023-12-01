@@ -78,7 +78,7 @@ public class RecuperacaoPecaControleDAO {
                 + "    tbpecas.partnumber like ?;";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, partNumber + "%");
+            pst.setString(1,partNumber + "%");
             rs = pst.executeQuery();
 
             if (!rs.isBeforeFirst()) {
@@ -115,7 +115,7 @@ public class RecuperacaoPecaControleDAO {
                 + "    tbpecas.partnumber like ?  and tbcontrole_recuperacao_pecas.setor =?;";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, partNumber + "%");
+            pst.setString(1,partNumber + "%");
             pst.setString(2, setor);
 
             rs = pst.executeQuery();
@@ -131,7 +131,7 @@ public class RecuperacaoPecaControleDAO {
         }
         return null;
     }
-    
+
     public ResultSet procurarPecasTabelaRecuperacaoPorPartNumberESituacao(String partNumber, String situacao) {
 
         String sql = "SELECT \n"
@@ -170,7 +170,7 @@ public class RecuperacaoPecaControleDAO {
         }
         return null;
     }
-    
+
     public ResultSet procurarPecasTabelaRecuperacaoPorPartNumberESituacaoESetor(String partNumber, String situacao, String setor) {
 
         String sql = "SELECT \n"
@@ -193,7 +193,7 @@ public class RecuperacaoPecaControleDAO {
                 + "    tbpecas.partnumber like ?  and tbcontrole_recuperacao_pecas.situacao =? and tbcontrole_recuperacao_pecas.setor =?;";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, partNumber + "%");
+            pst.setString(1, partNumber + "%");;
             pst.setString(2, situacao);
             pst.setString(3, setor);
 
@@ -232,7 +232,8 @@ public class RecuperacaoPecaControleDAO {
                 + "    tbpecas.nome like ?;";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, descricao + "%");
+            pst.setString(1, "%" + descricao + "%");
+
             rs = pst.executeQuery();
 
             if (!rs.isBeforeFirst()) {
@@ -246,7 +247,7 @@ public class RecuperacaoPecaControleDAO {
         }
         return null;
     }
-    
+
     public ResultSet procurarPecasTabelaRecuperacaoPorDescricaoESituacaoESetor(String descricao, String situacao, String setor) {
 
         String sql = "SELECT \n"
@@ -269,7 +270,7 @@ public class RecuperacaoPecaControleDAO {
                 + "    tbpecas.nome like ?  and tbcontrole_recuperacao_pecas.situacao =? and tbcontrole_recuperacao_pecas.setor =?;";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, descricao + "%");
+            pst.setString(1, "%" + descricao + "%");
             pst.setString(2, situacao);
             pst.setString(3, setor);
 
@@ -286,7 +287,7 @@ public class RecuperacaoPecaControleDAO {
         }
         return null;
     }
-    
+
     public ResultSet procurarPecasTabelaRecuperacaoPorDescricaoESetor(String descricao, String setor) {
 
         String sql = "SELECT \n"
@@ -309,7 +310,7 @@ public class RecuperacaoPecaControleDAO {
                 + "    tbpecas.nome like ?  and tbcontrole_recuperacao_pecas.setor =?;";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, descricao + "%");
+            pst.setString(1, "%" + descricao + "%");
             pst.setString(2, setor);
 
             rs = pst.executeQuery();
@@ -325,7 +326,7 @@ public class RecuperacaoPecaControleDAO {
         }
         return null;
     }
-    
+
     public ResultSet procurarPecasTabelaRecuperacaoPorDescricaoESituacao(String descricao, String situacao) {
 
         String sql = "SELECT \n"
@@ -348,7 +349,7 @@ public class RecuperacaoPecaControleDAO {
                 + "    tbpecas.nome like ?  and tbcontrole_recuperacao_pecas.situacao =?;";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, descricao + "%");
+            pst.setString(1, "%" + descricao + "%");
             pst.setString(2, situacao);
 
             rs = pst.executeQuery();

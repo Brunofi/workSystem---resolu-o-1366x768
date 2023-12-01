@@ -158,7 +158,7 @@ public class TelaInventarioController {
         }
 
     }
-
+/*
     public void inserirDadosDeInventario() {
         conexao = ModuloConexao.conector();
         InventarioDao inventarioDao = new InventarioDao(conexao);
@@ -202,7 +202,49 @@ public class TelaInventarioController {
             JOptionPane.showMessageDialog(null, e);
         }
 
+    }*/
+    
+    public void inserirDadosDeInventario() {
+    conexao = ModuloConexao.conector();
+    InventarioDao inventarioDao = new InventarioDao(conexao);
+    List<Inventario> dados = new ArrayList<>();
+
+    try {
+        if (Utils.tabelaEstaPreenchida(telaInventario.getTblInventario())) {
+            DefaultTableModel model = (DefaultTableModel) telaInventario.getTblInventario().getModel();
+            int numRows = model.getRowCount();
+
+            for (int i = 0; i < numRows; i++) {
+                int idEstoque = (int) model.getValueAt(i, 0); // Obtém o ID do estoque da primeira coluna
+                Object quantidadeAntiga = model.getValueAt(i, 5);
+                Object quantidadeConferida = model.getValueAt(i, 6);
+                String colaborador = Utils.colaboradorLogado;
+
+                // Tratar valores nulos ou vazios como zero
+                int quantidadeAntigaInt = (quantidadeAntiga != null && !quantidadeAntiga.toString().isEmpty())
+                        ? Integer.parseInt(quantidadeAntiga.toString())
+                        : 0;
+
+                int quantidadeConferidaInt = (quantidadeConferida != null && !quantidadeConferida.toString().isEmpty())
+                        ? Integer.parseInt(quantidadeConferida.toString())
+                        : 0;
+
+                // Adicionar na lista
+                dados.add(new Inventario(idEstoque, quantidadeAntigaInt, quantidadeConferidaInt, colaborador));
+            }
+
+            inventarioDao.inserirDadosNoInventario(dados);
+            JOptionPane.showMessageDialog(null, "Tabela de controle de inventário atualizada com sucesso");
+
+        } else {
+            JOptionPane.showMessageDialog(null, "A tabela está vazia. Preencha os dados antes de atualizar.");
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
     }
+}
+
 
     public void apagarCampos() {
         DefaultTableModel tabela = (DefaultTableModel) telaInventario.getTblInventario().getModel();
