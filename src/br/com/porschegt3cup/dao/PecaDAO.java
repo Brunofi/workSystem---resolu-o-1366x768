@@ -109,7 +109,7 @@ public class PecaDAO {
 
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, peca + "%");
+            pst.setString(1, "%" + peca + "%");
             rs = pst.executeQuery();
             if (!rs.isBeforeFirst()) {
                 JOptionPane.showMessageDialog(null, "Nenhuma peça encontrada");

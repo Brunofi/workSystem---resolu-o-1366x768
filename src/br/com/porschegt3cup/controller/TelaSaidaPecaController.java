@@ -175,7 +175,7 @@ public class TelaSaidaPecaController {
             }
             
             SaidaDAO saidaDao = new SaidaDAO(conexao);
-            int idRegistroSaida = saidaDao.registrarDadosDeSaidaNoEstoque(saida);
+            int idRegistroSaida = saidaDao.registrarDadosDeSaidaNoEstoque(saida,estoque);
             registrarPecaTabelaDeRecuperacao(idRegistroSaida);
             apagarCamposPosLancamento();
         } else {

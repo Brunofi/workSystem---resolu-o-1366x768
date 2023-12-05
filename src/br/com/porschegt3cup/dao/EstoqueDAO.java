@@ -82,7 +82,7 @@ public class EstoqueDAO {
                 + "where tbpecas.nome like ?";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, peca + "%");
+            pst.setString(1, "%" +peca + "%");
             rs = pst.executeQuery();
 
             if (!rs.isBeforeFirst()) {
@@ -135,7 +135,7 @@ public class EstoqueDAO {
             pst.setInt(1, quantidade);
             pst.setInt(2, id);
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Alteração de quantidade de peça realizado com sucesso");
+            JOptionPane.showMessageDialog(null, "subtração de quantidade em estoque realizado com sucesso");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
@@ -148,7 +148,7 @@ public class EstoqueDAO {
             pst.setInt(1, quantidade);
             pst.setInt(2, id);
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Alteração de quantidade de peça realizado com sucesso");
+            JOptionPane.showMessageDialog(null, "Adição de quantidade em estoque realizado com sucesso");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }

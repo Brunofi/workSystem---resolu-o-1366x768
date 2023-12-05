@@ -40,6 +40,20 @@ public class RecuperacaoPecaControleDAO {
         }
 
     }
+    
+    public void deletarPecaEmRecuperacao(int id){
+        
+        String sql = "delete from tbcontrole_recuperacao_pecas where idsaida_estoque = ?";
+        
+        try {
+            pst = conexao.prepareStatement(sql);
+            pst.setInt(1,id);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Peça deletada da tabela de recuperação");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    }
 
     public void atualizarStatusPecaEmRecuperacao(int id, String situacao, String setor) {
         String sql = "update tbcontrole_recuperacao_pecas set situacao=?, setor=? where id=?";
