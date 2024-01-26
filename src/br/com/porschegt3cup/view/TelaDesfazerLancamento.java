@@ -331,7 +331,7 @@ public class TelaDesfazerLancamento extends javax.swing.JInternalFrame {
 
     /**/
     private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
-        //controller.limparBusca();
+        controller.limparBusca();
     }//GEN-LAST:event_btnLimparCamposActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed

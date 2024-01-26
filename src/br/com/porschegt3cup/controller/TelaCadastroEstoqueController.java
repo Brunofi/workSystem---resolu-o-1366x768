@@ -27,6 +27,7 @@ public class TelaCadastroEstoqueController {
     private TelaCadastroEstoque telaCadastroEstoque;
     private int idPeca;
     private int idLocacao;
+    private int quantidade;
 
     public TelaCadastroEstoqueController(TelaCadastroEstoque telaCadastroEstoque) {
         this.telaCadastroEstoque = telaCadastroEstoque;
@@ -99,15 +100,34 @@ public class TelaCadastroEstoqueController {
         //telaCadastroEstoque.getTxtIdLocacao().setText(telaCadastroEstoque.getTblLocacao().getModel().getValueAt(linhaSelecionada, 0).toString());
 
     }
+    
+   public void preencherQuantidade() {
+    String quantidadeTexto = telaCadastroEstoque.getTxtQuantidade().getText();
+
+    if (quantidadeTexto.isEmpty()) {
+        quantidade = 0;
+    } else {
+        try {
+            quantidade = Integer.parseInt(quantidadeTexto);
+        } catch (NumberFormatException e) {
+            // Tratar caso a conversão não seja possível
+            JOptionPane.showMessageDialog(null, "Formato inválido para a quantidade.");
+            quantidade = 0; // Defina um valor padrão ou trate conforme necessário
+        }
+    }
+}
+
 
     public void cadastrarPecaNoEstoque() {
+        
         if (Utils.linhaSelecionadaContemDados(telaCadastroEstoque.getTblPecas()) && (Utils.linhaSelecionadaContemDados(telaCadastroEstoque.getTblLocacao()))) {
             conexao = ModuloConexao.conector();
             EstoqueDAO estoqueDao = new EstoqueDAO(conexao);
             preencherIdPeca();
             preencherIdLocacao();
-            estoqueDao.inserirPecaNoEstoque(0, idPeca, idLocacao);
-            apagarCamposLocacao();
+            preencherQuantidade();
+            estoqueDao.inserirPecaNoEstoque(quantidade, idPeca, idLocacao);
+            //apagarCamposLocacao();
             apagarCamposPeca();
 
         } else {
