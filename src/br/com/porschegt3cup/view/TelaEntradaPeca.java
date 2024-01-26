@@ -130,6 +130,7 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
             }
         ));
         tblEntradaPeca.setFocusable(false);
+        tblEntradaPeca.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblEntradaPeca.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblEntradaPeca);
 

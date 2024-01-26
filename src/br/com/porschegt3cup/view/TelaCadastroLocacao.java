@@ -131,6 +131,7 @@ public class TelaCadastroLocacao extends javax.swing.JInternalFrame {
             }
         ));
         tblLocacao.setFocusable(false);
+        tblLocacao.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblLocacao.getTableHeader().setReorderingAllowed(false);
         tblLocacao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

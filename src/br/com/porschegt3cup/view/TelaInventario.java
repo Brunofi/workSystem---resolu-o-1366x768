@@ -176,6 +176,7 @@ public class TelaInventario extends javax.swing.JInternalFrame {
                 "ID", "PART NUMBER", "DESCRIÇÃO", "LOCAÇÃO", "SUB LOCAÇÃO", "QTD ANTIGA", "QTD ATUAL"
             }
         ));
+        tblInventario.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane2.setViewportView(tblInventario);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

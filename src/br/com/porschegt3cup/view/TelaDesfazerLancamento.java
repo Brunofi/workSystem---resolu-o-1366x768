@@ -100,6 +100,7 @@ public class TelaDesfazerLancamento extends javax.swing.JInternalFrame {
             }
         ));
         tblPecasLancadas.setFocusable(false);
+        tblPecasLancadas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblPecasLancadas.getTableHeader().setReorderingAllowed(false);
         tblPecasLancadas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

@@ -206,6 +206,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
         ));
         tblUsuario.setToolTipText("");
         tblUsuario.setFocusable(false);
+        tblUsuario.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblUsuario.getTableHeader().setReorderingAllowed(false);
         tblUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

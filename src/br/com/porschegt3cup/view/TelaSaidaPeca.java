@@ -157,6 +157,7 @@ public class TelaSaidaPeca extends javax.swing.JInternalFrame {
             }
         ));
         tblSaidaPeca.setFocusable(false);
+        tblSaidaPeca.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblSaidaPeca.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tblSaidaPeca);
 

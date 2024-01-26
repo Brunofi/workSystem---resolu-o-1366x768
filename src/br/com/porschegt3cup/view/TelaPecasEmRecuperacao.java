@@ -123,6 +123,7 @@ public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
             }
         ));
         tblPecasEmRecuperacao.setFocusable(false);
+        tblPecasEmRecuperacao.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblPecasEmRecuperacao.getTableHeader().setReorderingAllowed(false);
         tblPecasEmRecuperacao.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

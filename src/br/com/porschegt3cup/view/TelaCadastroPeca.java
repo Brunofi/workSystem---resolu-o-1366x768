@@ -183,6 +183,7 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
             }
         ));
         tblPeca.setFocusable(false);
+        tblPeca.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblPeca.getTableHeader().setReorderingAllowed(false);
         tblPeca.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
