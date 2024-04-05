@@ -41,7 +41,7 @@ public class EstoqueDAO {
 
     public ResultSet procurarPecaEstoquePorPartNumber(String peca) {
         String sql = "select\n"
-                + "tbpecas.partnumber as `Part Number`,tbpecas.nome as `Nome da peça`,\n"
+                + "tbpecas.partnumber as `Part Number`,tbpecas.nome as `Nome da peça`,tbpecas.estado as `Estado`,\n"
                 + "tbestoque.quantidade as Quantidade,\n"
                 + "tblocacoes.locacao as Locação,tblocacoes.sub as `Sub-locação`,\n"
                 + "tbestoque.id as `id estoque`,tbestoque.idpeca,tbestoque.idlocacao\n"
@@ -70,7 +70,7 @@ public class EstoqueDAO {
 
     public ResultSet procurarPecaEstoquePorDescricao(String peca) {
         String sql = "select\n"
-                + "tbpecas.partnumber as `Part Number`,tbpecas.nome as `Nome da peça`,\n"
+                + "tbpecas.partnumber as `Part Number`,tbpecas.nome as `Nome da peça`,tbpecas.estado as `Estado`,\n"
                 + "tbestoque.quantidade as Quantidade,\n"
                 + "tblocacoes.locacao as Locação,tblocacoes.sub as `Sub-locação`,\n"
                 + "tbestoque.id as `id estoque`,tbestoque.idpeca,tbestoque.idlocacao\n"
@@ -101,7 +101,7 @@ public class EstoqueDAO {
         String sql = "select\n"
                 + "tbestoque.id as `ID`,\n"
                 + "tbestoque.quantidade as `QUANTIDADE`, \n"
-                + "tbpecas.partnumber as `PART NUMBER`,tbpecas.nome as `DESCRIÇÂO`,\n"
+                + "tbpecas.partnumber as `PART NUMBER`,tbpecas.nome as `DESCRIÇÂO`,tbpecas.estado as `ESTADO`,\n"
                 + "tblocacoes.locacao as `LOCAÇÂO`,tblocacoes.sub as `SUB LOCAÇÂO`\n"
                 + "from tbestoque\n"
                 + "inner join\n"

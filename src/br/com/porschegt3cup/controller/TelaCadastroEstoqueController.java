@@ -39,6 +39,8 @@ public class TelaCadastroEstoqueController {
         DefaultTableModel tabelaPeca = (DefaultTableModel) telaCadastroEstoque.getTblPecas().getModel();
         tabelaPeca.setRowCount(0);
         idPeca = 0;
+        telaCadastroEstoque.getTxtQuantidade().setText(null);
+        
 
     }
 
@@ -47,6 +49,7 @@ public class TelaCadastroEstoqueController {
         DefaultTableModel tabelaLocacao = (DefaultTableModel) telaCadastroEstoque.getTblLocacao().getModel();
         tabelaLocacao.setRowCount(0);
         idLocacao = 0;
+        
 
     }
 

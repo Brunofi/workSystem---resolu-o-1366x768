@@ -68,9 +68,9 @@ public class TelaEntradaPecaController {
         String motivo = telaEntradaPeca.getCbMotivo().getSelectedItem().toString();
         String observacao = telaEntradaPeca.getTxtObservacao().getText();
         //int quantidadeEstoque = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 2).toString());
-        int idEstoque = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 5).toString());
-        int idPeca = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 6).toString());
-        int idlocacao = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 7).toString());
+        int idEstoque = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 6).toString());
+        int idPeca = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 7).toString());
+        int idlocacao = Integer.parseInt(telaEntradaPeca.getTblEntradaPeca().getModel().getValueAt(linhaSelecionada, 8).toString());
         //int quantidadeSomada = quantidadeEstoque + quantidadeEntrada;
         //System.out.println(quantidadeSomada);
         Entrada entrada = new Entrada(quantidadeEntrada, motivo, Utils.colaboradorLogado, observacao, idPeca, idlocacao);

@@ -153,9 +153,9 @@ public class TelaSaidaPecaController {
         String motivo = telaSaidaPeca.getCbMotivo().getSelectedItem().toString();
         String colaboradorEntrega = telaSaidaPeca.getCbColaboradorEntrega().getSelectedItem().toString();
         String colaboradorRetira = telaSaidaPeca.getCbColaboradorRetira().getSelectedItem().toString();
-        int idEstoque = Integer.parseInt(telaSaidaPeca.getTblSaidaPeca().getModel().getValueAt(linhaSelecionada, 5).toString());
-        int idPeca = Integer.parseInt(telaSaidaPeca.getTblSaidaPeca().getModel().getValueAt(linhaSelecionada, 6).toString());
-        int idlocacao = Integer.parseInt(telaSaidaPeca.getTblSaidaPeca().getModel().getValueAt(linhaSelecionada, 7).toString());
+        int idEstoque = Integer.parseInt(telaSaidaPeca.getTblSaidaPeca().getModel().getValueAt(linhaSelecionada, 6).toString());
+        int idPeca = Integer.parseInt(telaSaidaPeca.getTblSaidaPeca().getModel().getValueAt(linhaSelecionada, 7).toString());
+        int idlocacao = Integer.parseInt(telaSaidaPeca.getTblSaidaPeca().getModel().getValueAt(linhaSelecionada, 8).toString());
         Saida saida = new Saida(quantidadeSaida, tipoMovimentacao, colaboradorEntrega, colaboradorRetira, Utils.colaboradorLogado, motivo, etapa, sessao, chassis, chassisCedente, lado, idPeca, idlocacao);
         Estoque estoque = new Estoque(idEstoque, quantidadeSaida);
         this.saida = saida;

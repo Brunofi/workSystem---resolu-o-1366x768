@@ -59,6 +59,7 @@ public class TelaInventarioController {
                         rs.getInt("ID"),
                         rs.getString("PART NUMBER"),
                         rs.getString("DESCRIÇÂO"),
+                        rs.getString("ESTADO"),
                         rs.getString("LOCAÇÂO"),
                         rs.getString("SUB LOCAÇÂO"),
                         rs.getString("QUANTIDADE"),
@@ -108,7 +109,7 @@ public class TelaInventarioController {
         preencheTabelaInventario(rs, telaInventario.getTblInventario());
         Utils.permitirSelecaoApenasUmaLinha(telaInventario.getTblInventario());
         Utils.ajustarLarguraColunas(telaInventario.getTblInventario());
-        Utils.tornarColunasNaoEditaveis(telaInventario.getTblInventario(), 6);
+        Utils.tornarColunasNaoEditaveis(telaInventario.getTblInventario(), 7);
 
     }
     
@@ -130,7 +131,7 @@ public class TelaInventarioController {
 
                 for (int i = 0; i < numRows; i++) {
                     int idEstoque = (int) model.getValueAt(i, 0); // Obtém o ID do estoque da primeira coluna
-                    Object quantidadeConferida = model.getValueAt(i, 6);
+                    Object quantidadeConferida = model.getValueAt(i, 7);
                     try {
                         if (quantidadeConferida != null && !quantidadeConferida.toString().isEmpty()) {
                             quantidadeConferida = Integer.parseInt(quantidadeConferida.toString());
@@ -216,8 +217,8 @@ public class TelaInventarioController {
 
             for (int i = 0; i < numRows; i++) {
                 int idEstoque = (int) model.getValueAt(i, 0); // Obtém o ID do estoque da primeira coluna
-                Object quantidadeAntiga = model.getValueAt(i, 5);
-                Object quantidadeConferida = model.getValueAt(i, 6);
+                Object quantidadeAntiga = model.getValueAt(i, 6);
+                Object quantidadeConferida = model.getValueAt(i, 7);
                 String colaborador = Utils.colaboradorLogado;
 
                 // Tratar valores nulos ou vazios como zero

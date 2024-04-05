@@ -77,11 +77,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         desktop.setLayout(desktopLayout);
         desktopLayout.setHorizontalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1530, Short.MAX_VALUE)
+            .addGap(0, 910, Short.MAX_VALUE)
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 745, Short.MAX_VALUE)
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/porschegt3cup/icones/Imagem1.jpg"))); // NOI18N
@@ -213,7 +213,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(desktop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(desktop)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -238,12 +238,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblData)
-                        .addGap(0, 679, Short.MAX_VALUE)))
+                        .addComponent(lblData)))
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(1800, 1000));
+        setSize(new java.awt.Dimension(1176, 827));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
