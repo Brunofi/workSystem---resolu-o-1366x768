@@ -16,6 +16,7 @@ import br.com.porschegt3cup.view.TelaPrincipal;
 import br.com.porschegt3cup.view.TelaCadastroUsuario;
 import br.com.porschegt3cup.view.TelaDesfazerLancamento;
 import br.com.porschegt3cup.view.TelaInventario;
+import br.com.porschegt3cup.view.TelaMovimentarPecaInterno;
 import br.com.porschegt3cup.view.TelaPecasEmRecuperacao;
 import br.com.porschegt3cup.view.TelaSaidaPeca;
 import java.beans.PropertyVetoException;
@@ -142,6 +143,14 @@ public class TelaPrincipalController {
         telaPrincipal.getDesktop().add(telaDesfazerLancamento);
         telaDesfazerLancamento.setMaximum(true);
         }
+    
+     public void abrirTelaMovimentarPecaInterno() throws PropertyVetoException {
+        TelaMovimentarPecaInterno telaMovimentarPecaInterno = new TelaMovimentarPecaInterno();
+        telaMovimentarPecaInterno.setVisible(true);
+        telaPrincipal.getDesktop().add(telaMovimentarPecaInterno);
+        telaMovimentarPecaInterno.setMaximum(true);
+}
+    
 
   
 

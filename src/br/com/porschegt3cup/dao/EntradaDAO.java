@@ -36,7 +36,7 @@ public class EntradaDAO {
             pst.setInt(5, entrada.getIdPeca());
             pst.setInt(6, entrada.getIdLocacao());
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Registro de peça realizado com sucesso!");
+            //JOptionPane.showMessageDialog(null, "Registro de peça realizado com sucesso!");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }

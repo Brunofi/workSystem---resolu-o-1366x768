@@ -81,6 +81,14 @@ public class TelaSaidaPecaController {
             telaSaidaPeca.getCbChassis().addItem(chassis);
         }
     }
+    
+    public void carregarListaMotivo(){
+        telaSaidaPeca.getCbMotivo().addItem("");
+        telaSaidaPeca.getCbMotivo().addItem("AVARIA");
+        telaSaidaPeca.getCbMotivo().addItem("MANUTENCAO");
+        
+    
+    }
 
     public void carregarListaDeChassisCedente() {
         conexao = ModuloConexao.conector();

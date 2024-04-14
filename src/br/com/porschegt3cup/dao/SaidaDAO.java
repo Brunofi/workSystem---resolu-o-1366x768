@@ -153,7 +153,7 @@ public class SaidaDAO {
             ResultSet generatedKeys = pst.getGeneratedKeys();
             if (generatedKeys.next()) {
                 int idGerado = generatedKeys.getInt(1);
-                JOptionPane.showMessageDialog(null, "Registro de saída de peça realizado com sucesso! ID gerado: " + idGerado);
+                //JOptionPane.showMessageDialog(null, "Registro de saída de peça realizado com sucesso! ID gerado: " + idGerado);
                 return idGerado;  // Retornar o ID gerado
             } else {
                 JOptionPane.showMessageDialog(null, "Falha ao obter o ID gerado.");
