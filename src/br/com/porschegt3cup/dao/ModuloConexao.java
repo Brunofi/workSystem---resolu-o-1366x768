@@ -58,7 +58,7 @@ public class ModuloConexao {
     }
 */
     
-    // /*
+     ///*
     //BANCO DE DADOS TESTES
     public static Connection conector() {
         Connection conexao = null;
@@ -78,5 +78,5 @@ public class ModuloConexao {
         }
     }
 
-   // */
+    //*/
 }

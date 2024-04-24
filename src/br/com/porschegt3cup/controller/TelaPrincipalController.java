@@ -8,6 +8,7 @@ package br.com.porschegt3cup.controller;
 import br.com.porschegt3cup.dao.ModuloConexao;
 import br.com.porschegt3cup.dao.UsuarioDAO;
 import br.com.porschegt3cup.model.Usuario;
+import br.com.porschegt3cup.view.TelaAlteraLocacao;
 import br.com.porschegt3cup.view.TelaCadastroEstoque;
 import br.com.porschegt3cup.view.TelaCadastroPeca;
 import br.com.porschegt3cup.view.TelaEntradaPeca;
@@ -151,7 +152,12 @@ public class TelaPrincipalController {
         telaMovimentarPecaInterno.setMaximum(true);
 }
     
-
+public void abrirTelaAlteraLocacao() throws PropertyVetoException {
+        TelaAlteraLocacao telaAlteraLocacao = new TelaAlteraLocacao();
+        telaAlteraLocacao.setVisible(true);
+        telaPrincipal.getDesktop().add(telaAlteraLocacao);
+        telaAlteraLocacao.setMaximum(true);
+}
   
 
 

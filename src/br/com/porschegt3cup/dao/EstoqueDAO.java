@@ -166,5 +166,18 @@ public class EstoqueDAO {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+    
+    public void alterarLocacaoEstoque (int idEstoque, int idLocacao){
+    String sql = "UPDATE tbestoque SET idlocacao = ? WHERE id = ?";
+    try (PreparedStatement pst = conexao.prepareStatement(sql)) {
+            pst.setInt(1, idLocacao);
+            pst.setInt(2, idEstoque);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Alteração de locação realizado com sucesso");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+    
+    }
 
 }
