@@ -174,5 +174,28 @@ public class PecaDAO {
         }
 
     }
+    
+    public ResultSet procurarPecaRetorna2Colunas(String peca) {
+    String sql = "select distinct\n"
+            + "tbpecas.partnumber as `Part Number`, tbpecas.nome as `Nome da peça`\n"
+            + "from tbpecas\n"
+            + "where tbpecas.partnumber like ?";
+    try {
+        pst = conexao.prepareStatement(sql);
+        pst.setString(1, peca + "%");
+        rs = pst.executeQuery();
+
+        if (!rs.isBeforeFirst()) {
+            JOptionPane.showMessageDialog(null, "Peça não encontrada");
+            return null;
+        }
+
+        return rs;
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
+    }
+    return null;
+}
+
 
 }

@@ -38,6 +38,10 @@ public class EstoqueDAO {
             JOptionPane.showMessageDialog(null, e);
         }
     }
+    
+   
+
+
 
     public ResultSet procurarPecaEstoquePorPartNumber(String peca) {
         String sql = "select\n"
