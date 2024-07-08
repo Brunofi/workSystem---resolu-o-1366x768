@@ -53,18 +53,19 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuUsuario = new javax.swing.JMenuItem();
         menuColaborador = new javax.swing.JMenuItem();
         menuEstoque = new javax.swing.JMenuItem();
-        menuEntrada = new javax.swing.JMenu();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem9 = new javax.swing.JMenuItem();
+        menuLancamentos = new javax.swing.JMenu();
+        saidaPeca = new javax.swing.JMenuItem();
+        entradaPeca = new javax.swing.JMenuItem();
+        recuperacaoPeca = new javax.swing.JMenuItem();
+        desfazerLancamento = new javax.swing.JMenuItem();
+        movimentarQtdLocacoes = new javax.swing.JMenuItem();
+        torcarPecaDeLocacao = new javax.swing.JMenuItem();
+        menuOrcamentos = new javax.swing.JMenu();
+        solicitarPeca = new javax.swing.JMenuItem();
+        visualizarPecaSolicitada = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        menuInventario = new javax.swing.JMenu();
+        inventarioParcial = new javax.swing.JMenuItem();
         menuOpcoes = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
 
@@ -103,6 +104,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         lblData.setText("xxxxxxxxxxxxxxxxxxxxxx");
 
         menuCadastro.setText("Cadastros");
+        menuCadastro.setEnabled(false);
 
         menuPeca.setText("Peça");
         menuPeca.setEnabled(false);
@@ -146,92 +148,105 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menu.add(menuCadastro);
 
-        menuEntrada.setText("Lançamentos");
+        menuLancamentos.setText("Lançamentos");
+        menuLancamentos.setEnabled(false);
 
-        jMenuItem3.setText("Saída de peça");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        saidaPeca.setText("Saída de peça");
+        saidaPeca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                saidaPecaActionPerformed(evt);
             }
         });
-        menuEntrada.add(jMenuItem3);
+        menuLancamentos.add(saidaPeca);
 
-        jMenuItem4.setText("Entrada de peça");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+        entradaPeca.setText("Entrada de peça");
+        entradaPeca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
+                entradaPecaActionPerformed(evt);
             }
         });
-        menuEntrada.add(jMenuItem4);
+        menuLancamentos.add(entradaPeca);
 
-        jMenuItem2.setText("Recuperação de peça");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        recuperacaoPeca.setText("Recuperação de peça");
+        recuperacaoPeca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                recuperacaoPecaActionPerformed(evt);
             }
         });
-        menuEntrada.add(jMenuItem2);
+        menuLancamentos.add(recuperacaoPeca);
 
-        jMenuItem6.setText("Desfazer Lançamento");
-        jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+        desfazerLancamento.setText("Desfazer Lançamento");
+        desfazerLancamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem6ActionPerformed(evt);
+                desfazerLancamentoActionPerformed(evt);
             }
         });
-        menuEntrada.add(jMenuItem6);
+        menuLancamentos.add(desfazerLancamento);
 
-        jMenuItem7.setText("Movimentar QTD entre locações");
-        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+        movimentarQtdLocacoes.setText("Movimentar QTD entre locações");
+        movimentarQtdLocacoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem7ActionPerformed(evt);
+                movimentarQtdLocacoesActionPerformed(evt);
             }
         });
-        menuEntrada.add(jMenuItem7);
+        menuLancamentos.add(movimentarQtdLocacoes);
 
-        jMenuItem8.setText("Trocar peça de Locação");
-        jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+        torcarPecaDeLocacao.setText("Trocar peça de Locação");
+        torcarPecaDeLocacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem8ActionPerformed(evt);
+                torcarPecaDeLocacaoActionPerformed(evt);
             }
         });
-        menuEntrada.add(jMenuItem8);
+        menuLancamentos.add(torcarPecaDeLocacao);
 
-        menu.add(menuEntrada);
+        menu.add(menuLancamentos);
 
-        jMenu2.setText("Pedidos");
-        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+        menuOrcamentos.setText("Orçamentos");
+        menuOrcamentos.setEnabled(false);
+        menuOrcamentos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenu2ActionPerformed(evt);
+                menuOrcamentosActionPerformed(evt);
             }
         });
 
-        jMenuItem9.setText("Solicitar Peças");
-        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+        solicitarPeca.setText("Solicitar Peças");
+        solicitarPeca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem9ActionPerformed(evt);
+                solicitarPecaActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem9);
+        menuOrcamentos.add(solicitarPeca);
 
-        menu.add(jMenu2);
+        visualizarPecaSolicitada.setText("Visualizar Peças Solicitadas");
+        visualizarPecaSolicitada.setEnabled(false);
+        visualizarPecaSolicitada.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                visualizarPecaSolicitadaActionPerformed(evt);
+            }
+        });
+        menuOrcamentos.add(visualizarPecaSolicitada);
+
+        menu.add(menuOrcamentos);
 
         menuRelatorios.setText("Relatórios");
         menuRelatorios.setEnabled(false);
         menu.add(menuRelatorios);
 
-        jMenu1.setText("Inventario");
+        menuInventario.setText("Inventario");
+        menuInventario.setEnabled(false);
 
-        jMenuItem1.setText("Inventario Parcial");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        inventarioParcial.setText("Inventario Parcial");
+        inventarioParcial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                inventarioParcialActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        menuInventario.add(inventarioParcial);
 
-        menu.add(jMenu1);
+        menu.add(menuInventario);
 
         menuOpcoes.setText("Opções");
+        menuOpcoes.setEnabled(false);
 
         jMenuItem5.setText("Sair");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
@@ -326,39 +341,39 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_menuEstoqueActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void entradaPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaPecaActionPerformed
         try {
             controller.abrirTelaEntradaPeca();
         } catch (PropertyVetoException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_entradaPecaActionPerformed
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void saidaPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saidaPecaActionPerformed
         try {
             controller.abrirTelaSaidaPeca();
         } catch (PropertyVetoException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_saidaPecaActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void inventarioParcialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventarioParcialActionPerformed
         try {
             controller.abrirTelaInventario();
         } catch (PropertyVetoException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_inventarioParcialActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void recuperacaoPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recuperacaoPecaActionPerformed
         try {
             controller.abrirTelaRecuperacaoPecas();
         } catch (PropertyVetoException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_recuperacaoPecaActionPerformed
 
-    private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    private void desfazerLancamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_desfazerLancamentoActionPerformed
         
         try {
             controller.abrirTelaDesfazerLancamento();
@@ -366,36 +381,44 @@ public class TelaPrincipal extends javax.swing.JFrame {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-    }//GEN-LAST:event_jMenuItem6ActionPerformed
+    }//GEN-LAST:event_desfazerLancamentoActionPerformed
 
-    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    private void movimentarQtdLocacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_movimentarQtdLocacoesActionPerformed
         try {
             controller.abrirTelaMovimentarPecaInterno();
         } catch (PropertyVetoException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem7ActionPerformed
+    }//GEN-LAST:event_movimentarQtdLocacoesActionPerformed
 
-    private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    private void torcarPecaDeLocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_torcarPecaDeLocacaoActionPerformed
         try {
             controller.abrirTelaAlteraLocacao();
         } catch (PropertyVetoException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem8ActionPerformed
+    }//GEN-LAST:event_torcarPecaDeLocacaoActionPerformed
 
-    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+    private void menuOrcamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOrcamentosActionPerformed
         
         
-    }//GEN-LAST:event_jMenu2ActionPerformed
+    }//GEN-LAST:event_menuOrcamentosActionPerformed
 
-    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    private void solicitarPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitarPecaActionPerformed
         try {
             controller.abrirTelaPedidoPeca();
         } catch (PropertyVetoException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jMenuItem9ActionPerformed
+    }//GEN-LAST:event_solicitarPecaActionPerformed
+
+    private void visualizarPecaSolicitadaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_visualizarPecaSolicitadaActionPerformed
+        try {
+            controller.abrirTelaVisualizacaoPedido();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_visualizarPecaSolicitadaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -432,6 +455,30 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
     }
 
+    public JMenu getMenuInventario() {
+        return menuInventario;
+    }
+
+    public void setMenuInventario(JMenu menuInventario) {
+        this.menuInventario = menuInventario;
+    }
+
+    public JMenu getMenuLancamentos() {
+        return menuLancamentos;
+    }
+
+    public void setMenuLancamentos(JMenu menuLancamentos) {
+        this.menuLancamentos = menuLancamentos;
+    }
+
+    public JMenu getMenuOrcamentos() {
+        return menuOrcamentos;
+    }
+
+    public void setMenuOrcamentos(JMenu menuOrcamentos) {
+        this.menuOrcamentos = menuOrcamentos;
+    }
+
     public JMenuBar getMenu() {
         return menu;
     }
@@ -457,11 +504,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }
 
     public JMenu getMenuEntrada() {
-        return menuEntrada;
+        return menuLancamentos;
     }
 
     public void setMenuEntrada(JMenu menuEntrada) {
-        this.menuEntrada = menuEntrada;
+        this.menuLancamentos = menuEntrada;
     }
 
     public static JMenuItem getMenuEstoque() {
@@ -536,6 +583,80 @@ public class TelaPrincipal extends javax.swing.JFrame {
         this.lblData = lblData;
     }
 
+    public JMenuItem getDesfazerLancamento() {
+        return desfazerLancamento;
+    }
+
+    public void setDesfazerLancamento(JMenuItem desfazerLancamento) {
+        this.desfazerLancamento = desfazerLancamento;
+    }
+
+    public JMenuItem getEntradaPeca() {
+        return entradaPeca;
+    }
+
+    public void setEntradaPeca(JMenuItem entradaPeca) {
+        this.entradaPeca = entradaPeca;
+    }
+
+    public JMenuItem getInventarioParcial() {
+        return inventarioParcial;
+    }
+
+    public void setInventarioParcial(JMenuItem inventarioParcial) {
+        this.inventarioParcial = inventarioParcial;
+    }
+
+    public JMenuItem getMovimentarQtdLocacoes() {
+        return movimentarQtdLocacoes;
+    }
+
+    public void setMovimentarQtdLocacoes(JMenuItem movimentarQtdLocacoes) {
+        this.movimentarQtdLocacoes = movimentarQtdLocacoes;
+    }
+
+    public JMenuItem getRecuperacaoPeca() {
+        return recuperacaoPeca;
+    }
+
+    public void setRecuperacaoPeca(JMenuItem recuperacaoPeca) {
+        this.recuperacaoPeca = recuperacaoPeca;
+    }
+
+    public JMenuItem getSaidaPeca() {
+        return saidaPeca;
+    }
+
+    public void setSaidaPeca(JMenuItem saidaPeca) {
+        this.saidaPeca = saidaPeca;
+    }
+
+    public JMenuItem getSolicitarPeca() {
+        return solicitarPeca;
+    }
+
+    public void setSolicitarPeca(JMenuItem solicitarPeca) {
+        this.solicitarPeca = solicitarPeca;
+    }
+
+    public JMenuItem getTorcarPecaDeLocacao() {
+        return torcarPecaDeLocacao;
+    }
+
+    public void setTorcarPecaDeLocacao(JMenuItem torcarPecaDeLocacao) {
+        this.torcarPecaDeLocacao = torcarPecaDeLocacao;
+    }
+
+    public JMenuItem getVisualizarPecaSolicitada() {
+        return visualizarPecaSolicitada;
+    }
+
+    public void setVisualizarPecaSolicitada(JMenuItem visualizarPecaSolicitada) {
+        this.visualizarPecaSolicitada = visualizarPecaSolicitada;
+    }
+    
+    
+
     
 
     
@@ -543,32 +664,33 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem desfazerLancamento;
     private javax.swing.JDesktopPane desktop;
+    private javax.swing.JMenuItem entradaPeca;
+    private javax.swing.JMenuItem inventarioParcial;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JMenuBar menu;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenuItem menuColaborador;
-    private javax.swing.JMenu menuEntrada;
     public static javax.swing.JMenuItem menuEstoque;
+    private javax.swing.JMenu menuInventario;
+    private javax.swing.JMenu menuLancamentos;
     public static javax.swing.JMenuItem menuLocacao;
     private javax.swing.JMenu menuOpcoes;
+    private javax.swing.JMenu menuOrcamentos;
     public static javax.swing.JMenuItem menuPeca;
     public static javax.swing.JMenu menuRelatorios;
     public static javax.swing.JMenuItem menuUsuario;
+    private javax.swing.JMenuItem movimentarQtdLocacoes;
+    private javax.swing.JMenuItem recuperacaoPeca;
+    private javax.swing.JMenuItem saidaPeca;
+    private javax.swing.JMenuItem solicitarPeca;
+    private javax.swing.JMenuItem torcarPecaDeLocacao;
+    private javax.swing.JMenuItem visualizarPecaSolicitada;
     // End of variables declaration//GEN-END:variables
 }

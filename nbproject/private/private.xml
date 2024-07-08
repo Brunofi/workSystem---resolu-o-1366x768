@@ -3,11 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/controller/TelaPecasEmRecuperacaoController.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/dao/ModuloConexao.java</file>
             <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/view/TelaPedidoPeca.java</file>
             <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/dao/OrcamentoDAO.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/model/Orcamento.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/controller/TelaVisualizacaoPedidoController.java</file>
             <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/controller/TelaPedidoPecaController.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/dao/RecuperacaoPecaControleDAO.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/view/TelaPecasEmRecuperacao.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/view/TelaVisualizacaoPedido.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/dao/EstoqueDAO.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/controller/Utils.java</file>
         </group>
     </open-files>
 </project-private>

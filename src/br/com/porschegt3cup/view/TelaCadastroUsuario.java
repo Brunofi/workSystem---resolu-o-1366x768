@@ -247,7 +247,7 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel6.setText("*Perfil");
 
-        cboPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "gerente", "engenharia", "estoquista", "mecanico" }));
+        cboPerfil.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "gerente", "analista", "engenharia", "estoquista", "mecanico" }));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jLabel7.setText("*Login");

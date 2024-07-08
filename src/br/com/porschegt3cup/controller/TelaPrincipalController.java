@@ -21,6 +21,7 @@ import br.com.porschegt3cup.view.TelaMovimentarPecaInterno;
 import br.com.porschegt3cup.view.TelaPecasEmRecuperacao;
 import br.com.porschegt3cup.view.TelaPedidoPeca;
 import br.com.porschegt3cup.view.TelaSaidaPeca;
+import br.com.porschegt3cup.view.TelaVisualizacaoPedido;
 import java.beans.PropertyVetoException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -69,13 +70,50 @@ public class TelaPrincipalController {
         String perfil = usuarioDao.decubrirPerfil(usario);
 
         if (perfil.equals("gerente")) {
+            telaPrincipal.getMenuCadastro().setEnabled(true);
             telaPrincipal.getMenuPeca().setEnabled(true);
             telaPrincipal.getMenuLocacao().setEnabled(true);
             telaPrincipal.getMenuUsuario().setEnabled(true);
             telaPrincipal.getMenuColaborador().setEnabled(true);
             telaPrincipal.getMenuEstoque().setEnabled(true);
+            telaPrincipal.getMenuLancamentos().setEnabled(true);
+            telaPrincipal.getMenuOrcamentos().setEnabled(true);
+            telaPrincipal.getVisualizarPecaSolicitada().setEnabled(true);
+            telaPrincipal.getMenuRelatorios().setEnabled(true);
+            telaPrincipal.getMenuInventario().setEnabled(true);
+            telaPrincipal.getMenuOpcoes().setEnabled(true);
             
+        }else if(perfil.equals("analista")){
+            telaPrincipal.getMenuCadastro().setEnabled(true);
+            telaPrincipal.getMenuPeca().setEnabled(true);
+            telaPrincipal.getMenuLocacao().setEnabled(true);
+            telaPrincipal.getMenuEstoque().setEnabled(true);
+            telaPrincipal.getMenuLancamentos().setEnabled(true);
+            telaPrincipal.getMenuOrcamentos().setEnabled(true);
+            telaPrincipal.getVisualizarPecaSolicitada().setEnabled(true);
+            telaPrincipal.getMenuRelatorios().setEnabled(true);
+            telaPrincipal.getMenuInventario().setEnabled(true);
+            telaPrincipal.getMenuOpcoes().setEnabled(true);
+        
+        } else if(perfil.equals("estoquista")){
+            telaPrincipal.getMenuLancamentos().setEnabled(true);
+            telaPrincipal.getMenuOrcamentos().setEnabled(true);
+            telaPrincipal.getVisualizarPecaSolicitada().setEnabled(true);
+            telaPrincipal.getMenuRelatorios().setEnabled(true);
+            telaPrincipal.getMenuInventario().setEnabled(true);
+            telaPrincipal.getMenuOpcoes().setEnabled(true);
+        
+        }else if(perfil.equals("engenharia")){
+            telaPrincipal.getMenuRelatorios().setEnabled(true);
+        
+        
+        }else if(perfil.equals("mecanico")){
+            telaPrincipal.getMenuOrcamentos().setEnabled(true);
+        
+        
         }
+        
+        
 
         //System.out.println(perfil);
     }
@@ -167,6 +205,13 @@ public class TelaPrincipalController {
         telaPrincipal.getDesktop().add(telaPedidoPeca);
         telaPedidoPeca.setMaximum(true);
 }
+
+    public void abrirTelaVisualizacaoPedido() throws PropertyVetoException {
+     TelaVisualizacaoPedido telaVisualizacaoPedido = new TelaVisualizacaoPedido();
+     telaVisualizacaoPedido.setVisible(true);
+     telaPrincipal.getDesktop().add(telaVisualizacaoPedido);
+     telaVisualizacaoPedido.setMaximum(true);
+    }
 
 
 

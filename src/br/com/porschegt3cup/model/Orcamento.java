@@ -24,9 +24,26 @@ public class Orcamento {
     private String eixoLado;
     private String NumeroMotorCambio;
     private String statusPeca;
+    private String estadoPeca;
+    private int quantidadeEstoque;
+    private String locacoes;
+
+    public Orcamento(int id, String partNumber, String nomePeca,int quantidade, String motivoConsumo, String chassis, String statusPeca, int quantidadeEstoque,String locacoes) {
+        this.id = id;
+        this.partNumber = partNumber;
+        this.nomePeca = nomePeca;
+        this.quantidade = quantidade;
+        this.motivoConsumo = motivoConsumo;
+        this.chassis = chassis;
+        this.statusPeca = statusPeca;
+        this.quantidadeEstoque = quantidadeEstoque;
+        this.locacoes = locacoes;
+    }
+    
+    
     
 
-    public Orcamento(String partNumber, String nomePeca, int quantidade, String colaboradorPedido, String motivoConsumo, String etapa, String sessao, String chassis, String eixoLado, String NumeroMotorCambio, String statusPeca) {
+    public Orcamento(String partNumber, String nomePeca, int quantidade, String colaboradorPedido, String motivoConsumo, String etapa, String sessao, String chassis, String eixoLado, String NumeroMotorCambio, String statusPeca,String estadoPeca) {
         this.partNumber = partNumber;
         this.nomePeca = nomePeca;
         this.quantidade = quantidade;
@@ -38,8 +55,39 @@ public class Orcamento {
         this.eixoLado = eixoLado;
         this.NumeroMotorCambio = NumeroMotorCambio;
         this.statusPeca = statusPeca;
+        this.estadoPeca = estadoPeca;
         
     }
+
+    public String getLocacoes() {
+        return locacoes;
+    }
+
+    public void setLocacoes(String locacoes) {
+        this.locacoes = locacoes;
+    }
+    
+    
+
+    public int getQuantidadeEstoque() {
+        return quantidadeEstoque;
+    }
+
+    public void setQuantidadeEstoque(int quantidadeEstoque) {
+        this.quantidadeEstoque = quantidadeEstoque;
+    }
+    
+    
+
+    public String getEstadoPeca() {
+        return estadoPeca;
+    }
+
+    public void setEstadoPeca(String estadoPeca) {
+        this.estadoPeca = estadoPeca;
+    }
+    
+    
 
     public String getStatusPeca() {
         return statusPeca;

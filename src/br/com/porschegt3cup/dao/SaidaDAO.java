@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -49,23 +50,22 @@ public class SaidaDAO {
     }
 
     public List<String> buscarListaDeChassis() {
-        List<String> listaChassis = new ArrayList<>();
-        String sql = "select * from chassis";
-        try {
-            Statement statement = conexao.createStatement();
-            rs = statement.executeQuery(sql);
-            while (rs.next()) {
-                String chassis = rs.getString("numeral");
-                listaChassis.add(chassis);
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+    List<String> listaChassis = new ArrayList<>();
+    String sql = "SELECT numeral FROM chassis"; // Modifiquei a consulta para selecionar apenas a coluna necessária
+    try {
+        Statement statement = conexao.createStatement();
+        rs = statement.executeQuery(sql);
+        while (rs.next()) {
+            String chassis = rs.getString("numeral");
+            listaChassis.add(chassis);
         }
-
-        return listaChassis;
-
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, e);
     }
+
+    Collections.sort(listaChassis); // Ordena a lista em ordem alfabética
+    return listaChassis;
+}
 
     public List<String> buscarListaDeSessoes() {
         List<String> listaSessoes = new ArrayList<>();

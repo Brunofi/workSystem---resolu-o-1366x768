@@ -38,10 +38,6 @@ public class EstoqueDAO {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
-   
-
-
 
     public ResultSet procurarPecaEstoquePorPartNumber(String peca) {
         String sql = "select\n"
@@ -86,7 +82,7 @@ public class EstoqueDAO {
                 + "where tbpecas.nome like ?";
         try {
             pst = conexao.prepareStatement(sql);
-            pst.setString(1, "%" +peca + "%");
+            pst.setString(1, "%" + peca + "%");
             rs = pst.executeQuery();
 
             if (!rs.isBeforeFirst()) {
@@ -124,12 +120,12 @@ public class EstoqueDAO {
             }
 
             return rs;
-            
+
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
         return null;
- 
+
     }
 
     public void subtrairQuantidadePecaNoEstoque(int id, int quantidade) {
@@ -157,7 +153,7 @@ public class EstoqueDAO {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
+
     public void alterarQuantidadePecaEstoque(int id, int quantidade) {
         String sql = "UPDATE tbestoque SET quantidade = ? WHERE id = ?";
 
@@ -170,10 +166,10 @@ public class EstoqueDAO {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    
-    public void alterarLocacaoEstoque (int idEstoque, int idLocacao){
-    String sql = "UPDATE tbestoque SET idlocacao = ? WHERE id = ?";
-    try (PreparedStatement pst = conexao.prepareStatement(sql)) {
+
+    public void alterarLocacaoEstoque(int idEstoque, int idLocacao) {
+        String sql = "UPDATE tbestoque SET idlocacao = ? WHERE id = ?";
+        try (PreparedStatement pst = conexao.prepareStatement(sql)) {
             pst.setInt(1, idLocacao);
             pst.setInt(2, idEstoque);
             pst.executeUpdate();
@@ -181,7 +177,75 @@ public class EstoqueDAO {
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, e);
         }
-    
+
     }
+
+    public int retornaQuantidadeEmEstoque(String partNumber) {
+        int qtdEstoque = 0;
+        String sql = "SELECT \n"
+                + "    SUM(tbestoque.quantidade) AS `QUANTIDADE TOTAL EM ESTOQUE`\n"
+                + "FROM \n"
+                + "    tbestoque\n"
+                + "INNER JOIN \n"
+                + "    tbpecas ON tbpecas.id = tbestoque.idpeca\n"
+                + "WHERE \n"
+                + "    tbpecas.partnumber = ?";
+
+        try (PreparedStatement pst = conexao.prepareStatement(sql)) {
+            pst.setString(1, partNumber);
+            try (ResultSet rs = pst.executeQuery()) {
+                if (rs.next()) {
+                    qtdEstoque = rs.getInt("QUANTIDADE TOTAL EM ESTOQUE");
+                }
+            }
+        } catch (Exception e) {
+            // Opcional: Imprima o erro para depuração
+            e.printStackTrace();
+        }
+
+        return qtdEstoque;
+    }
+
+    public String retornaLocacoesPecaSolicitada(String partNumber) {
+    StringBuilder locacoes = new StringBuilder();
+    String sql = "SELECT \n"
+            + "    tblocacoes.locacao AS `LOCAÇÃO`,\n"
+            + "    tblocacoes.sub AS `SUB LOCAÇÃO`\n"
+            + "FROM\n"
+            + "    tbestoque\n"
+            + "INNER JOIN\n"
+            + "    tbpecas ON tbpecas.id = tbestoque.idpeca\n"
+            + "INNER JOIN\n"
+            + "    tblocacoes ON tblocacoes.id = tbestoque.idlocacao\n"
+            + "WHERE\n"
+            + "    tbpecas.partnumber = ?\n"
+            + "GROUP BY\n"
+            + "    tblocacoes.locacao, tblocacoes.sub";
+    
+    try (PreparedStatement pst = conexao.prepareStatement(sql)) {
+        pst.setString(1, partNumber);
+        try (ResultSet rs = pst.executeQuery()) {
+            while (rs.next()) {
+                if (locacoes.length() > 0) {
+                    locacoes.append("/");
+                }
+                locacoes.append(rs.getString("LOCAÇÃO"))
+                        .append(" - ")
+                        .append(rs.getString("SUB LOCAÇÃO"));
+            }
+        }
+    } catch (Exception e) {
+        // Opcional: Imprima o erro para depuração
+        e.printStackTrace();
+    }
+    
+    // Verifica se locacoes está vazia e retorna "não localizada" se não houver resultados
+    if (locacoes.length() == 0) {
+        return "não localizada";
+    }
+    
+    return locacoes.toString();
+}
+
 
 }

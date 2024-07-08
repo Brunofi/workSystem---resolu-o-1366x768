@@ -325,11 +325,12 @@
     <Component class="javax.swing.JComboBox" name="cboPerfil">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
+          <StringArray count="5">
             <StringItem index="0" value="gerente"/>
-            <StringItem index="1" value="engenharia"/>
-            <StringItem index="2" value="estoquista"/>
-            <StringItem index="3" value="mecanico"/>
+            <StringItem index="1" value="analista"/>
+            <StringItem index="2" value="engenharia"/>
+            <StringItem index="3" value="estoquista"/>
+            <StringItem index="4" value="mecanico"/>
           </StringArray>
         </Property>
       </Properties>

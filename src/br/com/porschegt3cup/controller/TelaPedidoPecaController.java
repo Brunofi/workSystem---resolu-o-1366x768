@@ -106,8 +106,9 @@ public class TelaPedidoPecaController {
         int quantidade = Integer.parseInt(telaPedidoPeca.getTxtQuantidadeSaida().getText());
         String colaboradorPedido = Utils.colaboradorLogado;
         String statusPeca = "PENDENTE";
+        String estadoPeca = "-";
         
-        Orcamento orcamento = new Orcamento(partNumber, nomePeca, quantidade, colaboradorPedido, motivo, etapa, sessao, chassis, eixoLado, numeroMotorCambio, statusPeca);
+        Orcamento orcamento = new Orcamento(partNumber, nomePeca, quantidade, colaboradorPedido, motivo, etapa, sessao, chassis, eixoLado, numeroMotorCambio, statusPeca,estadoPeca);
         
         return orcamento;
         
@@ -149,28 +150,26 @@ public class TelaPedidoPecaController {
     }
     
     public void cancelarPecaSolicitada() {
+    if (Utils.linhaSelecionadaContemDados(telaPedidoPeca.getTblPecasPedidas())) {
+        conexao = ModuloConexao.conector();
+        int linhaSelecionada = telaPedidoPeca.getTblPecasPedidas().getSelectedRow();
+        int id = Integer.parseInt(telaPedidoPeca.getTblPecasPedidas().getModel().getValueAt(linhaSelecionada, 0).toString());
         
-        if (Utils.linhaSelecionadaContemDados(telaPedidoPeca.getTblPecasPedidas())) {
-            conexao = ModuloConexao.conector();
-            int linhaSelecionada = telaPedidoPeca.getTblPecasPedidas().getSelectedRow();
-            String status = telaPedidoPeca.getTblPecasPedidas().getModel().getValueAt(linhaSelecionada, 5).toString();
-            
-            if (status.equals("PENDENTE") || status.equals("SEPARADA")) {
-                int id = Integer.parseInt(telaPedidoPeca.getTblPecasPedidas().getModel().getValueAt(linhaSelecionada, 0).toString());
-                OrcamentoDAO orcamentoDao = new OrcamentoDAO(conexao);
-                orcamentoDao.atualizarStatusPecaSolicitada(id, "CANCELADA");
-                atualizaTabelaPecasPedidasPorChassisEEtapa();
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "só é possivel cancelar o status da peça se estiver pedida ou separada");
-            }
-            
+        OrcamentoDAO orcamentoDao = new OrcamentoDAO(conexao);
+        String status = orcamentoDao.buscarStatusPeca(id);
+        
+        if (status != null && (status.equals("PENDENTE") || status.equals("SEPARADA"))) {
+            orcamentoDao.atualizarStatusPecaSolicitada(id, "CANCELADA");
+            atualizaTabelaPecasPedidasPorChassisEEtapa();
         } else {
-            JOptionPane.showMessageDialog(null, "É necessário que a linha selecionada contenha dados para prosseguir");
+            JOptionPane.showMessageDialog(null, "Só é possível cancelar o status da peça se estiver pedida ou separada");
+            atualizaTabelaPecasPedidasPorChassisEEtapa();
         }
-
-        
+    } else {
+        JOptionPane.showMessageDialog(null, "É necessário que a linha selecionada contenha dados para prosseguir");
     }
+}
+
     
     public void limpaBusca(){
     
