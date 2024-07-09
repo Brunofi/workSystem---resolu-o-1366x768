@@ -10,6 +10,7 @@ import br.com.porschegt3cup.controller.TelaEntradaPecaController;
 import br.com.porschegt3cup.controller.TelaPedidoPecaController;
 import br.com.porschegt3cup.controller.TelaSaidaPecaController;
 import br.com.porschegt3cup.controller.TelaVisualizacaoPedidoController;
+import br.com.porschegt3cup.controller.Utils;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -79,7 +80,7 @@ public class TelaVisualizacaoPedido extends javax.swing.JInternalFrame {
 
     }
 
-    private void escondeCbEstadoPeca() {
+    public void escondeCbEstadoPeca() {
         cbEstadoPeca.setVisible(false);
         lbEstadoPeca.setVisible(false);
         cbStatusAlterado.setSelectedIndex(0);
@@ -121,7 +122,7 @@ public class TelaVisualizacaoPedido extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Tela Saida Peças");
+        setTitle("Tela Visualização de Orçamento");
         setPreferredSize(new java.awt.Dimension(1530, 905));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
@@ -370,13 +371,15 @@ public class TelaVisualizacaoPedido extends javax.swing.JInternalFrame {
     private void btnAlteraStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlteraStatusActionPerformed
         if (cbStatusAlterado.getSelectedItem().toString().equals("ENTREGUE") && !cbEstadoPeca.getSelectedItem().toString().isEmpty()) {
             controller.alteraStatusIncluiEstadoDaPeca();
-            escondeCbEstadoPeca();
+            //scondeCbEstadoPeca();
 
         } else if (!cbStatusAlterado.getSelectedItem().toString().equals("ENTREGUE")) {
             controller.alteraStatusPeca();
         } else {
             JOptionPane.showMessageDialog(null, "É necessário preencher o ESTADO PEÇA ENTREGUE para prosseguir");
         }
+
+
     }//GEN-LAST:event_btnAlteraStatusActionPerformed
 
     private void btnLancar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLancar1ActionPerformed

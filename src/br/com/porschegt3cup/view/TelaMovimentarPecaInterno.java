@@ -73,7 +73,7 @@ public class TelaMovimentarPecaInterno extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Tela Entrada Peças");
+        setTitle("Tela Movimentação de peça entre locações");
         setPreferredSize(new java.awt.Dimension(1530, 905));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {

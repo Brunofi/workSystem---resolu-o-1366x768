@@ -86,8 +86,8 @@ public class TelaCadastroUsuarioController {
             telaUsuario.getBtnCadastrar().setEnabled(false);
             int linhaSelecionada = telaUsuario.getTblUsuario().getSelectedRow();
             telaUsuario.getTxtId().setText(telaUsuario.getTblUsuario().getModel().getValueAt(linhaSelecionada, 0).toString());
-            telaUsuario.getTxtLogin().setText(telaUsuario.getTblUsuario().getModel().getValueAt(linhaSelecionada, 1).toString());
-            telaUsuario.getTxtNome().setText(telaUsuario.getTblUsuario().getModel().getValueAt(linhaSelecionada, 2).toString());
+            telaUsuario.getTxtLogin().setText(telaUsuario.getTblUsuario().getModel().getValueAt(linhaSelecionada, 2).toString());
+            telaUsuario.getTxtNome().setText(telaUsuario.getTblUsuario().getModel().getValueAt(linhaSelecionada, 1).toString());
             telaUsuario.getCboPerfil().setSelectedItem(telaUsuario.getTblUsuario().getModel().getValueAt(linhaSelecionada, 3).toString());
             int id = Integer.parseInt(telaUsuario.getTxtId().getText());
             obtemSenha(id);

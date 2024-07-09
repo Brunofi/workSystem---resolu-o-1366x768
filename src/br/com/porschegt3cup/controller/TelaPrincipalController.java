@@ -17,6 +17,7 @@ import br.com.porschegt3cup.view.TelaPrincipal;
 import br.com.porschegt3cup.view.TelaCadastroUsuario;
 import br.com.porschegt3cup.view.TelaDesfazerLancamento;
 import br.com.porschegt3cup.view.TelaInventario;
+import br.com.porschegt3cup.view.TelaLancaOrcamento;
 import br.com.porschegt3cup.view.TelaMovimentarPecaInterno;
 import br.com.porschegt3cup.view.TelaPecasEmRecuperacao;
 import br.com.porschegt3cup.view.TelaPedidoPeca;
@@ -82,6 +83,7 @@ public class TelaPrincipalController {
             telaPrincipal.getMenuRelatorios().setEnabled(true);
             telaPrincipal.getMenuInventario().setEnabled(true);
             telaPrincipal.getMenuOpcoes().setEnabled(true);
+            telaPrincipal.getLancaPecaEntregue().setEnabled(true);
             
         }else if(perfil.equals("analista")){
             telaPrincipal.getMenuCadastro().setEnabled(true);
@@ -94,6 +96,7 @@ public class TelaPrincipalController {
             telaPrincipal.getMenuRelatorios().setEnabled(true);
             telaPrincipal.getMenuInventario().setEnabled(true);
             telaPrincipal.getMenuOpcoes().setEnabled(true);
+            telaPrincipal.getLancaPecaEntregue().setEnabled(true);
         
         } else if(perfil.equals("estoquista")){
             telaPrincipal.getMenuLancamentos().setEnabled(true);
@@ -102,6 +105,7 @@ public class TelaPrincipalController {
             telaPrincipal.getMenuRelatorios().setEnabled(true);
             telaPrincipal.getMenuInventario().setEnabled(true);
             telaPrincipal.getMenuOpcoes().setEnabled(true);
+            telaPrincipal.getLancaPecaEntregue().setEnabled(true);
         
         }else if(perfil.equals("engenharia")){
             telaPrincipal.getMenuRelatorios().setEnabled(true);
@@ -211,6 +215,13 @@ public class TelaPrincipalController {
      telaVisualizacaoPedido.setVisible(true);
      telaPrincipal.getDesktop().add(telaVisualizacaoPedido);
      telaVisualizacaoPedido.setMaximum(true);
+    }
+    
+    public void abrirTelaLancaOrcamento() throws PropertyVetoException {
+     TelaLancaOrcamento telaLancaOrcamento = new TelaLancaOrcamento();
+     telaLancaOrcamento.setVisible(true);
+     telaPrincipal.getDesktop().add(telaLancaOrcamento);
+     telaLancaOrcamento.setMaximum(true);
     }
 
 

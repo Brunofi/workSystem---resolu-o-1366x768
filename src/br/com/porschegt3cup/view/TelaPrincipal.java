@@ -63,6 +63,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuOrcamentos = new javax.swing.JMenu();
         solicitarPeca = new javax.swing.JMenuItem();
         visualizarPecaSolicitada = new javax.swing.JMenuItem();
+        LancaPecaEntregue = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         menuInventario = new javax.swing.JMenu();
         inventarioParcial = new javax.swing.JMenuItem();
@@ -225,6 +226,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }
         });
         menuOrcamentos.add(visualizarPecaSolicitada);
+
+        LancaPecaEntregue.setText("Lançar Peças Entregues");
+        LancaPecaEntregue.setEnabled(false);
+        LancaPecaEntregue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LancaPecaEntregueActionPerformed(evt);
+            }
+        });
+        menuOrcamentos.add(LancaPecaEntregue);
 
         menu.add(menuOrcamentos);
 
@@ -420,6 +430,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_visualizarPecaSolicitadaActionPerformed
 
+    private void LancaPecaEntregueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LancaPecaEntregueActionPerformed
+        try {
+            controller.abrirTelaLancaOrcamento();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_LancaPecaEntregueActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -453,6 +471,14 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 new TelaPrincipal().setVisible(true);
             }
         });
+    }
+
+    public JMenuItem getLancaPecaEntregue() {
+        return LancaPecaEntregue;
+    }
+
+    public void setLancaPecaEntregue(JMenuItem LancaPecaEntregue) {
+        this.LancaPecaEntregue = LancaPecaEntregue;
     }
 
     public JMenu getMenuInventario() {
@@ -664,6 +690,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem LancaPecaEntregue;
     private javax.swing.JMenuItem desfazerLancamento;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenuItem entradaPeca;

@@ -41,6 +41,9 @@ public class Saida {
         this.idPeca = idPeca;
         this.idLocacao = idLocacao;
     }
+
+    public Saida() {
+    }
     
     
 
@@ -154,6 +157,11 @@ public class Saida {
 
     public void setIdLocacao(int idLocacao) {
         this.idLocacao = idLocacao;
+    }
+
+    @Override
+    public String toString() {
+        return "Saida{" + "id=" + id + ", quantidadeSaida=" + quantidadeSaida + ", tipoMovimentacao=" + tipoMovimentacao + ", colaboradorEntrega=" + colaboradorEntrega + ", colaboradorRetira=" + colaboradorRetira + ", colaboradorLanca=" + colaboradorLanca + ", motivoConsumo=" + motivoConsumo + ", etapa=" + etapa + ", sessao=" + sessao + ", chassis=" + chassis + ", chassisCedente=" + chassisCedente + ", eixoLado=" + eixoLado + ", idPeca=" + idPeca + ", idLocacao=" + idLocacao + '}';
     }
     
     

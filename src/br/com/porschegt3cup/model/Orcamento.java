@@ -59,6 +59,17 @@ public class Orcamento {
         
     }
 
+    public Orcamento() {
+    }
+
+    public Orcamento(int id) {
+        this.id = id;
+    }
+    
+    
+
+    
+
     public String getLocacoes() {
         return locacoes;
     }
@@ -191,6 +202,11 @@ public class Orcamento {
 
     public void setNomePeca(String nomePeca) {
         this.nomePeca = nomePeca;
+    }
+
+    @Override
+    public String toString() {
+        return "Orcamento{" + "id=" + id + ", partNumber=" + partNumber + ", nomePeca=" + nomePeca + ", quantidade=" + quantidade + ", colaboradorEntrega=" + colaboradorEntrega + ", colaboradorPedido=" + colaboradorPedido + ", motivoConsumo=" + motivoConsumo + ", etapa=" + etapa + ", sessao=" + sessao + ", chassis=" + chassis + ", eixoLado=" + eixoLado + ", NumeroMotorCambio=" + NumeroMotorCambio + ", statusPeca=" + statusPeca + ", estadoPeca=" + estadoPeca + ", quantidadeEstoque=" + quantidadeEstoque + ", locacoes=" + locacoes + '}';
     }
 
     

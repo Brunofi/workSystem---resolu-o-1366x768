@@ -76,7 +76,7 @@ public class TelaAlteraLocacao extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Tela Entrada Peças");
+        setTitle("Tela Altera Locações");
         setPreferredSize(new java.awt.Dimension(1530, 905));
         addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
             public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
@@ -230,11 +230,6 @@ public class TelaAlteraLocacao extends javax.swing.JInternalFrame {
         tblLocacao.setFocusable(false);
         tblLocacao.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblLocacao.getTableHeader().setReorderingAllowed(false);
-        tblLocacao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblLocacaoMouseClicked(evt);
-            }
-        });
         jScrollPane2.setViewportView(tblLocacao);
 
         btnProcurarLocacao.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/porschegt3cup/icones/iconFind.png"))); // NOI18N
@@ -333,10 +328,6 @@ public class TelaAlteraLocacao extends javax.swing.JInternalFrame {
     private void btnLimparCamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparCamposActionPerformed
         controller.apagarCamposPeca();
     }//GEN-LAST:event_btnLimparCamposActionPerformed
-
-    private void tblLocacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLocacaoMouseClicked
-        //controller.preencherCampos();
-    }//GEN-LAST:event_tblLocacaoMouseClicked
 
     private void btnProcurarLocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarLocacaoActionPerformed
         controller.procurarLocacao();

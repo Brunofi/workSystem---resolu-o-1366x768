@@ -214,7 +214,7 @@ public class UsuarioDAO {
     }
 
     public ResultSet buscarUsuarioPorNome(String nome) {
-        String sql = "select id as ID,nome as NOME, login as LOGIN, perfil as PERFIL from  tbusuarios where nome like ?";
+        String sql = "select id as ID,login as LOGIN, nome as NOME, perfil as PERFIL from  tbusuarios where nome like ?";
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, nome + "%");

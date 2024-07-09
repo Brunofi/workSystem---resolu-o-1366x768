@@ -119,8 +119,8 @@ public class TelaCadastroLocacao extends javax.swing.JInternalFrame {
         tblLocacao.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblLocacao.getTableHeader().setReorderingAllowed(false);
         tblLocacao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblLocacaoMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblLocacaoMousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(tblLocacao);
@@ -347,10 +347,6 @@ public class TelaCadastroLocacao extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void tblLocacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLocacaoMouseClicked
-        controller.preencherCampos();
-    }//GEN-LAST:event_tblLocacaoMouseClicked
-
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         if ((!existeCamposObrigatoriosVazios()) && (!txtId.getText().isEmpty())) {
             controller.alterarLocacao();
@@ -376,6 +372,10 @@ public class TelaCadastroLocacao extends javax.swing.JInternalFrame {
     private void btnLimparPesquisaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparPesquisaActionPerformed
         controller.apagarCampos();
     }//GEN-LAST:event_btnLimparPesquisaActionPerformed
+
+    private void tblLocacaoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLocacaoMousePressed
+        controller.preencherCampos();
+    }//GEN-LAST:event_tblLocacaoMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

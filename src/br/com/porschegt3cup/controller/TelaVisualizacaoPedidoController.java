@@ -133,10 +133,12 @@ public class TelaVisualizacaoPedidoController {
             int linhaSelecionada = telaVisualizacaoPedido.getTblPecasPedidas().getSelectedRow();
             String statusAlterado = telaVisualizacaoPedido.getCbStatusAlterado().getSelectedItem().toString();
             String estadoPeca = telaVisualizacaoPedido.getCbEstadoPeca().getSelectedItem().toString();
+            String colaboradorEntrega = Utils.colaboradorLogado;
             int id = Integer.parseInt(telaVisualizacaoPedido.getTblPecasPedidas().getModel().getValueAt(linhaSelecionada, 0).toString());
             OrcamentoDAO orcamentoDao = new OrcamentoDAO(conexao);
-            orcamentoDao.atualizaStatusPecaEEstadoPeca(id, statusAlterado, estadoPeca);
+            orcamentoDao.atualizaStatusPecaEEstadoPeca(id, statusAlterado, estadoPeca, colaboradorEntrega);
             visualizarPecasPedidas();
+            telaVisualizacaoPedido.escondeCbEstadoPeca();
         } else {
             JOptionPane.showMessageDialog(null, "É necessário que a linha selecionada contenha dados para prosseguir");
         }

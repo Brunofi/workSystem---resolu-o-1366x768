@@ -183,8 +183,8 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
         tblPeca.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblPeca.getTableHeader().setReorderingAllowed(false);
         tblPeca.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPecaMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblPecaMousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(tblPeca);
@@ -433,7 +433,6 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtPartNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -691,10 +690,6 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
 
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
-    private void tblPecaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecaMouseClicked
-        controller.buscaPecaSelecionadaNoBanco();
-    }//GEN-LAST:event_tblPecaMouseClicked
-
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
 
         if ((!existeCamposObrigatoriosVazios()) && (!txtId.getText().isEmpty())) {
@@ -769,6 +764,10 @@ public class TelaCadastroPeca extends javax.swing.JInternalFrame {
     private void formInternalFrameOpened(javax.swing.event.InternalFrameEvent evt) {//GEN-FIRST:event_formInternalFrameOpened
         rBtnPartNumber.setSelected(true);
     }//GEN-LAST:event_formInternalFrameOpened
+
+    private void tblPecaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecaMousePressed
+        controller.buscaPecaSelecionadaNoBanco();
+    }//GEN-LAST:event_tblPecaMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

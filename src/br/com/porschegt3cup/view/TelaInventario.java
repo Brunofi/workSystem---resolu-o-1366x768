@@ -112,7 +112,7 @@ public class TelaInventario extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Cadastro de Usuario");
+        setTitle("Tela de Inventario");
         setPreferredSize(new java.awt.Dimension(1530, 905));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N

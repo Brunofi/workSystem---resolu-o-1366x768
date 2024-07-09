@@ -162,11 +162,6 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
         tblLocacao.setFocusable(false);
         tblLocacao.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblLocacao.getTableHeader().setReorderingAllowed(false);
-        tblLocacao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblLocacaoMouseClicked(evt);
-            }
-        });
         jScrollPane2.setViewportView(tblLocacao);
 
         tblPecas = new javax.swing.JTable(){
@@ -189,11 +184,6 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
         tblPecas.setFocusable(false);
         tblPecas.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblPecas.getTableHeader().setReorderingAllowed(false);
-        tblPecas.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPecasMouseClicked(evt);
-            }
-        });
         jScrollPane3.setViewportView(tblPecas);
 
         btnLimparPeca.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
@@ -331,14 +321,6 @@ public class TelaCadastroEstoque extends javax.swing.JInternalFrame {
     private void btnProcurarLocacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProcurarLocacaoActionPerformed
         controller.procurarLocacao();
     }//GEN-LAST:event_btnProcurarLocacaoActionPerformed
-
-    private void tblLocacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLocacaoMouseClicked
-       // controller.preencherIdLocacao();
-    }//GEN-LAST:event_tblLocacaoMouseClicked
-
-    private void tblPecasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecasMouseClicked
-        
-    }//GEN-LAST:event_tblPecasMouseClicked
 
     private void btnLimparPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparPecaActionPerformed
         controller.apagarCamposPeca();

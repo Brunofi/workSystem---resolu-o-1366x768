@@ -5,7 +5,6 @@
  */
 package br.com.porschegt3cup.view;
 
-
 import br.com.porschegt3cup.controller.TelaPecasEmRecuperacaoController;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -29,18 +28,14 @@ public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
     public TelaPecasEmRecuperacao() {
         initComponents();
         controller = new TelaPecasEmRecuperacaoController(this);
-        
+
     }
 
-    
     private boolean existeCamposObrigatoriosVazios() {
-    return (
-        txtidRecuperacao.getText().isEmpty() ||
-        cbAtualizarSetor.getSelectedItem().toString().trim().isEmpty() ||
-        cbAtualizarSituacao.getSelectedItem().toString().trim().isEmpty()
-    );
-}
-
+        return (txtidRecuperacao.getText().isEmpty()
+                || cbAtualizarSetor.getSelectedItem().toString().trim().isEmpty()
+                || cbAtualizarSituacao.getSelectedItem().toString().trim().isEmpty());
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -123,8 +118,8 @@ public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
         tblPecasEmRecuperacao.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblPecasEmRecuperacao.getTableHeader().setReorderingAllowed(false);
         tblPecasEmRecuperacao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblPecasEmRecuperacaoMouseClicked(evt);
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tblPecasEmRecuperacaoMousePressed(evt);
             }
         });
         jScrollPane1.setViewportView(tblPecasEmRecuperacao);
@@ -380,7 +375,7 @@ public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
 
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
 
-        if (existeCamposObrigatoriosVazios()==true) {
+        if (existeCamposObrigatoriosVazios() == true) {
             JOptionPane.showMessageDialog(null, "é necessario preencher os campos de STATUS e SETOR para atualizar o status da peça");
         } else {
             controller.atualizarStatusPeca();
@@ -406,9 +401,9 @@ public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
         controller.procurarPecas();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void tblPecasEmRecuperacaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecasEmRecuperacaoMouseClicked
-        controller.preencherCampos();
-    }//GEN-LAST:event_tblPecasEmRecuperacaoMouseClicked
+    private void tblPecasEmRecuperacaoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblPecasEmRecuperacaoMousePressed
+        controller.preencherCampos();        // TODO add your handling code here:
+    }//GEN-LAST:event_tblPecasEmRecuperacaoMousePressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -548,5 +543,4 @@ public class TelaPecasEmRecuperacao extends javax.swing.JInternalFrame {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    
 }
