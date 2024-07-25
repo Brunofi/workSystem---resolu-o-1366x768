@@ -73,7 +73,7 @@ public class TelaVisualizacaoPedidoController {
     public void carregarListaStatusPesqusisa(){
         telaVisualizacaoPedido.getCbStatusPesquisa().addItem("");
         telaVisualizacaoPedido.getCbStatusPesquisa().addItem("PENDENTE");
-        telaVisualizacaoPedido.getCbStatusPesquisa().addItem("SEPARADO");
+        telaVisualizacaoPedido.getCbStatusPesquisa().addItem("SEPARADA");
         telaVisualizacaoPedido.getCbStatusPesquisa().addItem("ENTREGUE");
         telaVisualizacaoPedido.getCbStatusPesquisa().addItem("INDISPONIVEL");
         telaVisualizacaoPedido.getCbStatusPesquisa().addItem("CANCELADA");
@@ -84,7 +84,7 @@ public class TelaVisualizacaoPedidoController {
     }
     
     public void carregarListaStatusAlterado(){
-    telaVisualizacaoPedido.getCbStatusAlterado().addItem("SEPARADO");
+    telaVisualizacaoPedido.getCbStatusAlterado().addItem("SEPARADA");
     telaVisualizacaoPedido.getCbStatusAlterado().addItem("ENTREGUE");
     telaVisualizacaoPedido.getCbStatusAlterado().addItem("INDISPONIVEL");
     telaVisualizacaoPedido.getCbStatusAlterado().addItem("CANCELADA");

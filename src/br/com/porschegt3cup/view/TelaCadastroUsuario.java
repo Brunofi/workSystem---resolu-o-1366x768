@@ -85,20 +85,22 @@ public class TelaCadastroUsuario extends javax.swing.JInternalFrame {
     }
 
     public JTextField getTxtLogin() {
-        return txtNome;
-    }
-
-    public void setTxtLogin(JTextField txtLogin) {
-        this.txtNome = txtLogin;
-    }
-
-    public JTextField getTxtNome() {
         return txtLogin;
     }
 
-    public void setTxtNome(JTextField txtNome) {
-        this.txtLogin = txtNome;
+    public void setTxtLogin(JTextField txtLogin) {
+        this.txtLogin = txtLogin;
     }
+
+    public JTextField getTxtNome() {
+        return txtNome;
+    }
+
+    public void setTxtNome(JTextField txtNome) {
+        this.txtNome = txtNome;
+    }
+
+    
 
     public JPasswordField getTxtSenha() {
         return txtSenha;

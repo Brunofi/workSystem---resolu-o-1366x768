@@ -46,7 +46,9 @@ public class TelaCadastroUsuarioController {
     private void criaUsuario() {
 
         String login = telaUsuario.getTxtLogin().getText();
+        System.out.println("login = " + login);
         String nome = telaUsuario.getTxtNome().getText();
+        System.out.println("nome = " + nome);
         String senha = telaUsuario.getTxtSenha().getText();
         String perfil = telaUsuario.getCboPerfil().getSelectedItem().toString();
         Usuario usuario = new Usuario(nome, login, senha, perfil);

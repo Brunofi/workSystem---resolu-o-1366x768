@@ -92,6 +92,7 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
         tblPecasPedidas = new javax.swing.JTable();
         jLabel11 = new javax.swing.JLabel();
         btnCancelarPeca = new javax.swing.JButton();
+        btnLancar2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel16 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -185,7 +186,7 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtNumeroMotorCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel15))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                         .addComponent(btnLancar1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -256,6 +257,14 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
             }
         });
 
+        btnLancar2.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        btnLancar2.setText("Atualizar");
+        btnLancar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLancar2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -263,23 +272,26 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 863, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCancelarPeca)
-                        .addGap(10, 10, 10)))
+                        .addGap(10, 10, 10))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLancar2, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel11)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(btnLancar2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCancelarPeca)
                 .addContainerGap())
@@ -480,6 +492,14 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnLancar1ActionPerformed
 
+    private void btnLancar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLancar2ActionPerformed
+         if (existeCamposObrigatoriosVaziosCabecalioParaCarregarLista()) {
+            JOptionPane.showMessageDialog(null, "para carregar os dados preencha Chassis, etapa e sessão");
+        }else{
+        controller.atualizaTabelaPecasPedidasPorChassisEEtapa();
+        }
+    }//GEN-LAST:event_btnLancar2ActionPerformed
+
     public JTextField getTxtNumeroMotorCambio() {
         return txtNumeroMotorCambio;
     }
@@ -573,6 +593,7 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnCancelarPeca;
     private javax.swing.JButton btnLancar;
     private javax.swing.JButton btnLancar1;
+    private javax.swing.JButton btnLancar2;
     private javax.swing.JButton btnProcurar;
     private javax.swing.JComboBox<String> cbChassis;
     private javax.swing.JComboBox<String> cbEtapa;

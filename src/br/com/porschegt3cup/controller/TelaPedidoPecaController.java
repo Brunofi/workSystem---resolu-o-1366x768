@@ -162,7 +162,7 @@ public class TelaPedidoPecaController {
             orcamentoDao.atualizarStatusPecaSolicitada(id, "CANCELADA");
             atualizaTabelaPecasPedidasPorChassisEEtapa();
         } else {
-            JOptionPane.showMessageDialog(null, "Só é possível cancelar o status da peça se estiver pedida ou separada");
+            JOptionPane.showMessageDialog(null, "Só é possível cancelar o status da peça se estiver PENDENTE ou SEPARADA");
             atualizaTabelaPecasPedidasPorChassisEEtapa();
         }
     } else {
