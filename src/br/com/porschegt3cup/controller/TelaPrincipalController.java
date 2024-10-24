@@ -9,6 +9,7 @@ import br.com.porschegt3cup.dao.ModuloConexao;
 import br.com.porschegt3cup.dao.UsuarioDAO;
 import br.com.porschegt3cup.model.Usuario;
 import br.com.porschegt3cup.view.TelaAlteraLocacao;
+import br.com.porschegt3cup.view.TelaAlteracaoQtdEstoque;
 import br.com.porschegt3cup.view.TelaCadastroEstoque;
 import br.com.porschegt3cup.view.TelaCadastroPeca;
 import br.com.porschegt3cup.view.TelaEntradaPeca;
@@ -84,6 +85,8 @@ public class TelaPrincipalController {
             telaPrincipal.getMenuInventario().setEnabled(true);
             telaPrincipal.getMenuOpcoes().setEnabled(true);
             telaPrincipal.getLancaPecaEntregue().setEnabled(true);
+            telaPrincipal.getMenuAlteracao().setEnabled(true);
+            telaPrincipal.getAlterarQtdEstoque().setEnabled(true);
             
         }else if(perfil.equals("analista")){
             telaPrincipal.getMenuCadastro().setEnabled(true);
@@ -222,6 +225,14 @@ public class TelaPrincipalController {
      telaLancaOrcamento.setVisible(true);
      telaPrincipal.getDesktop().add(telaLancaOrcamento);
      telaLancaOrcamento.setMaximum(true);
+    }
+    
+    public void abrirTelaAlteracaoQtdEstoque() throws PropertyVetoException {
+     
+     TelaAlteracaoQtdEstoque telaAlteracaoQtdEstoque = new TelaAlteracaoQtdEstoque();
+     telaAlteracaoQtdEstoque.setVisible(true);
+     telaPrincipal.getDesktop().add(telaAlteracaoQtdEstoque);
+     telaAlteracaoQtdEstoque.setMaximum(true);
     }
 
 

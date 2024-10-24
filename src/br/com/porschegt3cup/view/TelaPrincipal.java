@@ -53,6 +53,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         menuUsuario = new javax.swing.JMenuItem();
         menuColaborador = new javax.swing.JMenuItem();
         menuEstoque = new javax.swing.JMenuItem();
+        menuAlteracao = new javax.swing.JMenu();
+        alterarQtdEstoque = new javax.swing.JMenuItem();
         menuLancamentos = new javax.swing.JMenu();
         saidaPeca = new javax.swing.JMenuItem();
         entradaPeca = new javax.swing.JMenuItem();
@@ -87,7 +89,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         );
         desktopLayout.setVerticalGroup(
             desktopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 745, Short.MAX_VALUE)
+            .addGap(0, 730, Short.MAX_VALUE)
         );
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/porschegt3cup/icones/Imagem1.jpg"))); // NOI18N
@@ -149,6 +151,20 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menu.add(menuCadastro);
 
+        menuAlteracao.setText("Alterações");
+        menuAlteracao.setEnabled(false);
+
+        alterarQtdEstoque.setText("QTD Estoque");
+        alterarQtdEstoque.setEnabled(false);
+        alterarQtdEstoque.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alterarQtdEstoqueActionPerformed(evt);
+            }
+        });
+        menuAlteracao.add(alterarQtdEstoque);
+
+        menu.add(menuAlteracao);
+
         menuLancamentos.setText("Lançamentos");
         menuLancamentos.setEnabled(false);
 
@@ -204,11 +220,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         menuOrcamentos.setText("Orçamentos");
         menuOrcamentos.setEnabled(false);
-        menuOrcamentos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuOrcamentosActionPerformed(evt);
-            }
-        });
 
         solicitarPeca.setText("Solicitar Peças");
         solicitarPeca.addActionListener(new java.awt.event.ActionListener() {
@@ -409,11 +420,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_torcarPecaDeLocacaoActionPerformed
 
-    private void menuOrcamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuOrcamentosActionPerformed
-        
-        
-    }//GEN-LAST:event_menuOrcamentosActionPerformed
-
     private void solicitarPecaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitarPecaActionPerformed
         try {
             controller.abrirTelaPedidoPeca();
@@ -437,6 +443,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_LancaPecaEntregueActionPerformed
+
+    private void alterarQtdEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alterarQtdEstoqueActionPerformed
+        try {
+            controller.abrirTelaAlteracaoQtdEstoque();
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alterarQtdEstoqueActionPerformed
 
     /**
      * @param args the command line arguments
@@ -680,6 +695,24 @@ public class TelaPrincipal extends javax.swing.JFrame {
     public void setVisualizarPecaSolicitada(JMenuItem visualizarPecaSolicitada) {
         this.visualizarPecaSolicitada = visualizarPecaSolicitada;
     }
+
+    public JMenuItem getAlterarQtdEstoque() {
+        return alterarQtdEstoque;
+    }
+
+    public void setAlterarQtdEstoque(JMenuItem alterarQtdEstoque) {
+        this.alterarQtdEstoque = alterarQtdEstoque;
+    }
+
+    public JMenu getMenuAlteracao() {
+        return menuAlteracao;
+    }
+
+    public void setMenuAlteracao(JMenu menuAlteracao) {
+        this.menuAlteracao = menuAlteracao;
+    }
+    
+    
     
     
 
@@ -691,6 +724,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem LancaPecaEntregue;
+    private javax.swing.JMenuItem alterarQtdEstoque;
     private javax.swing.JMenuItem desfazerLancamento;
     private javax.swing.JDesktopPane desktop;
     private javax.swing.JMenuItem entradaPeca;
@@ -702,6 +736,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblData;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JMenuBar menu;
+    private javax.swing.JMenu menuAlteracao;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenuItem menuColaborador;
     public static javax.swing.JMenuItem menuEstoque;
