@@ -88,6 +88,7 @@ public class TelaLancaOrcamentoController {
             int linhaSelecionada = telaLancaOrcamento.getTblPecasEntregues().getSelectedRow();
             String partNumber = telaLancaOrcamento.getTblPecasEntregues().getModel().getValueAt(linhaSelecionada, 1).toString();
             rs = estoqueDao.procurarPecaEstoquePorPartNumber(partNumber);
+            
 
             if (rs != null) {
                 telaLancaOrcamento.getTblSaida().setModel(DbUtils.resultSetToTableModel(rs));

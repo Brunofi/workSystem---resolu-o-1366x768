@@ -49,6 +49,44 @@ public class TelaPedidoPecaController {
         return saidaDao.buscarListaDeChassis();
     }
     
+    public void carregarListaDeMotores(){
+        conexao = ModuloConexao.conector();
+        OrcamentoDAO orcamentoDAO = new OrcamentoDAO(conexao);
+        telaPedidoPeca.getCbMotorCambio().removeAllItems();
+         List<String> listaMotores = carregarMotores();
+         telaPedidoPeca.getCbMotorCambio().addItem("");
+         for (String motor:listaMotores){
+         telaPedidoPeca.getCbMotorCambio().addItem(motor);
+         }
+        
+    }
+    
+    public List<String> carregarMotores(){
+        conexao = ModuloConexao.conector();
+        OrcamentoDAO orcamentoDAO = new OrcamentoDAO(conexao);
+        return orcamentoDAO.buscarListaDeMotores();
+    }
+    
+    public void carregarListaDeCambios(){
+        conexao = ModuloConexao.conector();
+        OrcamentoDAO orcamentoDAO = new OrcamentoDAO(conexao);
+        telaPedidoPeca.getCbMotorCambio().removeAllItems();
+         List<String> listaCambios = carregarCambios();
+         telaPedidoPeca.getCbMotorCambio().addItem("");
+         for (String cambio:listaCambios){
+         telaPedidoPeca.getCbMotorCambio().addItem(cambio);
+         }
+        
+    }
+    
+    public List<String> carregarCambios(){
+        conexao = ModuloConexao.conector();
+        OrcamentoDAO orcamentoDAO = new OrcamentoDAO(conexao);
+        return orcamentoDAO.buscarListaDeCambios();
+    }
+    
+    
+    
     public void carregarListaDeSessoes() {
         conexao = ModuloConexao.conector();
         SaidaDAO saidaDao = new SaidaDAO(conexao);
@@ -101,7 +139,7 @@ public class TelaPedidoPecaController {
         String etapa = telaPedidoPeca.getCbEtapa().getSelectedItem().toString();
         String sessao = telaPedidoPeca.getCbSessao().getSelectedItem().toString();
         String motivo = telaPedidoPeca.getCbMotivo().getSelectedItem().toString();
-        String numeroMotorCambio = telaPedidoPeca.getTxtNumeroMotorCambio().getText();
+        String numeroMotorCambio = telaPedidoPeca.getCbMotorCambio().getSelectedItem().toString();
         String eixoLado = telaPedidoPeca.getCbLado().getSelectedItem().toString();
         int quantidade = Integer.parseInt(telaPedidoPeca.getTxtQuantidadeSaida().getText());
         String colaboradorPedido = Utils.colaboradorLogado;
@@ -188,5 +226,7 @@ public class TelaPedidoPecaController {
         telaPedidoPeca.getCbSessao().setEnabled(false);
         
     }
+
+    
     
 }

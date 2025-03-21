@@ -307,7 +307,7 @@ public class TelaAlteraLocacao extends javax.swing.JInternalFrame {
 
         getAccessibleContext().setAccessibleName("Locacao");
 
-        setBounds(0, 0, 1065, 608);
+        setBounds(0, 0, 1065, 637);
     }// </editor-fold>//GEN-END:initComponents
 
 

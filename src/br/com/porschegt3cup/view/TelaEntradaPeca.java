@@ -139,7 +139,7 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
             }
         });
 
-        cbMotivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COMPRA", "RECUPERACAO" }));
+        cbMotivo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "COMPRA", "RECUPERACAO CORRETIVA", "RECUPERACAO DE GIRO", "RETORNO AO ESTOQUE", "GARANTIA" }));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("Observação");
@@ -235,7 +235,7 @@ public class TelaEntradaPeca extends javax.swing.JInternalFrame {
 
         getAccessibleContext().setAccessibleName("Locacao");
 
-        setBounds(0, 0, 1065, 608);
+        setBounds(0, 0, 1065, 618);
     }// </editor-fold>//GEN-END:initComponents
 
 

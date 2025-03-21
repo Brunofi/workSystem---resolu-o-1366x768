@@ -56,7 +56,9 @@ public class UsuarioDAO {
 
             if (rs.next()) {
                 String perfil = rs.getString(5);
+                // System.out.println( perfil);
                 return perfil;
+               
 
             } else {
                 return "Perfil não encontrado";

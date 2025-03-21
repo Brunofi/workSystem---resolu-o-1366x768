@@ -74,6 +74,7 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         cbChassis = new javax.swing.JComboBox<>();
@@ -84,9 +85,11 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
         jLabel14 = new javax.swing.JLabel();
         cbMotivo = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
-        txtNumeroMotorCambio = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         btnLancar1 = new javax.swing.JButton();
+        rBtnMotor = new javax.swing.JRadioButton();
+        rBtnCambio = new javax.swing.JRadioButton();
+        cbMotorCambio = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblPecasPedidas = new javax.swing.JTable();
@@ -145,7 +148,7 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
         jLabel14.setText("*Motivo");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel15.setText("Nº Motor/Cambio");
+        jLabel15.setText("Nº ");
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setText("*Chassis");
@@ -158,6 +161,29 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
             }
         });
 
+        buttonGroup1.add(rBtnMotor);
+        rBtnMotor.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        rBtnMotor.setText("motor");
+        rBtnMotor.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rBtnMotorStateChanged(evt);
+            }
+        });
+        rBtnMotor.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                rBtnMotorFocusGained(evt);
+            }
+        });
+
+        buttonGroup1.add(rBtnCambio);
+        rBtnCambio.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        rBtnCambio.setText("cambio");
+        rBtnCambio.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                rBtnCambioFocusGained(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -165,7 +191,6 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(cbChassis, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,39 +208,52 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
                             .addComponent(cbMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNumeroMotorCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel15))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
-                        .addComponent(btnLancar1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(rBtnMotor)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rBtnCambio))
+                            .addComponent(cbMotorCambio, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 271, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(btnLancar1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel13)
-                        .addComponent(jLabel14))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel13)
+                                .addComponent(jLabel14))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel10))
+                                .addGap(11, 11, 11)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cbChassis)
+                                    .addComponent(cbEtapa)))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rBtnCambio)
+                            .addComponent(rBtnMotor)
+                            .addComponent(jLabel15))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cbSessao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(cbMotivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtNumeroMotorCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17)
-                            .addComponent(jLabel10))
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbChassis)
-                            .addComponent(cbEtapa)))
-                    .addComponent(btnLancar1, javax.swing.GroupLayout.Alignment.TRAILING))
+                            .addComponent(cbMotorCambio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnLancar1))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -272,7 +310,7 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCancelarPeca)
@@ -291,7 +329,7 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
                     .addComponent(jLabel11)
                     .addComponent(btnLancar2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 127, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnCancelarPeca)
                 .addContainerGap())
@@ -370,7 +408,7 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 605, Short.MAX_VALUE)
+                        .addComponent(jScrollPane2)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -500,13 +538,19 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
         }
     }//GEN-LAST:event_btnLancar2ActionPerformed
 
-    public JTextField getTxtNumeroMotorCambio() {
-        return txtNumeroMotorCambio;
-    }
+    private void rBtnMotorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rBtnMotorStateChanged
+                    
+    }//GEN-LAST:event_rBtnMotorStateChanged
 
-    public void setTxtNumeroMotorCambio(JTextField txtNumeroMotorCambio) {
-        this.txtNumeroMotorCambio = txtNumeroMotorCambio;
-    }
+    private void rBtnMotorFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rBtnMotorFocusGained
+        controller.carregarListaDeMotores();// TODO add your handling code here:
+    }//GEN-LAST:event_rBtnMotorFocusGained
+
+    private void rBtnCambioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_rBtnCambioFocusGained
+        controller.carregarListaDeCambios();
+    }//GEN-LAST:event_rBtnCambioFocusGained
+
+    
 
     public JTable getTblPecasPedidas() {
         return tblPecasPedidas;
@@ -588,6 +632,41 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
         this.txtQuantidadeSaida = txtQuantidadeSaida;
     }
 
+    public ButtonGroup getButtonGroup1() {
+        return buttonGroup1;
+    }
+
+    public void setButtonGroup1(ButtonGroup buttonGroup1) {
+        this.buttonGroup1 = buttonGroup1;
+    }
+
+    public JRadioButton getrBtnCambio() {
+        return rBtnCambio;
+    }
+
+    public void setrBtnCambio(JRadioButton rBtnCambio) {
+        this.rBtnCambio = rBtnCambio;
+    }
+
+    public JRadioButton getrBtnMotor() {
+        return rBtnMotor;
+    }
+
+    public void setrBtnMotor(JRadioButton rBtnMotor) {
+        this.rBtnMotor = rBtnMotor;
+    }
+
+    public JComboBox<String> getCbMotorCambio() {
+        return cbMotorCambio;
+    }
+
+    public void setCbMotorCambio(JComboBox<String> cbMotorCambio) {
+        this.cbMotorCambio = cbMotorCambio;
+    }
+    
+    
+    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelarPeca;
@@ -595,10 +674,12 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnLancar1;
     private javax.swing.JButton btnLancar2;
     private javax.swing.JButton btnProcurar;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cbChassis;
     private javax.swing.JComboBox<String> cbEtapa;
     private javax.swing.JComboBox<String> cbLado;
     private javax.swing.JComboBox<String> cbMotivo;
+    private javax.swing.JComboBox<String> cbMotorCambio;
     private javax.swing.JComboBox<String> cbSessao;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -616,10 +697,11 @@ public class TelaPedidoPeca extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JRadioButton rBtnCambio;
+    private javax.swing.JRadioButton rBtnMotor;
     private javax.swing.JTable tblPecasPedidas;
     private javax.swing.JTable tblSolicitarPecas;
     private javax.swing.JTextField txtLPesquisar;
-    private javax.swing.JTextField txtNumeroMotorCambio;
     private javax.swing.JTextField txtQuantidadeSaida;
     // End of variables declaration//GEN-END:variables
 

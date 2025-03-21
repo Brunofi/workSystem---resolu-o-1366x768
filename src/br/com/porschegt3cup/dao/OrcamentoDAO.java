@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -255,6 +256,40 @@ public class OrcamentoDAO {
 
     return orcamento;
 }
+    
+     public List<String> buscarListaDeMotores() {
+        List<String> listaMotores = new ArrayList<>();
+        String sql = "select * from motores order by numero_motor";
+        try {
+            Statement statement = conexao.createStatement();
+            rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                String sessao = rs.getString("numero_motor");
+                listaMotores.add(sessao);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return listaMotores;
+    }
+     
+     public List<String> buscarListaDeCambios() {
+        List<String> listaCambios = new ArrayList<>();
+        String sql = "select * from cambios order by numero_cambio";
+        try {
+            Statement statement = conexao.createStatement();
+            rs = statement.executeQuery(sql);
+            while (rs.next()) {
+                String sessao = rs.getString("numero_cambio");
+                listaCambios.add(sessao);
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
+        return listaCambios;
+    }
 
     
     

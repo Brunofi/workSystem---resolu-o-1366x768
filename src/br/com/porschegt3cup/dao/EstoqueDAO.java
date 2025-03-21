@@ -51,6 +51,8 @@ public class EstoqueDAO {
                 + "inner join \n"
                 + "tblocacoes ON tblocacoes.id = tbestoque.idlocacao\n"
                 + "where tbpecas.partnumber like ?";
+        
+        
         try {
             pst = conexao.prepareStatement(sql);
             pst.setString(1, peca + "%");

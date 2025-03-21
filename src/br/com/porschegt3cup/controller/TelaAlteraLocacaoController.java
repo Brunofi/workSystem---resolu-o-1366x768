@@ -88,8 +88,7 @@ public class TelaAlteraLocacaoController {
             int linhaSelecionadaTabelaLocacao = telaAlteraLocacao.getTblLocacao().getSelectedRow();
              idEstoque = Integer.parseInt(telaAlteraLocacao.getTblPeca().getModel().getValueAt(linhaSelecionadaTabelaPeca, 6).toString());
              idlocacao = Integer.parseInt(telaAlteraLocacao.getTblLocacao().getModel().getValueAt(linhaSelecionadaTabelaLocacao, 0).toString());
-            //System.out.println("id estoque" + idEstoque);
-            //System.out.println("id locação" + idlocacao);
+            
          }else {
             JOptionPane.showMessageDialog(null, "É necessario selecionar uma linha em cada tabela com dados para alterar uma locação ");
 
@@ -104,6 +103,8 @@ public class TelaAlteraLocacaoController {
             conexao = ModuloConexao.conector();
             EstoqueDAO estoqueDao = new EstoqueDAO(conexao);
             estoqueDao.alterarLocacaoEstoque(idEstoque, idlocacao);
+            idEstoque = 0;
+            idlocacao = 0;
             apagarCamposPeca();
             apagarCamposLocacao();
         

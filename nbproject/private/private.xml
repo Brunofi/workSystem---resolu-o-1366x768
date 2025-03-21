@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/view/TelaAlteracaoQtdEstoque.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/model/Estoque.java</file>
             <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/dao/ModuloConexao.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/controller/TelaAlteracaoQtdEstoqueController.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/view/TelaPrincipal.java</file>
-            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/controller/TelaEntradaPecaController.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/view/TelaPedidoPeca.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/dao/UsuarioDAO.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/dao/OrcamentoDAO.java</file>
+            <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/controller/TelaPedidoPecaController.java</file>
             <file>file:/C:/Users/bruno/Documents/NetBeansProjects/workSystem%20-%20resolução%201366x768/src/br/com/porschegt3cup/dao/EstoqueDAO.java</file>
         </group>
     </open-files>
